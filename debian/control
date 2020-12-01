@@ -1,0 +1,21 @@
+Source: deepin-pw-check
+Section: devel
+Priority: optional
+Maintainer: Deepin Packages Builder <packages@deepin.com>
+Build-Depends:
+ libcrack2-dev,
+ golang-go,
+ libpam-dev,
+ libsystemd-dev,
+ golang-dlib-dev (>> 1.8.0+),
+ golang-dbus-dev,
+Standards-Version: 4.1.4
+Homepage: http://www.deepin.org
+
+Package: deepin-pw-check
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ libcrack2-dev,
+Description: deepin password check interface
+ deepin-pw-check is a tool to verify the validity of the password

@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/architecture.mk
+
+DH_VERBOSE = 1
+
+export GOPATH = /usr/share/gocode
+export PAM_MODULE_DIR = lib/$(DEB_HOST_MULTIARCH)/security
+
+
+%:
+	dh $@

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    configure)
+        
+        type=`cat /etc/deepin-version | grep Type= | awk -F= '{print $2}'`
+
+        if [ "${type}" = "Professional" ];then
+            sed -i 's/level=.*/level=1/' /usr/share/pam-configs/deepin-pw-check
+        else
+            sed -i 's/level=.*/level=2/' /usr/share/pam-configs/deepin-pw-check
+        fi
+
+        pam-auth-update --force --enable deepin-pw-check
+    ;;
+esac
