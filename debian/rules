@@ -2,11 +2,11 @@
 
 include /usr/share/dpkg/architecture.mk
 
-DH_VERBOSE = 1
+# DH_VERBOSE = 1
 
 export GOPATH = /usr/share/gocode
-export PAM_MODULE_DIR = lib/$(DEB_HOST_MULTIARCH)/security
-
+export PAM_MODULE_DIR = usr/lib/$(DEB_HOST_MULTIARCH)/security
+export PKG_FILE_DIR = usr/lib/pkgconfig
 
 %:
 	dh $@

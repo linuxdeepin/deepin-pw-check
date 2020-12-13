@@ -1,0 +1,13 @@
+#  This file is part of deepin-pw-check.
+
+#  deepin-pw-check is a tool to verify the validity of the password.
+
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: deepin_pw_check
+Description: deepin_pw_check Library
+URL: https://www.deepin.com
+Version: 0.0.0.1
+Libs: -L${libdir} -ldeepin_pw_check
+Cflags: -I${includedir}

@@ -3,6 +3,7 @@ Section: devel
 Priority: optional
 Maintainer: Deepin Packages Builder <packages@deepin.com>
 Build-Depends:
+ debhelper (>= 9),
  libcrack2-dev,
  golang-go,
  libpam-dev,
@@ -14,8 +15,19 @@ Homepage: http://www.deepin.org
 
 Package: deepin-pw-check
 Architecture: any
-Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Description: deepin password check interface
+ deepin-pw-check is a tool to verify the validity of the password
+
+Package: libdeepin-pw-check
+Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
  libcrack2-dev,
+Description: deepin password check interface
+ deepin-pw-check is a tool to verify the validity of the password
+
+Package: libdeepin-pw-check-dev
+Architecture: all
+Depends: libdeepin-pw-check, ${misc:Depends}, ${shlibs:Depends},
 Description: deepin password check interface
  deepin-pw-check is a tool to verify the validity of the password

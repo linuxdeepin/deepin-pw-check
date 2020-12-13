@@ -4,4 +4,4 @@ Priority: 1024
 Conflicts:
 Password-Type: Primary
 Password:
-        requisite                       /usr/lib/libdeepin_pw_check.so level=1
+        requisite                       pam_deepin_pw_check.so level=1
