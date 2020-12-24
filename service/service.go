@@ -42,6 +42,11 @@ func (m *manager) serviceInit() {
 		logger.Warning(err)
 		return
 	}
+	service.Export(dBusServicePath, m)
+	if err != nil {
+		logger.Warning(err)
+		return
+	}
 
 	err = service.RequestName(dBusServiceName)
 	if err != nil {
@@ -50,7 +55,7 @@ func (m *manager) serviceInit() {
 	}
 
 	m.service = service
-	service.Export(dBusServicePath, m)
+
 }
 
 func (m *manager) GetPasswdHash(user string) (string, *dbus.Error) {

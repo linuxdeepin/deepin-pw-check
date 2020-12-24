@@ -130,6 +130,19 @@ int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
                 continue;
             }
             
+            ret = deepin_pw_check(user, new_token, paras.level & ~LEVEL_CREATE_USER, paras.dict_path);
+            DEBUG("check ret: %d", ret);
+
+            if (ret != PW_NO_ERR) {
+                continue;
+            }
+
+            if (ret == PW_ERR_PW_REPEAT) {
+                DEBUG("new password is same with old password");
+                sprintf(outbuf,"Sorry, passwords not changed\n");
+                printf(gettext(outbuf));
+                continue;
+            }
             finally_result = 1;
             
         }

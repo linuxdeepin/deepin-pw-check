@@ -20,11 +20,12 @@ int get_user_hash(const char* user,char* hash) {
     if (ret < 0) {
         return ret;
     }
+    DEBUG("call dbus method GetPasswdHash");
     do {
-        DEBUG("call dbus method GetPasswdHash");
         ret = sd_bus_call_method(bus, DBUS_SERVICE, DBUS_PATH , DBUS_INTERFACE ,
                             "GetPasswdHash", &err , &reply , "s" , user);
         if (ret < 0) {
+            DEBUG("call GetPasswdHash err is:", err.message);
             ret = -2;
             break;
         }

@@ -8,6 +8,15 @@
 #include <libintl.h>
 #include "debug.h"
 
+#define CHARACTER_TYPE_OF_STANDARD_CHECK    (1)
+#define CHARACTER_TYPE_OF_STRICT_CHECK      (4)
+
+#define MIN_LEN_OF_STANDARD_CHECK           (1)
+#define MAX_LEN_OF_STANDARD_CHECK           (512)
+
+#define MIN_LEN_OF_STRICT_CHECK             (8)
+#define MAX_LEN_OF_STRICT_CHECK             (512)
+
 enum PW_ASCII_TYPE {
     TYPE_NUM = 1<<0,
     TYPE_CHAR_UPPER = 1<<1,
@@ -47,18 +56,19 @@ struct Options* get_default_options(int level,const char* dict_path) {
 
     struct Options* options = (struct Options*)malloc(sizeof(struct Options));
 
-    options->max_len = 512;
     options->password_match = true;
 
     if (level & LEVEL_STANDARD_CHECK) {
-        options->min_len = 1;
+        options->min_len = MIN_LEN_OF_STANDARD_CHECK;
+        options->max_len = MAX_LEN_OF_STANDARD_CHECK;
         options->must_contain = 0;
         options->dict_path = NULL;
         options->palindrome = false;
         options->palindrome_min_num = 0;
         options->check_word = 0;
     } else if (level & LEVEL_STRICT_CHECK) {
-        options->min_len = 8;
+        options->min_len = MIN_LEN_OF_STRICT_CHECK;
+        options->max_len = MAX_LEN_OF_STRICT_CHECK;
         options->must_contain = TYPE_NUM | TYPE_CHAR_LOWER | TYPE_CHAR_UPPER | TYPE_SYMBOL;
         options->palindrome = true;
         options->palindrome_min_num = 4;
@@ -94,13 +104,18 @@ bool is_palindrome(const char * pw,int num) {
 	return false;
 }
 
-bool is_length_valid(const char* pw,int min,int max) {
+PW_ERROR_TYPE is_length_valid(const char* pw,int min,int max) {
     int length = strlen(pw);
     
-    if (length < min || length > max) {
-        return false;
+    if (length < min ) {
+        return PW_ERR_LENGTH_SHORT;
     }
-    return true;
+
+    if(length > max) {
+        return PW_ERR_LENGTH_LONG;
+    }
+
+    return PW_NO_ERR;
 }
 
 bool is_type_valid(const char* pw,int type) {
@@ -215,6 +230,7 @@ int is_passwd_repeat(const char* user,const char* pw) {
         if (ret < 0) {
             break;
         }
+        DEBUG("verify password");
         ret = verify_pwd(pw,hash,1);
 
     }while(0);
@@ -240,8 +256,7 @@ PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const 
             break;
         }
 
-        if (!is_length_valid(pw,options->min_len,options->max_len)) {
-            ret = PW_ERR_LENGTH_INVALID;
+        if (PW_NO_ERR != (ret = is_length_valid(pw,options->min_len,options->max_len))) {
             break;
         }
 
@@ -265,8 +280,8 @@ PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const 
         }
 
         if (options->password_match) {
-            int ret = is_passwd_repeat(user,pw);
-            
+            ret = is_passwd_repeat(user,pw);
+            DEBUG("ret is %d", ret);
             if (ret == -2 || ret == -1){
                 ret = PW_ERR_USER;
                 break;
@@ -300,8 +315,10 @@ const char* err_to_string(PW_ERROR_TYPE err){
         return gettext("check success");
     case PW_ERR_PASSWORD_EMPTY:
         return gettext("password is empty");
-    case PW_ERR_LENGTH_INVALID:
-        return gettext("password's length is invalid");
+    case PW_ERR_LENGTH_SHORT:
+        return gettext("password's length is too short");
+    case PW_ERR_LENGTH_LONG:
+        return gettext("password's length is too long");
     case PW_ERR_CHARACTER_INVALID:
         return gettext("password's character is invalid");
     case PW_ERR_PALINDROME:
@@ -316,8 +333,45 @@ const char* err_to_string(PW_ERROR_TYPE err){
         return gettext("internal error");
     case PW_ERR_USER:
         return gettext("invalid user");
+    default:
+        return gettext("invalid password");
     }
 
     return "";
 }
 
+int get_pw_min_length(int level) {
+    if (!is_level_valid(level)) {
+        return -1;
+    }
+    if (level & LEVEL_STANDARD_CHECK) {
+        return MIN_LEN_OF_STANDARD_CHECK;
+    } else if (level & LEVEL_STRICT_CHECK) {
+        return MIN_LEN_OF_STRICT_CHECK;
+    }
+    return -1;
+}
+
+int get_pw_max_length(int level) {
+    if (!is_level_valid(level)) {
+        return -1;
+    }
+    if (level & LEVEL_STANDARD_CHECK) {
+        return MAX_LEN_OF_STANDARD_CHECK;
+    } else if (level & LEVEL_STRICT_CHECK) {
+        return MAX_LEN_OF_STRICT_CHECK;
+    }
+    return -1;
+}
+
+int get_pw_min_character_type(int level) {
+    if (!is_level_valid(level)) {
+        return -1;
+    }
+    if (level & LEVEL_STANDARD_CHECK) {
+        return CHARACTER_TYPE_OF_STANDARD_CHECK;
+    } else if (level & LEVEL_STRICT_CHECK) {
+        return CHARACTER_TYPE_OF_STRICT_CHECK;
+    }
+    return -1;
+}
