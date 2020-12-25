@@ -280,15 +280,15 @@ PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const 
         }
 
         if (options->password_match) {
-            ret = is_passwd_repeat(user,pw);
-            DEBUG("ret is %d", ret);
-            if (ret == -2 || ret == -1){
+            int result = is_passwd_repeat(user,pw);
+            DEBUG("result is %d", result);
+            if (result == -2 || result == -1){
                 ret = PW_ERR_USER;
                 break;
-            }else if (ret == 0) {
+            }else if (result == 0) {
                 ret = PW_ERR_PW_REPEAT;
                 break;
-            }else if(ret != 1) {
+            }else if(result != 1) {
                 ret = PW_ERR_INTERNAL;
                 break;
             }

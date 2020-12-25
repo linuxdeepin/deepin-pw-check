@@ -23,10 +23,10 @@ out/bin/%: prepare
 	env GOPATH="${GOPATH}" ${GOBUILD} -o $@  ${GOPKG_PREFIX}/*.go
 
 out/${LIBRARIES}:
-	gcc lib/*.c -fPIC -shared -lcrypt -lcrack -DIN_CRACKLIB -z noexecstack -Wl,-soname,libdeepin_pw_check.so -o $@ $^
+	gcc lib/*.c -fPIC -shared $(shell pkg-config --libs libsystemd) -lcrypt -lcrack -DIN_CRACKLIB -z noexecstack -Wl,-soname,libdeepin_pw_check.so -o $@ $^
 
 out/${PAM_MODULE}:
-	gcc pam/*.c -fPIC -shared $(shell pkg-config --libs libsystemd) -DIN_CRACKLIB -lpam -L./out/ -ldeepin_pw_check -o $@ $^
+	gcc pam/*.c -fPIC -shared -lpam -L./out/ -ldeepin_pw_check -o $@ $^
 
 build: $(addprefix out/bin/, ${BINARIES}) out/${LIBRARIES} out/${PAM_MODULE}
 
