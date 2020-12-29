@@ -212,7 +212,7 @@ CHECK:
 bool is_word(const char* pw,const char* dict_path) {
     extern int word_check(const char* pw,const char* dict_path);
 
-    return !word_check(pw,dict_path);
+    return word_check(pw,dict_path);
 }
 
 int is_passwd_repeat(const char* user,const char* pw) {
@@ -266,7 +266,7 @@ PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const 
         }
 
         if (options->palindrome) {
-            if (!is_palindrome(pw,options->palindrome_min_num)) {
+            if (is_palindrome(pw,options->palindrome_min_num)) {
                 ret = PW_ERR_PALINDROME;
                 break;
             }

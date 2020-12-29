@@ -375,6 +375,7 @@ static char *r_destructors[] = {
 int word_check(const char* pw,const char* dict_path) {
     PWDICT *pwp;
     unsigned int notfound;
+    int ret = 0;
 
     if (dict_path == NULL){
         dict_path = GetDefaultCracklibDict();
@@ -397,10 +398,10 @@ int word_check(const char* pw,const char* dict_path) {
 
         if (FindPW(pwp, a) != notfound)
         {
-            return 1;
+            ret = 1;
         }
     }
 
     PWClose(pwp);
-    return 0;
+    return ret;
 }
