@@ -40,6 +40,7 @@ int get_user_hash(const char* user,char* hash) {
 
     sd_bus_error_free(&err);
     sd_bus_message_unref(reply);
+    sd_bus_close(bus);
 
     return ret;
 }
