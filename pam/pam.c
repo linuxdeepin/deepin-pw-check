@@ -8,6 +8,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <libintl.h>
+#include <shadow.h>
+#include <pwd.h>
+#include <unistd.h>
 
 struct pam_paras {
     int level;
@@ -105,7 +108,7 @@ int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
             }
 
             DEBUG("new password is %s\n",new_token);
-            ret = deepin_pw_check(user, new_token, paras.level | LEVEL_CREATE_USER, paras.dict_path);
+            ret = deepin_pw_check(user, new_token, paras.level, paras.dict_path);
 
             if (ret != PW_NO_ERR){
                 sprintf(outbuf,"Bad Password: %s\n",err_to_string((PW_ERROR_TYPE)ret));
@@ -130,11 +133,24 @@ int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
                 continue;
             }
             
-            ret = deepin_pw_check(user, new_token, paras.level & ~LEVEL_CREATE_USER, paras.dict_path);
+            ret = deepin_pw_check(user, new_token, paras.level, paras.dict_path);
             DEBUG("check ret: %d", ret);
 
             if (ret != PW_NO_ERR) {
                 continue;
+            }
+
+            
+            extern int verify_pwd(const char *p, char *hash, unsigned int nullok);
+            struct spwd* spwd = getspnam(user);
+            if (spwd == NULL) {
+                DEBUG("can not get hash password");
+                return PAM_PERM_DENIED;
+            }
+
+            int verify_result = verify_pwd(new_token,spwd->sp_pwdp,1);
+            if (verify_result == 0) {
+                ret = PW_ERR_PW_REPEAT;
             }
 
             if (ret == PW_ERR_PW_REPEAT) {

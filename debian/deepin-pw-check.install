@@ -1,5 +1,0 @@
-usr/lib/deepin-pw-check
-usr/lib/*/security
-debian/pam-configs/* usr/share/pam-configs/
-usr/share/dbus-1/system.d
-usr/share/dbus-1/system-services

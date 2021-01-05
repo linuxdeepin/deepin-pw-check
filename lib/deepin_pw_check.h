@@ -37,14 +37,6 @@ typedef enum {
         can not combined with LEVEL_STANDARD_CHECK
 */ 
 #define LEVEL_STRICT_CHECK    (2)
-/*
-    create user flag
-    will not compare the new password and old password
-
-    NOTE:
-        LEVEL_CREATE_USER can combined with LEVEL_STANDARD_CHECK or LEVEL_STRICT_CHECK
-*/
-#define LEVEL_CREATE_USER     (4)
 
 
 PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const char* dict_path);

@@ -32,7 +32,6 @@ struct Options {
     int palindrome_min_num;
     const char* dict_path;
     int check_word;
-    bool password_match;
 };
 
 bool is_level_valid(int level) {
@@ -40,7 +39,7 @@ bool is_level_valid(int level) {
         return false;
     }
 
-    unsigned int all_level = LEVEL_CREATE_USER | LEVEL_STANDARD_CHECK | LEVEL_STRICT_CHECK;
+    unsigned int all_level = LEVEL_STANDARD_CHECK | LEVEL_STRICT_CHECK;
 
     if (level & ~all_level) {
         return false;
@@ -55,8 +54,6 @@ struct Options* get_default_options(int level,const char* dict_path) {
     }
 
     struct Options* options = (struct Options*)malloc(sizeof(struct Options));
-
-    options->password_match = true;
 
     if (level & LEVEL_STANDARD_CHECK) {
         options->min_len = MIN_LEN_OF_STANDARD_CHECK;
@@ -76,9 +73,6 @@ struct Options* get_default_options(int level,const char* dict_path) {
         options->check_word = 1;
     }
 
-    if (level & LEVEL_CREATE_USER ) {
-        options->password_match = false;
-    }
     return options;
 }
 
@@ -279,20 +273,6 @@ PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const 
             }
         }
 
-        if (options->password_match) {
-            int result = is_passwd_repeat(user,pw);
-            DEBUG("result is %d", result);
-            if (result == -2 || result == -1){
-                ret = PW_ERR_USER;
-                break;
-            }else if (result == 0) {
-                ret = PW_ERR_PW_REPEAT;
-                break;
-            }else if(result != 1) {
-                ret = PW_ERR_INTERNAL;
-                break;
-            }
-        } 
     }while(0);
 
     free(options);
@@ -325,8 +305,6 @@ const char* err_to_string(PW_ERROR_TYPE err){
         return gettext("password is palindrome");
     case PW_ERR_WORD:
         return gettext("password is based on word");
-    case PW_ERR_PW_REPEAT:
-        return gettext("password is repeat");
     case PW_ERR_PARA:
         return gettext("parameter options is invalid");
     case PW_ERR_INTERNAL:

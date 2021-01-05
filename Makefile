@@ -8,7 +8,6 @@ endif
 ifeq (${PKG_FILE_DIR},)
 PKG_FILE_DIR := /usr/local/lib/pkgconfig
 endif
-BINARIES = deepin-pw-check
 LIBRARIES = libdeepin_pw_check.so
 LINK_LIBRARIES = libdeepin_pw_check.so
 PAM_MODULE = pam_deepin_pw_check.so
@@ -19,20 +18,15 @@ all: build
 prepare:
 	@mkdir -p out/bin
 
-out/bin/%: prepare
-	env GOPATH="${GOPATH}" ${GOBUILD} -o $@  ${GOPKG_PREFIX}/*.go
-
 out/${LIBRARIES}:
 	gcc lib/*.c -fPIC -shared $(shell pkg-config --libs libsystemd) -lcrypt -lcrack -DIN_CRACKLIB -z noexecstack -Wl,-soname,libdeepin_pw_check.so -o $@ $^
 
 out/${PAM_MODULE}:
 	gcc pam/*.c -fPIC -shared -lpam -L./out/ -ldeepin_pw_check -o $@ $^
 
-build: $(addprefix out/bin/, ${BINARIES}) out/${LIBRARIES} out/${PAM_MODULE}
+build: prepare out/${LIBRARIES} out/${PAM_MODULE}
 
 install:
-	mkdir -p ${DESTDIR}${PREFIX}/lib/deepin-pw-check/
-	cp out/bin/deepin-pw-check ${DESTDIR}${PREFIX}/lib/deepin-pw-check/
 	mkdir -p ${DESTDIR}${PREFIX}/lib
 	cp -f out/${LIBRARIES} ${DESTDIR}${PREFIX}/lib
 	mkdir -p ${DESTDIR}${PREFIX}/include

@@ -13,12 +13,6 @@ Build-Depends:
 Standards-Version: 4.1.4
 Homepage: http://www.deepin.org
 
-Package: deepin-pw-check
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
-Description: deepin password check interface
- deepin-pw-check is a tool to verify the validity of the password
-
 Package: libdeepin-pw-check
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
