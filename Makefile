@@ -19,7 +19,7 @@ prepare:
 	@mkdir -p out/bin
 
 out/${LIBRARIES}:
-	gcc lib/*.c -fPIC -shared $(shell pkg-config --libs libsystemd) -lcrypt -lcrack -DIN_CRACKLIB -z noexecstack -Wl,-soname,libdeepin_pw_check.so -o $@ $^
+	gcc lib/*.c -fPIC -shared -lcrypt -lcrack -DIN_CRACKLIB -z noexecstack -Wl,-soname,libdeepin_pw_check.so -o $@ $^
 
 out/${PAM_MODULE}:
 	gcc pam/*.c -fPIC -shared -lpam -L./out/ -ldeepin_pw_check -o $@ $^
