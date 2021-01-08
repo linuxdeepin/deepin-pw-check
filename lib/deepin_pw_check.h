@@ -31,11 +31,11 @@ typedef enum {
 /*
     strict check
     check length, whether is a word, whether is palindrome,
-    whether character is valid, compare the new and old password.
+    whether character is valid.
 
-    NOTE: 
+    NOTE:
         can not combined with LEVEL_STANDARD_CHECK
-*/ 
+*/
 #define LEVEL_STRICT_CHECK    (2)
 
 

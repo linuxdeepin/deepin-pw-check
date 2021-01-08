@@ -209,33 +209,6 @@ bool is_word(const char* pw,const char* dict_path) {
     return word_check(pw,dict_path);
 }
 
-int is_passwd_repeat(const char* user,const char* pw) {
-    if (user == NULL) {
-        return false;
-    }
-
-    extern int get_user_hash(const char* user,char* hash);
-    extern int verify_pwd(const char *p, char *hash, unsigned int nullok);
-
-    char * hash = (char*)malloc(256);
-    int ret = 0;
-    do{
-        ret = get_user_hash(user,hash);
-        if (ret < 0) {
-            break;
-        }
-        DEBUG("verify password");
-        ret = verify_pwd(pw,hash,1);
-
-    }while(0);
-
-    free(hash);
-    hash = NULL;
-
-    return ret;
-}
-
-
 PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const char* dict_path) {
 
     struct Options * options = get_default_options(level,dict_path);
