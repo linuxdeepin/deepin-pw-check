@@ -11,8 +11,8 @@
 #define CHARACTER_TYPE_OF_STANDARD_CHECK    (1)
 #define CHARACTER_TYPE_OF_STRICT_CHECK      (4)
 
-#define MIN_LEN_OF_STANDARD_CHECK           (1)
-#define MAX_LEN_OF_STANDARD_CHECK           (512)
+#define MIN_LEN_OF_STANDARD_CHECK           (6)
+#define MAX_LEN_OF_STANDARD_CHECK           (6)
 
 #define MIN_LEN_OF_STRICT_CHECK             (8)
 #define MAX_LEN_OF_STRICT_CHECK             (512)
@@ -121,7 +121,7 @@ bool is_type_valid(const char* pw,int type) {
     DEBUG("called,pw is %s,type is %x",pw,type);
 
     if (type == 0) {
-       sprintf(expect_str,"%s","0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#\%^&*()[]{}|,.<>");
+       sprintf(expect_str,"%s","0123456789");
        goto CHECK;
     }
 
