@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# abuyop <abuyop@gmail.com>, 2020
+# Cindy0514, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-02 17:59+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: Cindy0514, 2020\n"
+"Language-Team: Malay (https://www.transifex.com/linuxdeepin/teams/3617/ms/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ms\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: misc/pam-module/pam_auth.c:222
+#, c-format
+msgid "Verification error"
+msgstr "Ralat pengesahan"
+
+#: misc/pam-module/pam_auth.c:226
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr "Pengesahan cap jari tidak tersedia, sila masukkan kata laluan"
+
+#: misc/pam-module/pam_auth.c:246 misc/pam-module/pam_auth.c:254
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "Bersih dahulu jari anda dan cuba sekali lagi"
+
+#: misc/pam-module/pam_auth.c:250
+#, c-format
+msgid "Finger not centered"
+msgstr "Jari tidak berada ditengah-tengah"
+
+#: misc/pam-module/pam_auth.c:258
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr ""
+"Cap jari tidak jelas, sila bersih dahulu jari anda dan cuba sekali lagi"
+
+#: misc/pam-module/pam_auth.c:262
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr "Jari digerak terlalu pantas. Jangan angkat sehingga diberitahu"
+
+#: misc/pam-module/pam_auth.c:274 misc/pam-module/pam_auth.c:532
+#, c-format
+msgid "Password"
+msgstr "Kata Laluan"
+
+#: misc/pam-module/pam_auth.c:380
+#, c-format
+msgid "Verification successful"
+msgstr "Pengesahan berjaya"
+
+#: misc/pam-module/pam_auth.c:397
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr ""
+
+#: misc/pam-module/pam_auth.c:401
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "Pengesahan gagal, berbaki %d peluang lagi"
+
+#: misc/pam-module/pam_auth.c:403
+#, c-format
+msgid "Verification failed, 1 chance left"
+msgstr "Pengesahan gagal, 1 peluang berbaki"
+
+#: misc/pam-module/pam_auth.c:529
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "Sahkan cap jari atau kata laluan anda"

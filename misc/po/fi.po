@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Cindy0514, 2020
+# Kimmo Kujansuu <mrkujansuu@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-28 10:54+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>, 2021\n"
+"Language-Team: Finnish (https://www.transifex.com/linuxdeepin/teams/3617/fi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: misc/pam-module/pam_auth.c:283
+#, c-format
+msgid "Verification error"
+msgstr "Tarkistusvirhe"
+
+#: misc/pam-module/pam_auth.c:287
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr "Sormenjäljen tarkistus ei ole käytettävissä, syötä salasana"
+
+#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "Puhdista sormi ja yritä uudelleen"
+
+#: misc/pam-module/pam_auth.c:311
+#, c-format
+msgid "Finger not centered"
+msgstr "Sormea ei keskitetty"
+
+#: misc/pam-module/pam_auth.c:319
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr "Epäselvä sormenjälki, puhdista sormesi ja yritä uudelleen"
+
+#: misc/pam-module/pam_auth.c:323
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr "Olet liian nopea, älä nosta sormea ennen kuin pyydetään"
+
+#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
+#, c-format
+msgid "Password"
+msgstr "Salasana"
+
+#: misc/pam-module/pam_auth.c:440
+#, c-format
+msgid "Verification successful"
+msgstr "Tarkistus onnistui"
+
+#: misc/pam-module/pam_auth.c:457
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr "Sormenjälki lukittu, käytä salasanaa"
+
+#: misc/pam-module/pam_auth.c:461
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "Tarkistus epäonnistui, %d yritystä jäljellä"
+
+#: misc/pam-module/pam_auth.c:463
+#, c-format
+msgid "Verification failed, only one chance left"
+msgstr "Tarkistus epäonnistui, yksi yritys jäljellä"
+
+#: misc/pam-module/pam_auth.c:589
+#, c-format
+msgid "Please retry after %d minutes"
+msgstr "Yritä uudelleen %d minuutin kuluttua"
+
+#: misc/pam-module/pam_auth.c:591
+#, c-format
+msgid "Please retry after one minute"
+msgstr "Yritä uudelleen minuutin kuluttua"
+
+#: misc/pam-module/pam_auth.c:600
+#, c-format
+msgid "Chances left: %d"
+msgstr "Yrityksiä %d jäljellä:"
+
+#: misc/pam-module/pam_auth.c:635
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "Vahvista sormenjäljellä tai salasanalla"

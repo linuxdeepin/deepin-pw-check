@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Cindy0514, 2020
+# JungHee Lee <daemul72@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-02 17:59+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2020\n"
+"Language-Team: Korean (https://www.transifex.com/linuxdeepin/teams/3617/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: misc/pam-module/pam_auth.c:222
+#, c-format
+msgid "Verification error"
+msgstr "확인 오류"
+
+#: misc/pam-module/pam_auth.c:226
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr "지문 확인을 사용할 수 없습니다. 비밀번호를 입력하십시오"
+
+#: misc/pam-module/pam_auth.c:246 misc/pam-module/pam_auth.c:254
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "손가락을 닦고 다시 시도하십시오"
+
+#: misc/pam-module/pam_auth.c:250
+#, c-format
+msgid "Finger not centered"
+msgstr "손가락이 가운데에 있지 않음"
+
+#: misc/pam-module/pam_auth.c:258
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr "지문이 불분명합니다. 손가락을 닦고 다시 시도하십시오"
+
+#: misc/pam-module/pam_auth.c:262
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr "손가락이 너무 빨리 움직입니다. 메시지가 표시 될 때까지 들어 올리지 마십시오"
+
+#: misc/pam-module/pam_auth.c:274 misc/pam-module/pam_auth.c:532
+#, c-format
+msgid "Password"
+msgstr "비밀번호"
+
+#: misc/pam-module/pam_auth.c:380
+#, c-format
+msgid "Verification successful"
+msgstr "확인 성공"
+
+#: misc/pam-module/pam_auth.c:397
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr "지문 잠김, 비밀번호를 사용하십시오"
+
+#: misc/pam-module/pam_auth.c:401
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "확인 실패, 기회 %d번 남음"
+
+#: misc/pam-module/pam_auth.c:403
+#, c-format
+msgid "Verification failed, 1 chance left"
+msgstr "확인 실패, 기회 1번 남음"
+
+#: misc/pam-module/pam_auth.c:529
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "지문 또는 비밀번호 확인"

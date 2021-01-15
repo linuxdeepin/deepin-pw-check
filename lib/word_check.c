@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <packer.h>
 #include <unistd.h>
+#include <string.h>
+#include "debug.h"
 
 
 static char *r_destructors[] = {
@@ -377,9 +379,11 @@ int word_check(const char* pw,const char* dict_path) {
     unsigned int notfound;
     int ret = 0;
 
-    if (dict_path == NULL){
+    if (dict_path == NULL || (strcmp(dict_path, "") == 0)){
         dict_path = GetDefaultCracklibDict();
+        DEBUG("dict_path = %s",dict_path);
     }
+    
     if (!(pwp = PWOpen(dict_path, "r")))
     {
 	    return -1;
@@ -398,6 +402,7 @@ int word_check(const char* pw,const char* dict_path) {
 
         if (FindPW(pwp, a) != notfound)
         {
+            DEBUG("pw %s is found", pw);
             ret = 1;
         }
     }

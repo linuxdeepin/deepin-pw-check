@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Cindy0514, 2020
+# Karol Machajewski <charleslavard@gmail.com>, 2020
+# Marcin Kozioł <koziol.martin@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-02 17:59+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: Marcin Kozioł <koziol.martin@gmail.com>, 2020\n"
+"Language-Team: Polish (https://www.transifex.com/linuxdeepin/teams/3617/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: misc/pam-module/pam_auth.c:222
+#, c-format
+msgid "Verification error"
+msgstr "Błąd weryfikacji"
+
+#: misc/pam-module/pam_auth.c:226
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr "Weryfikacja odciskiem palca jest niedostępna, proszę wprowadzić hasło"
+
+#: misc/pam-module/pam_auth.c:246 misc/pam-module/pam_auth.c:254
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "Wyczyść swój palec i spróbuj ponownie"
+
+#: misc/pam-module/pam_auth.c:250
+#, c-format
+msgid "Finger not centered"
+msgstr "Palec nie jest wycentrowany"
+
+#: misc/pam-module/pam_auth.c:258
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr "Niewyraźny odcisk palca, proszę wyczyść palec i spróbuj ponownie "
+
+#: misc/pam-module/pam_auth.c:262
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr ""
+"Palec przesunięty za szybko, proszę nie podnoś palca przed komunikatem "
+
+#: misc/pam-module/pam_auth.c:274 misc/pam-module/pam_auth.c:532
+#, c-format
+msgid "Password"
+msgstr "Hasło"
+
+#: misc/pam-module/pam_auth.c:380
+#, c-format
+msgid "Verification successful"
+msgstr "Weryfikacja pomyślna"
+
+#: misc/pam-module/pam_auth.c:397
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr "Odcisk palca zablokowany, użyj hasła"
+
+#: misc/pam-module/pam_auth.c:401
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "Nieudana weryfikacja, zostało %d prób "
+
+#: misc/pam-module/pam_auth.c:403
+#, c-format
+msgid "Verification failed, 1 chance left"
+msgstr "Nieudana weryfikacja, została 1 próba "
+
+#: misc/pam-module/pam_auth.c:529
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "Zweryfikuj swój odcisk palca bądź hasło "

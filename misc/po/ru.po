@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Cindy0514, 2020
+# Евгений Поярков <gekapoyarkov@gmail.com>, 2020
+# Владимир Киреев <vovan_kireev@mail.ru>, 2020
+# Dober Man, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-28 10:54+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: Dober Man, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/linuxdeepin/teams/3617/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: misc/pam-module/pam_auth.c:283
+#, c-format
+msgid "Verification error"
+msgstr "Ошибка проверки"
+
+#: misc/pam-module/pam_auth.c:287
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr ""
+"Разблокировка по отпечатку пальца недоступна, пожалуйста, введите пароль"
+
+#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "Почистите палец и попробуйте снова"
+
+#: misc/pam-module/pam_auth.c:311
+#, c-format
+msgid "Finger not centered"
+msgstr "Палец не по центру"
+
+#: misc/pam-module/pam_auth.c:319
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr "Нечеткий отпечаток, пожалуйста, почистите палец и попробуйте снова"
+
+#: misc/pam-module/pam_auth.c:323
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr ""
+"Палец был убран слишком быстро, пожалуйста, не убирайте его, пока устройство"
+" не разблокируется "
+
+#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
+#, c-format
+msgid "Password"
+msgstr "Пароль"
+
+#: misc/pam-module/pam_auth.c:440
+#, c-format
+msgid "Verification successful"
+msgstr "Проверка прошла успешно"
+
+#: misc/pam-module/pam_auth.c:457
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr "Отпечаток пальца заблокирован, пожалуйста, используйте пароль"
+
+#: misc/pam-module/pam_auth.c:461
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "Проверка не удалась, осталось попыток: %d"
+
+#: misc/pam-module/pam_auth.c:463
+#, c-format
+msgid "Verification failed, only one chance left"
+msgstr "Проверка не удалась, осталась только одна попытка"
+
+#: misc/pam-module/pam_auth.c:589
+#, c-format
+msgid "Please retry after %d minutes"
+msgstr ""
+
+#: misc/pam-module/pam_auth.c:591
+#, c-format
+msgid "Please retry after one minute"
+msgstr ""
+
+#: misc/pam-module/pam_auth.c:600
+#, c-format
+msgid "Chances left: %d"
+msgstr "Осталось попыток: %d"
+
+#: misc/pam-module/pam_auth.c:635
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "Проверьте свой отпечаток пальца или пароль"

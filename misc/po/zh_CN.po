@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Cindy0514, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-28 10:54+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: Cindy0514, 2021\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/linuxdeepin/teams/3617/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: misc/pam-module/pam_auth.c:283
+#, c-format
+msgid "Verification error"
+msgstr "验证错误"
+
+#: misc/pam-module/pam_auth.c:287
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr "指纹不可用，请输入密码"
+
+#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "请清洁手指后再次验证"
+
+#: misc/pam-module/pam_auth.c:311
+#, c-format
+msgid "Finger not centered"
+msgstr "手指不在中间"
+
+#: misc/pam-module/pam_auth.c:319
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr "图像模糊，请清洁手指后再次验证"
+
+#: misc/pam-module/pam_auth.c:323
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr "接触时间短，验证时请勿移动手指"
+
+#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
+#, c-format
+msgid "Password"
+msgstr "请输入密码"
+
+#: misc/pam-module/pam_auth.c:440
+#, c-format
+msgid "Verification successful"
+msgstr "验证成功"
+
+#: misc/pam-module/pam_auth.c:457
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr "指纹已锁定，请输入密码"
+
+#: misc/pam-module/pam_auth.c:461
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "验证失败，您还可以尝试%d次"
+
+#: misc/pam-module/pam_auth.c:463
+#, c-format
+msgid "Verification failed, only one chance left"
+msgstr "验证失败，您还可以尝试1次"
+
+#: misc/pam-module/pam_auth.c:589
+#, c-format
+msgid "Please retry after %d minutes"
+msgstr "请%d分钟后再试"
+
+#: misc/pam-module/pam_auth.c:591
+#, c-format
+msgid "Please retry after one minute"
+msgstr "请1分钟后再试"
+
+#: misc/pam-module/pam_auth.c:600
+#, c-format
+msgid "Chances left: %d"
+msgstr "剩余重试次数：%d"
+
+#: misc/pam-module/pam_auth.c:635
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "请验证指纹或输入密码"

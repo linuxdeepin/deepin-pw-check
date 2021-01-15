@@ -1,8 +1,8 @@
 - [密码校验技术方案](#密码校验技术方案)
   - [问题](#问题)
   - [现状](#现状)
+  - [解决方案及考虑点](#解决方案及考虑点)
   - [技术方案](#技术方案)
-    - [需要验证的项](#需要验证的项)
   - [实验验证](#实验验证)
     - [`deepin_pw_check.so` 接口及实现](#deepin_pw_checkso-接口及实现)
     - [接口校验实现方案](#接口校验实现方案)
@@ -26,6 +26,14 @@
 
 针对以上问题，uos系统需要提供一个统一的接口，用来实现对密码合法性的校验，满足密码校验一致性的需求，解决上述问题。
 
+## 解决方案及考虑点
+解决方案为提供一套统一的密码校验接口，给前端应用如控制中心，安装器等调用，同时提供一套pam接口，给passwd等命令行程序使用。
+
+此方案需要考虑兼容 `/etc/deepin/dde.conf` 配置文件，兼容方式为
+1. 若 `/etc/deepin/dde.conf` 配置文件存在，则读取该配置并使用。
+2. 若该配置文件不存在，则根据产品需求以及系统型号生成一套默认的配置，写入到 `/etc/deepin/dde.conf` 配置文件，后续继续使用该配置文件
+3. 若产品上关于密码校验的需求有更新，由该接口进行更新配置，并写入到 `/etc/deepin/dde.conf` 配置文件。
+
 ## 技术方案
    
 1. 提供一个动态库`deepin_pw_check.so`，该动态库提供密码校验接口，返回密码校验结果。
@@ -38,78 +46,84 @@
 
     提供以上两个接口，用户校验密码和获取错误值的描述信息。
       
-2. 提供一个动态库`deepin_pw_check.so`，实现`pam`的`pam_sm_chauthtok`接口，该接口中调用上述1中的密码校验接口，并根据接口返回给`pam`校验结果。该动态库将会写入`/etc/pam.d/common-passwd`配置文件中，当使用`passwd`修改密码时，将走此校验。
-   
+2. 提供一个动态库`pam_deepin_pw_check.so`，实现`pam`的`pam_sm_chauthtok`接口，该接口中调用上述1中的密码校验接口，并根据接口返回给`pam`校验结果。该动态库将会写入`/etc/pam.d/common-passwd`配置文件中，当使用`passwd`修改密码时，将走此校验。
 
-### 需要验证的项
-  1. 为空校验：任意输入框为空，反馈文案：密码不能为空；
-  2. 当前密码校验：当前密码输入错误，反馈文案：密码错误；
-  3. 新密码一致性校验：新密码和重复密码不一致，反馈文案：密码不一致；
-  4. 新密码重复性校验：新密码和当前密码相同，反馈文案：新密码和旧密码不能相同；
-  5. 新密码强壮性校验：新密码长度超出密码策略，反馈文案：密码长度不能超过xx位；最大密码长度限制为510位；
-  6. 新密码强壮性校验：新密码长度少于密码策略，反馈文案：密码长度不能少于xx位；
-  7. 新密码强壮性校验：新密码字符类型不符合密码策略，反馈文案：密码必须由字母、数字、符号三种类型组成；
-  8. 服务器特有校验规则：
-      1. 新密码强壮性校验：新密码不满足回文字符校验，反馈文案：密码不得含有连续4个以上的回文字符；
-      2. 新密码强壮性校验：新密码不满足密码字典校验，反馈文案：密码不能是常见单词及组合；
-      3. 用户密码配置文件读写授权校验：未通过授权验证，反馈文案：修改密码失败；
-   
+3. 提供一个 dbus 服务 deepin_pw_check，该服务用来操作 `/etc/deepin/dde.conf` 配置文件，可以通过该接口获取当前配置，也可通过该接口修改配置，修改配置需要鉴权。服务名为 `com.deepin.daemon.PasswdConf`,路径名为 `/com/deepin/daemon/PasswdConf`, 接口名为 `com.deepin.daemon.PasswdConf`。
 
+4. 提供一个工具 pwd_conf_update，该工具可以用于手动更新 `/etc/deepin/dde.conf` 配置。一般在安装时调用，用于更新配置文件字段。
 ## 实验验证
     
 ### `deepin_pw_check.so` 接口及实现
    1. `PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const char* dict_path);`
-    该接口根据用户输入的参数进行不同程度的密码校验，参数选项有：
-    **LEVEL_STANDARD_CHECK     // 标准校验**
-    **LEVEL_STRICT_CHECK       // 严格校验**
-    **LEVEL_CREATE_USER        // 创建用户校验，将不会校验密码**
-    其中**LEVEL_CREATE_USER**可以与其他两个参数组合，而**LEVEL_STANDARD_CHECK**与**LEVEL_STRICT_CHECK**将不能进行组合。
+    该接口中 level 参数暂时无用。
     具体校验代码如下：
         ```c
         PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const char* dict_path) {
 
-            struct Options * options = get_default_options(level,dict_path);
-            if (options == NULL) {
-                return PW_ERR_PARA;
-            }
+        struct Options * options = get_default_options(level,dict_path);
+        if (options == NULL) {
+            return PW_ERR_PARA;
+        }
 
+        PW_ERROR_TYPE ret = PW_NO_ERR;
+        
+        do {
             if (is_empty(pw)) {
-                return PW_ERR_PASSWORD_EMPTY;
+                ret = PW_ERR_PASSWORD_EMPTY;
+                break;
+            }
+            
+            if (options->enabled) {
+                return ret;
             }
 
-            if (!is_length_valid(pw,options->min_len,options->max_len)) {
-                return PW_ERR_LENGTH_INVALID;
+            if (PW_NO_ERR != (ret = is_length_valid(pw, options->min_len, options->max_len))) {
+                break;
             }
 
-            if (!is_type_valid(pw,options->must_contain)) {
-                return PW_ERR_CHARACTER_INVALID;
+            if (options->first_letter_uppercase) {
+                if (!is_first_letter_uppercase(pw)) {
+                    ret = PW_ERR_PW_FIRST_UPPERM;
+                    break;
+                }
             }
 
-            if (options->palindrome) {
-                if (!is_palindrome(pw,options->palindrome_min_num)) {
-                    return PW_ERR_PALINDROME;
+            if (!is_type_valid(pw, options->character_type, options->character_num_required)) {
+                ret = PW_ERR_CHARACTER_INVALID;
+                break;
+            }
+
+            if (options->palindrome_min_num && options->palindrome_min_num > 0) {
+                if (is_palindrome(pw, options->palindrome_min_num)) {
+                    ret = PW_ERR_PALINDROME;
+                    break;
                 }
             }
 
             if (options->check_word) {
                 if (is_word(pw,options->dict_path)) {
-                    return PW_ERR_WORD;
+                    ret = PW_ERR_WORD;
+                    break;
                 }
             }
 
-            if (options->password_match) {
-                int ret = is_passwd_repeat(user,pw);
-                
-                if (ret == -2 || ret == -1){
-                    return PW_ERR_USER;
-                }else if (ret == 0) {
-                    return PW_ERR_PW_REPEAT;
-                }else if(ret != 1) {
-                    return PW_ERR_INTERNAL;
+            if (options->monotone_character_num && options->monotone_character_num > 0) {
+                if ( is_monotone_character(pw, options->monotone_character_num )) {
+                    ret = PW_ERR_PW_CONSECUTIVE_SAME;
                 }
-            } 
-        
-            return PW_NO_ERR;
+            }
+
+            if (options->consecutive_same_character_num && options->consecutive_same_character_num > 0) {
+                if ( is_consecutive_same_character(pw, options->consecutive_same_character_num)) {
+                    ret = PW_ERR_PW_CONSECUTIVE_SAME;
+                }
+            }
+
+        }while(0);
+
+        free(options);
+
+        return ret;
         }
             
         ```
@@ -121,37 +135,54 @@
         ```c
         const char* err_to_string(PW_ERROR_TYPE err){
 
-            if (err >= PW_ERR_MAX) {
-                return gettext("invalid error type");
-            }
+        if (err >= PW_ERR_MAX) {
+            return gettext("invalid error type");
+        }
 
-            setlocale(LC_ALL, "");
-            textdomain("deepin_pw_check");
-
-            switch (err)
-            {
-            case PW_NO_ERR:
-                return gettext("check success");
-            case PW_ERR_PASSWORD_EMPTY:
-                return gettext("password is empty");
-            case PW_ERR_LENGTH_INVALID:
-                return gettext("password's length is invalid");
-            case PW_ERR_CHARACTER_INVALID:
-                return gettext("password's character is invalid");
-            case PW_ERR_PALINDROME:
-                return gettext("password is palindrome");
-            case PW_ERR_WORD:
-                return gettext("password is based on word");
-            case PW_ERR_PW_REPEAT:
-                return gettext("password is repeat");
-            case PW_ERR_PARA:
-                return gettext("parameter options is invalid");
-            case PW_ERR_INTERNAL:
-                return gettext("internal error");
-            case PW_ERR_USER:
-                return gettext("invalid user");
-            }
-
+        setlocale(LC_ALL, "");
+        textdomain("deepin-pw-check");
+        char tmp_buff[BUFF_SIZE];
+        int len = 0;
+        int num = 0;
+        switch (err)
+        {
+        case PW_NO_ERR:
+            return gettext("check success");
+        case PW_ERR_PASSWORD_EMPTY:
+            return gettext("password cannot be empty");
+        case PW_ERR_LENGTH_SHORT:
+            len = get_pw_min_length(0);
+            snprintf(out_buff, BUFF_SIZE, gettext("Password must have at least %d characters"), len);
+            return out_buff;
+        case PW_ERR_LENGTH_LONG:
+            len = get_pw_max_length(0);
+            snprintf(out_buff, BUFF_SIZE, gettext("Password must be no more than %d characters"), len);
+            return out_buff;
+        case PW_ERR_CHARACTER_INVALID:
+            strcpy(tmp_buff, get_pw_validate_policy(0));
+            snprintf(out_buff, BUFF_SIZE, gettext("Password can only contain %s"), tmp_buff);
+            return out_buff;
+        case PW_ERR_PALINDROME:
+            num = get_pw_palimdrome_num(0);
+            snprintf(out_buff, BUFF_SIZE, gettext("Password must not contain more than %d palindrome characters"), num);
+            return out_buff;
+        case PW_ERR_PW_CONSECUTIVE_SAME:
+            return gettext("It does not meet password rules");
+        case PW_ERR_PW_MONOTONE:
+            return gettext("It does not meet password rules");
+        case PW_ERR_PW_FIRST_UPPERM:
+            return gettext("It does not meet password rules");
+        case PW_ERR_WORD:
+            return gettext("Do not use common words and combinations as password");
+        case PW_ERR_PARA:
+            return gettext("Parameter options is invalid");
+        case PW_ERR_INTERNAL:
+            return gettext("Internal error");
+        case PW_ERR_USER:
+            return gettext("Invalid user");
+        default:
+            return gettext("It does not meet password rules");
+        }
             return "";
         }
         ``` 
@@ -195,134 +226,6 @@
 
         PWClose(pwp);
         return 0;
-    }
-    ```
-2. 新旧密码一致性校验： 采用`pam-unix`库中的校验方案，从`/etc/shadow`文件中获取密文，将用户输入的明文加密成密文，将两个密文做对比，若一致，则新旧密码一致，反之则不一致。
-    ```c
-    int is_passwd_repeat(const char* user,const char* pw) {
-        if (user == NULL) {
-            return false;
-        }
-
-        extern int get_user_hash(const char* user,char* hash);
-        extern int verify_pwd(const char *p, char *hash, unsigned int nullok);
-
-        char * hash = (char*)malloc(256);
-        int ret = 0;
-        do{
-            ret = get_user_hash(user,hash);
-            if (ret < 0) {
-                break;
-            }
-            ret = verify_pwd(pw,hash,1);
-
-        }while(0);
-
-        free(hash);
-        hash = NULL;
-
-        return ret;
-    }
-    ```
-3. 获取`/etc/shadow`文件中用户密文： 由于`deepin_pw_check`的权限取决于调用者，因此访问`/etc/shadow`文件的权限则成为问题，为此提供`system bus`的`dbus`服务接口`com.deepin.daemon.Passwd.GetPasswdHash`，从该接口中获取用户的密文。而校验工作则在`deepin_pw_check`库中进行。
-    ```c
-    int get_user_hash(const char* user,char* hash) {
-        sd_bus *bus = NULL;
-        sd_bus_error err = SD_BUS_ERROR_NULL;
-        sd_bus_message* reply = NULL;
-        char* res;
-        if (user == NULL || hash == NULL){
-            return -1;
-        }
-
-        int ret = sd_bus_open_system(&bus);
-        if (ret < 0) {
-            return ret;
-        }
-        do {
-            DEBUG("call dbus method GetPasswdHash");
-            ret = sd_bus_call_method(bus, DBUS_SERVICE, DBUS_PATH , DBUS_INTERFACE ,
-                                "GetPasswdHash", &err , &reply , "s" , user);
-            if (ret < 0) {
-                ret = -2;
-                break;
-            }
-
-            ret = sd_bus_message_read(reply, "s", &res);
-            if (ret < 0) {
-                break;
-            }
-            sprintf(hash,"%s",res);
-
-        }while(0);
-
-        sd_bus_error_free(&err);
-        sd_bus_message_unref(reply);
-
-        return ret;
-    }
-    ```
-    `com.deepin.daemon.Passwd`服务的接口部分，采用`go`代码编写,使用`cgo`调用`c`代码并获取结果。
-    ```go
-    func (m *manager) GetPasswdHash(user string) (string, *dbus.Error) {
-	m.mu.Lock()
-	defer m.mu.Unlock()
-
-	var pw *C.cspwd
-	pw = C.getspnam(C.CString(user))
-	if pw == nil {
-		return "", dbusutil.ToError(fmt.Errorf("get passwd for %s failed", user))
-	}
-	return C.GoString(pw.sp_pwdp), nil
-    }
-
-    ```
-4. 明文加密及校验算法： 来源于`pam_unix`
-    ```c
-    int verify_pwd(const char *p, char *hash, unsigned int nullok)
-    {
-        size_t hash_len;
-        char *pp = NULL;
-        int retval;
-
-        strip_hpux_aging(hash);
-        hash_len = strlen(hash);
-        if (!hash_len) {
-            if (nullok) { 
-                retval = 0;
-            } else {
-                retval = 1;
-            }
-        } else if (!p || *hash == '*' || *hash == '!') {
-            retval = 1;
-        } else {
-            if (!strncmp(hash, "$1$", 3)) {
-                pp = crypt_md5(p, hash);
-                if (pp && strcmp(pp, hash) != 0) {
-                    _ptr_delete(pp);
-                    pp = crypt_md5(p, hash);
-                }
-            } else if (*hash != '$' && hash_len >= 13) {
-                pp = bigcrypt(p, hash);
-                if (pp && hash_len == 13 && strlen(pp) > hash_len) {
-                    _pw_check_overwrite(pp + hash_len);
-                }
-            } else {
-                pp = x_strdup(crypt(p, hash));
-            }
-            p = NULL;		/* no longer needed here */
-
-            if (pp && strcmp(pp, hash) == 0) {
-                retval = 0;
-            } else {
-                retval = 1;
-            }
-        }
-
-        if (pp){
-            _ptr_delete(pp);
-        }
-        return retval;
     }
     ```
 ### pam库校验接口

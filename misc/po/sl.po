@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Cindy0514, 2020
+# Arnold Marko <arnold.marko@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-28 10:54+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/linuxdeepin/teams/3617/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#: misc/pam-module/pam_auth.c:283
+#, c-format
+msgid "Verification error"
+msgstr "Napaka pri preverjanju"
+
+#: misc/pam-module/pam_auth.c:287
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr "Preverjanje prstnega odtisa ni na voljo, vnesite geslo"
+
+#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "Očistite prst in poskusite znova"
+
+#: misc/pam-module/pam_auth.c:311
+#, c-format
+msgid "Finger not centered"
+msgstr "Prst ni poravnan"
+
+#: misc/pam-module/pam_auth.c:319
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr "Nejasen prstni odtis, očistitie si prst inj poskusite znova"
+
+#: misc/pam-module/pam_auth.c:323
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr "Prehiter premik prsta. Ne dvigujte pred pozivom"
+
+#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
+#, c-format
+msgid "Password"
+msgstr "Geslo"
+
+#: misc/pam-module/pam_auth.c:440
+#, c-format
+msgid "Verification successful"
+msgstr "Uspešno preverjanje"
+
+#: misc/pam-module/pam_auth.c:457
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr "Prstni odtis je zaklenjen, uporabite geslo"
+
+#: misc/pam-module/pam_auth.c:461
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "Preverjanje ni uspelo. Še %d poskusov"
+
+#: misc/pam-module/pam_auth.c:463
+#, c-format
+msgid "Verification failed, only one chance left"
+msgstr "Neuspešna overitev. Ostal je le še en poskus"
+
+#: misc/pam-module/pam_auth.c:589
+#, c-format
+msgid "Please retry after %d minutes"
+msgstr ""
+
+#: misc/pam-module/pam_auth.c:591
+#, c-format
+msgid "Please retry after one minute"
+msgstr ""
+
+#: misc/pam-module/pam_auth.c:600
+#, c-format
+msgid "Chances left: %d"
+msgstr "Preostalih poskusov: %d"
+
+#: misc/pam-module/pam_auth.c:635
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "Preverjanje prstnega odtisa ali gesla"

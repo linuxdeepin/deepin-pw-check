@@ -20,15 +20,8 @@ struct pam_paras {
 };
 
 int parse_argv(int argc,const char** argv,struct pam_paras* paras) {
-    if (argc < 1) {
-        return -1;
-    }
-
-    int ok=0;
-
     for (int i =0; argc-- > 0; ++argv) {
         if (!strncmp(*argv,"level=",6)) {
-            ok = 1;
             paras->level = atoi(*argv+6);
         }else if (!strncmp(*argv,"dict_path=",10)) {
             paras->dict_path = *argv+10;
@@ -40,11 +33,7 @@ int parse_argv(int argc,const char** argv,struct pam_paras* paras) {
         }
     }
 
-    if (ok) {
-        return 0;
-    }
-
-    return -1;
+    return 0;
 }
 
 int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv) {
@@ -67,12 +56,6 @@ int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
 
     char outbuf[256];
     int finally_result =0;
-
-    extern bool is_level_valid(int level);
-
-    if (!is_level_valid(paras.level)){
-        return PAM_SERVICE_ERR;
-    }
 
     if (flags & PAM_PRELIM_CHECK) {
         return PAM_SUCCESS;

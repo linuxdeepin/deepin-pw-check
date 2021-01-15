@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Cindy0514, 2020
+# Guilherme Berbet <amendobobo.gc@gmail.com>, 2020
+# Alex, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-28 10:54+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: Alex, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/linuxdeepin/teams/3617/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: misc/pam-module/pam_auth.c:283
+#, c-format
+msgid "Verification error"
+msgstr "Erro de verificação"
+
+#: misc/pam-module/pam_auth.c:287
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr "Verificação da impressão digital indisponível; digite a senha"
+
+#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "Limpe o dedo e tente novamente"
+
+#: misc/pam-module/pam_auth.c:311
+#, c-format
+msgid "Finger not centered"
+msgstr "Dedo não centralizado"
+
+#: misc/pam-module/pam_auth.c:319
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr "Impressão digital pouco nítida; limpe o dedo e tente novamente"
+
+#: misc/pam-module/pam_auth.c:323
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr "O dedo se moveu muito rápido; não levante até que seja solicitado"
+
+#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
+#, c-format
+msgid "Password"
+msgstr "Senha"
+
+#: misc/pam-module/pam_auth.c:440
+#, c-format
+msgid "Verification successful"
+msgstr "Verificação Bem-sucedida"
+
+#: misc/pam-module/pam_auth.c:457
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr "Impressão digital bloqueada, use a senha"
+
+#: misc/pam-module/pam_auth.c:461
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "A verificação falhou; restam %d tentativas"
+
+#: misc/pam-module/pam_auth.c:463
+#, c-format
+msgid "Verification failed, only one chance left"
+msgstr "A verificação falhou; resta apenas uma tentativa"
+
+#: misc/pam-module/pam_auth.c:589
+#, c-format
+msgid "Please retry after %d minutes"
+msgstr "Tente novamente em %d minutos"
+
+#: misc/pam-module/pam_auth.c:591
+#, c-format
+msgid "Please retry after one minute"
+msgstr "Tente novamente em um minuto"
+
+#: misc/pam-module/pam_auth.c:600
+#, c-format
+msgid "Chances left: %d"
+msgstr "Tentativas restantes: %d"
+
+#: misc/pam-module/pam_auth.c:635
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "Verifique a impressão digital ou senha"

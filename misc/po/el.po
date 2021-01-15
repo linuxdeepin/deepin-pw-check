@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Cindy0514, 2020
+# Jim Gios <jgpers@gmail.com>, 2020
+# 457d8bb295cd215bf4b5d4421a7e6f2f_dbd70dd <547531d7e05a062719580f89832ccbd9_785821>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-02 17:59+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: 457d8bb295cd215bf4b5d4421a7e6f2f_dbd70dd <547531d7e05a062719580f89832ccbd9_785821>, 2020\n"
+"Language-Team: Greek (https://www.transifex.com/linuxdeepin/teams/3617/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: misc/pam-module/pam_auth.c:222
+#, c-format
+msgid "Verification error"
+msgstr "Σφάλμα επαλήθευσης"
+
+#: misc/pam-module/pam_auth.c:226
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr ""
+"Η επαλήθευση αποτυπωμάτων δεν είναι διαθέσιμη, εισαγάγετε τον κωδικό "
+"πρόσβασης"
+
+#: misc/pam-module/pam_auth.c:246 misc/pam-module/pam_auth.c:254
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "Καθαρίστε το δάχτυλό σας και ξαναπροσπαθήστε"
+
+#: misc/pam-module/pam_auth.c:250
+#, c-format
+msgid "Finger not centered"
+msgstr "Το δάχτυλο δεν είναι κεντραρισμένο"
+
+#: misc/pam-module/pam_auth.c:258
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr ""
+"Βρώμικο δακτυλικό αποτύπωμα, καθαρίστε το δάχτυλό σας και ξαναπροσπαθήστε"
+
+#: misc/pam-module/pam_auth.c:262
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr ""
+"Το δάχτυλο κινήθηκε πολύ γρήγορα, παρακαλώ μην σηκώνετε μέχρι να σας ζητηθεί"
+
+#: misc/pam-module/pam_auth.c:274 misc/pam-module/pam_auth.c:532
+#, c-format
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: misc/pam-module/pam_auth.c:380
+#, c-format
+msgid "Verification successful"
+msgstr "Επιτυχής επαλήθευση"
+
+#: misc/pam-module/pam_auth.c:397
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr ""
+
+#: misc/pam-module/pam_auth.c:401
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "Εσφαλμένη επαλήθευση, %d προσπάθειες ακόμα"
+
+#: misc/pam-module/pam_auth.c:403
+#, c-format
+msgid "Verification failed, 1 chance left"
+msgstr "Εσφαλμένη επαλήθευση, 1 προσπάθεια ακόμα"
+
+#: misc/pam-module/pam_auth.c:529
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "Επαλήθευση του δακτυλικού σας αποτυπώματος ή κωδικού πρόσβασης"
