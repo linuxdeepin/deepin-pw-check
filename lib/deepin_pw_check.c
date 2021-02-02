@@ -31,10 +31,10 @@ struct Options {
     bool enabled;
     int max_len;
     int min_len;
-    char* character_type;
+    char character_type[512];
     int character_num_required;
     int palindrome_min_num;
-    const char* dict_path;
+    char dict_path[256];
     int check_word;
     bool first_letter_uppercase;
     int monotone_character_num;                 // 单调字符个数
@@ -43,7 +43,7 @@ struct Options {
 
 static int load_pwd_conf(struct Options* options) {
     dictionary *dic;
- 
+    const char* buff;
 	if(NULL == (dic = iniparser_load(PASSWD_CONF_FILE))) {
 		DEBUG("ERROR: open file %s failed!", PASSWD_CONF_FILE);
         return -1;
@@ -52,11 +52,13 @@ static int load_pwd_conf(struct Options* options) {
     options->enabled = iniparser_getboolean(dic, "Password:STRONG_PASSWORD", 1);
     options->min_len = iniparser_getint(dic, "Password:PASSWORD_MIN_LENGTH", 1);
     options->max_len = iniparser_getint(dic, "Password:PASSWORD_MAX_LENGTH", 512);
-    options->character_type = (char*)iniparser_getstring(dic, "Password:VALIDATE_POLICY", "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~!@#$\%^&*()[]{}\\|/?,.<>");
+    buff = (char*)iniparser_getstring(dic, "Password:VALIDATE_POLICY", "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~!@#$\%^&*()[]{}\\|/?,.<>");
+    strcpy(options->character_type,buff);
     options->character_num_required = iniparser_getint(dic, "Password:VALIDATE_REQUIRED", 1);
     options->palindrome_min_num = iniparser_getint(dic, "Password:PALINDROME_NUM", 0);
     options->check_word = iniparser_getint(dic, "Password:WORD_CHECK", 0);
-    options->dict_path = iniparser_getstring(dic, "Password:DICT_PATH", "");
+    buff = iniparser_getstring(dic, "Password:DICT_PATH", "");
+    strcpy(options->dict_path,buff);
     options->monotone_character_num = iniparser_getint(dic, "Password:MONOTONE_CHARACTER_NUM", 0);
     options->consecutive_same_character_num = iniparser_getint(dic, "Password:CONSECUTIVE_SAME_CHARACTER_NUM", 0);
     options->first_letter_uppercase = iniparser_getboolean(dic, "Password:FIRST_LETTER_UPPERCASE", 0);
@@ -76,9 +78,9 @@ struct Options* get_default_options(int level,const char* dict_path) {
 
     if (dict_path != NULL && (strcmp(dict_path,"") != 0)) {
         if ( strcmp(options->dict_path, "") == 0) {
-            options->dict_path = NULL;
+            options->dict_path[0] = '\0';
         } else {
-            options->dict_path = dict_path;
+            strcpy(options->dict_path,dict_path);
         }
     } 
 
@@ -291,22 +293,37 @@ PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const 
         return PW_ERR_PARA;
     }
 
+    DEBUG("read config is\n"
+    "\tenabled:%d\n"
+    "\tmin_len:%d\n"
+    "\tmax_len:%d\n"
+    "\tcharacter_type:%s\n"
+    "\tcharacter_num_required:%d\n"
+    "\tcheck_word:%d\n"
+    "\tmonotone_character_num:%d\n"
+    "\tconsecutive_same_character_num:%d\n"
+    "\tfirst_letter_uppercase:%d\n"
+    "\tdict_path=%s",options->enabled,options->min_len,options->max_len,options->character_type,options->character_num_required,
+    options->check_word,options->monotone_character_num,options->consecutive_same_character_num,options->first_letter_uppercase
+    ,options->dict_path);
+
     PW_ERROR_TYPE ret = PW_NO_ERR;
-    
+
     do {
+        DEBUG("check is_empty");
         if (is_empty(pw)) {
             ret = PW_ERR_PASSWORD_EMPTY;
             break;
         }
-        
-        if (options->enabled) {
+
+        if (!options->enabled) {
             return ret;
         }
-
+        DEBUG("check is_length_valid");
         if (PW_NO_ERR != (ret = is_length_valid(pw, options->min_len, options->max_len))) {
             break;
         }
-
+        DEBUG("check is_first_letter_uppercase");
         if (options->first_letter_uppercase) {
             if (!is_first_letter_uppercase(pw)) {
                 ret = PW_ERR_PW_FIRST_UPPERM;
@@ -314,11 +331,13 @@ PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const 
             }
         }
 
+        DEBUG("check is_type_valid");
         if (!is_type_valid(pw, options->character_type, options->character_num_required)) {
             ret = PW_ERR_CHARACTER_INVALID;
             break;
         }
 
+        DEBUG("check is_palindrome");
         if (options->palindrome_min_num && options->palindrome_min_num > 0) {
             if (is_palindrome(pw, options->palindrome_min_num)) {
                 ret = PW_ERR_PALINDROME;
@@ -326,6 +345,7 @@ PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const 
             }
         }
 
+        DEBUG("check is_word");
         if (options->check_word) {
             if (is_word(pw,options->dict_path)) {
                 ret = PW_ERR_WORD;
@@ -333,12 +353,13 @@ PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const 
             }
         }
 
+        DEBUG("check is_monotone_character");
         if (options->monotone_character_num && options->monotone_character_num > 0) {
             if ( is_monotone_character(pw, options->monotone_character_num )) {
-                ret = PW_ERR_PW_CONSECUTIVE_SAME;
+                ret = PW_ERR_PW_MONOTONE;
             }
         }
-
+        DEBUG("check is_consecutive_same_character");
         if (options->consecutive_same_character_num && options->consecutive_same_character_num > 0) {
             if ( is_consecutive_same_character(pw, options->consecutive_same_character_num)) {
                 ret = PW_ERR_PW_CONSECUTIVE_SAME;
