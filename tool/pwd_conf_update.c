@@ -85,12 +85,47 @@ int parse_args(int argc, char** argv) {
 int update_conf(OS_TYPE os_type) {
     dictionary *dic;
  
+    int err = access(PASSWD_CONF_FILE_PATH, F_OK);
+    if ( err ) {
+        DEBUG("check %s err: %d, create it",PASSWD_CONF_FILE_PATH , err);
+        FILE* fd = fopen(PASSWD_CONF_FILE_PATH, "a");
+        if (fd == NULL) {
+            printf("open %s err: %s\n", PASSWD_CONF_FILE_PATH, strerror(errno));
+            return -1;
+        }
+        fclose(fd);
+    }
+    
 	if(NULL == (dic = iniparser_load(PASSWD_CONF_FILE_PATH))){
 		DEBUG("ERROR: open file failed!");
         return -1;
 	}
 
     char append_string[512] = {0};
+    if (iniparser_find_entry(dic,"Password:STRONG_PASSWORD") == 0) {
+        sprintf(append_string,"%sSTRONG_PASSWORD = %s\n",append_string, "true");
+        DEBUG("set STRONG_PASSWORD");
+    }
+
+    if (iniparser_find_entry(dic,"Password:PASSWORD_MIN_LENGTH") == 0) {
+        sprintf(append_string,"%sPASSWORD_MIN_LENGTH = %d\n",append_string, os_type == OS_PROFESSIONAL? 1:8);
+        DEBUG("set PASSWORD_MIN_LENGTH");
+    }
+
+    if (iniparser_find_entry(dic,"Password:PASSWORD_MAX_LENGTH") == 0) {
+        sprintf(append_string,"%sPASSWORD_MAX_LENGTH = %d\n",append_string, os_type == OS_PROFESSIONAL? 512:512);
+        DEBUG("set PASSWORD_MAX_LENGTH");
+    }
+
+    if (iniparser_find_entry(dic,"Password:VALIDATE_POLICY") == 0) {
+        sprintf(append_string,"%sVALIDATE_POLICY = \"%s\"\n",append_string, "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~!@#$%^&*()[]{}\\|/<>");
+        DEBUG("set VALIDATE_POLICY");
+    }
+
+    if (iniparser_find_entry(dic,"Password:VALIDATE_REQUIRED") == 0) {
+        sprintf(append_string,"%sVALIDATE_REQUIRED = %d\n",append_string, os_type == OS_PROFESSIONAL? 1:3);
+        DEBUG("set VALIDATE_REQUIRED");
+    }
 
     if (iniparser_find_entry(dic,"Password:PALINDROME_NUM") == 0) {
         sprintf(append_string,"%sPALINDROME_NUM = %d\n",append_string, os_type == OS_PROFESSIONAL? 0:4);
@@ -154,7 +189,7 @@ int main(int argc, char** argv) {
 
     if (os_type == OS_UNEXPECTED_ERR || os_type == OS_UNKNOWN_TYPE) {
         printf("can not update configure, err: %d\n", os_type);
-        exit(EXIT_FAILURE);
+        exit(0);
     }
 
     int ret = update_conf(os_type);
@@ -162,5 +197,5 @@ int main(int argc, char** argv) {
         printf("update failed, err: %d\n", ret);
     }
 
-    return ret;
+    return 0;
 }
