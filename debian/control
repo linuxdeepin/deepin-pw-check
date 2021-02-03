@@ -32,7 +32,7 @@ Description: deepin password check interface
  deepin-pw-check is a tool to verify the validity of the password
 
 Package: libdeepin-pw-check-dev
-Architecture: all
-Depends: libdeepin-pw-check, ${misc:Depends}, ${shlibs:Depends},
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
 Description: deepin password check interface
  deepin-pw-check is a tool to verify the validity of the password

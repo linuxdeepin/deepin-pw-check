@@ -9,11 +9,12 @@ ifeq (${PKG_FILE_DIR},)
 PKG_FILE_DIR := /usr/local/lib/pkgconfig
 endif
 BINARIES = deepin-pw-check
-LIBRARIES = libdeepin_pw_check.so
+LIBRARIES = libdeepin_pw_check.so.1.1
 LINK_LIBRARIES = libdeepin_pw_check.so
 PAM_MODULE = pam_deepin_pw_check.so
 LANGUAGES = $(basename $(notdir $(wildcard misc/po/*.po)))
 SRCS_C = $(basename $(shell cd unit_test; ls *.c))
+LIBSRCS_C = $(basename $(shell cd lib; ls *.c))
 TOOL_BINARAY = pwd-conf-update
 
 all: build
@@ -25,7 +26,19 @@ out/bin/%: prepare
 	env GOPATH="${GOPATH}" ${GOBUILD} -o $@  ${GOPKG_PREFIX}/*.go
 
 out/${LIBRARIES}:
-	gcc lib/*.c -fPIC -shared -lcrypt -lcrack -liniparser -DIN_CRACKLIB -z noexecstack -Wl,-soname,libdeepin_pw_check.so -o $@ $^
+	gcc lib/*.c -fPIC -shared -lcrypt -lcrack -liniparser -DIN_CRACKLIB -z noexecstack -Wl,-soname,libdeepin_pw_check.so.1 -o $@ $^
+	cd out; ln -s ${LIBRARIES} ${LINK_LIBRARIES}
+
+lib/%:
+	gcc $(addsuffix .c, $@) -c -DIN_CRACKLIB -z noexecstack -o $(addsuffix .o, $@)
+
+link:
+	cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libiniparser.a
+	cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrack.a
+	cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrypt.a
+	ar rcs out/libdeepin_pw_check.a lib/*.o
+
+static_lib: $(addprefix lib/, ${LIBSRCS_C}) link
 
 out/${PAM_MODULE}:
 	gcc pam/*.c -fPIC -shared -lpam -L./out/ -ldeepin_pw_check -o $@ $^
@@ -33,13 +46,13 @@ out/${PAM_MODULE}:
 build_tool: prepare
 	gcc tool/*.c -liniparser -o out/${TOOL_BINARAY}
 
-build: prepare $(addprefix out/bin/, ${BINARIES}) out/${LIBRARIES} out/${PAM_MODULE} build_tool ts_to_policy
+build: prepare $(addprefix out/bin/, ${BINARIES}) out/${LIBRARIES} static_lib out/${PAM_MODULE} build_tool ts_to_policy
 
 install: translate
 	mkdir -pv ${DESTDIR}${PREFIX}/share/locale
 	- cp -rf out/locale/* ${DESTDIR}${PREFIX}/share/locale
 	mkdir -p ${DESTDIR}${PREFIX}/lib
-	cp -f out/${LIBRARIES} ${DESTDIR}${PREFIX}/lib
+	cp -f out/lib* ${DESTDIR}${PREFIX}/lib
 	mkdir -p ${DESTDIR}${PREFIX}/include
 	cp lib/deepin_pw_check.h ${DESTDIR}${PREFIX}/include/
 	mkdir -pv ${DESTDIR}/${PKG_FILE_DIR}
@@ -66,6 +79,7 @@ unit_test/%:
 
 clean:
 	rm -rf out
+	rm -rf lib/*.o
 
 clean_test: $(addprefix unit_test/, $(SRCS_C))
 	rm -f $^

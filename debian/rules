@@ -10,3 +10,9 @@ export PKG_FILE_DIR = usr/lib/pkgconfig
 export GO111MODULE = off
 %:
 	dh $@
+
+override_dh_link:
+	dh_link -plibdeepin-pw-check-dev usr/lib/libdeepin_pw_check.so.1 \
+		usr/lib/libdeepin_pw_check.so
+	dh_link -plibdeepin-pw-check usr/lib/libdeepin_pw_check.so.1.1 \
+		usr/lib/libdeepin_pw_check.so.1
