@@ -33,9 +33,9 @@ lib/%:
 	gcc $(addsuffix .c, $@) -c -DIN_CRACKLIB -z noexecstack -o $(addsuffix .o, $@)
 
 link:
-	cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libiniparser.a
-	cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrack.a
-	cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrypt.a
+	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libiniparser.a
+	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrack.a
+	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrypt.a
 	ar rcs out/libdeepin_pw_check.a lib/*.o
 
 static_lib: $(addprefix lib/, ${LIBSRCS_C}) link
