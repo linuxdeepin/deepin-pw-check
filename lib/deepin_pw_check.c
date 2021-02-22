@@ -129,8 +129,8 @@ bool is_type_valid(const char* pw,char* character_type, int character_num_requir
 
     int pass = 0;
     char* p = NULL;
-    
-    char* character_type_tmp = (char*)malloc(strlen(character_type));
+
+    char* character_type_tmp = (char*)malloc(strlen(character_type) +1);
     strcpy(character_type_tmp, character_type);
 
     p = strtok(character_type_tmp, ";");
@@ -287,7 +287,6 @@ bool is_first_letter_uppercase(const char* pw) {
 }
 
 PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const char* dict_path) {
-
     struct Options * options = get_default_options(level,dict_path);
     if (options == NULL) {
         return PW_ERR_PARA;
