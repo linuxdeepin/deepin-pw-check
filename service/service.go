@@ -244,7 +244,7 @@ func (m *manager) SetEnabled(sender dbus.Sender, enable bool) *dbus.Error {
 		return dbusutil.ToError(err)
 	}
 	kf := keyfile.NewKeyFile()
-	err = kf.LoadFromFile(pwdConfBackupFile)
+	err = kf.LoadFromFile(pwdConfFile)
 	if err != nil {
 		return dbusutil.ToError(err)
 	}
@@ -255,7 +255,7 @@ func (m *manager) SetEnabled(sender dbus.Sender, enable bool) *dbus.Error {
 
 func (m *manager) GetEnabled() (bool, *dbus.Error) {
 	kf := keyfile.NewKeyFile()
-	err := kf.LoadFromFile(pwdConfBackupFile)
+	err := kf.LoadFromFile(pwdConfFile)
 	if err != nil {
 		return false, dbusutil.ToError(err)
 	}
@@ -272,7 +272,7 @@ func (m *manager) SetFirstLetterUpper(sender dbus.Sender, enable bool) *dbus.Err
 		return dbusutil.ToError(err)
 	}
 	kf := keyfile.NewKeyFile()
-	err = kf.LoadFromFile(pwdConfBackupFile)
+	err = kf.LoadFromFile(pwdConfFile)
 	if err != nil {
 		return dbusutil.ToError(err)
 	}
@@ -283,7 +283,7 @@ func (m *manager) SetFirstLetterUpper(sender dbus.Sender, enable bool) *dbus.Err
 
 func (m *manager) GetFirstLetterUpper() (bool, *dbus.Error) {
 	kf := keyfile.NewKeyFile()
-	err := kf.LoadFromFile(pwdConfBackupFile)
+	err := kf.LoadFromFile(pwdConfFile)
 	if err != nil {
 		return false, dbusutil.ToError(err)
 	}
