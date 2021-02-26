@@ -84,7 +84,7 @@ int parse_args(int argc, char** argv) {
 
 int update_conf(OS_TYPE os_type) {
     dictionary *dic;
- 
+
     int err = access(PASSWD_CONF_FILE_PATH, F_OK);
     if ( err ) {
         DEBUG("check %s err: %d, create it",PASSWD_CONF_FILE_PATH , err);
@@ -93,15 +93,20 @@ int update_conf(OS_TYPE os_type) {
             printf("open %s err: %s\n", PASSWD_CONF_FILE_PATH, strerror(errno));
             return -1;
         }
+        int num = fwrite("[Password]\n", 1, strlen("[Password]\n"), fd);
+        if (num <= 0) {
+            printf("write data to %s err: %s\n", PASSWD_CONF_FILE_PATH, strerror(errno));
+            return -1;
+        }
         fclose(fd);
     }
-    
-	if(NULL == (dic = iniparser_load(PASSWD_CONF_FILE_PATH))){
-		DEBUG("ERROR: open file failed!");
-        return -1;
-	}
 
-    char append_string[512] = {0};
+    if(NULL == (dic = iniparser_load(PASSWD_CONF_FILE_PATH))){
+        DEBUG("ERROR: open file failed!");
+        return -1;
+    }
+
+    char append_string[1024] = {0};
     if (iniparser_find_entry(dic,"Password:STRONG_PASSWORD") == 0) {
         sprintf(append_string,"%sSTRONG_PASSWORD = %s\n",append_string, "true");
         DEBUG("set STRONG_PASSWORD");
@@ -118,8 +123,14 @@ int update_conf(OS_TYPE os_type) {
     }
 
     if (iniparser_find_entry(dic,"Password:VALIDATE_POLICY") == 0) {
-        sprintf(append_string,"%sVALIDATE_POLICY = \"%s\"\n",append_string, "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~!@#$%^&*()[]{}\\|/<>");
+        sprintf(append_string,"%sVALIDATE_POLICY = \"%s\"\n",append_string, "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/");
         DEBUG("set VALIDATE_POLICY");
+    } else {
+        char cmd[512];
+        sprintf(cmd, "sed \"/^VALIDATE_POLICY.*/\"d -i %s", PASSWD_CONF_FILE_PATH);
+        system(cmd);
+        sprintf(append_string,"%sVALIDATE_POLICY = \"%s\"\n",append_string, "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/");
+        DEBUG("set VALIDATE_POLICY after delete");
     }
 
     if (iniparser_find_entry(dic,"Password:VALIDATE_REQUIRED") == 0) {
