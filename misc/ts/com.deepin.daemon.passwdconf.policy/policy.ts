@@ -4,13 +4,13 @@
 	<context>
 		<name>policy</name>
 		<message>
-			<location filename="com.deepin.daemon.PasswdConf.modify-config!message" line="0" />
-			<source>Authentication is required to modify password check config</source>
+			<location filename="com.deepin.daemon.passwdconf.modify-config!message" line="0" />
+			<source>Authentication is required to modify the configuration for password validation</source>
 			<translation type="unfinished" />
 		</message>
 		<message>
-			<location filename="com.deepin.daemon.PasswdConf.modify-config!description" line="0" />
-			<source>Modify password check config</source>
+			<location filename="com.deepin.daemon.passwdconf.modify-config!description" line="0" />
+			<source>Modify</source>
 			<translation type="unfinished" />
 		</message>
 	</context>

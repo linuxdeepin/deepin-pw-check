@@ -10,7 +10,7 @@ source_lang = en
 type = PO
 
 [deepin-desktop-environment.deepin-pw-check-policyts]
-file_filter = misc/ts/com.deepin.daemon.PasswdConf.policy/policy_<lang>.ts
-source_file = misc/ts/com.deepin.daemon.PasswdConf.policy/policy.ts
+file_filter = misc/ts/com.deepin.daemon.passwdconf.policy/policy_<lang>.ts
+source_file = misc/ts/com.deepin.daemon.passwdconf.policy/policy.ts
 source_lang = en
 type = QT

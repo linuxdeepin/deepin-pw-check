@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
 # Massimo A. Carofano <real.massimo@hotmail.it>, 2021
 # 
 #, fuzzy
@@ -12,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-03-03 14:59+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Massimo A. Carofano <real.massimo@hotmail.it>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/linuxdeepin/teams/3617/it/)\n"
 "MIME-Version: 1.0\n"
@@ -22,83 +21,55 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "Errore durante la verifica"
+#: lib/deepin_pw_check.c:516
+msgid "Invalid error type"
+msgstr "Errore di digitazione"
 
-#: misc/pam-module/pam_auth.c:287
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr ""
-"Verifica mediante impronta digitale non disponibile, inserisci la password "
-"per cortesia"
-
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "Pulisci il dito ed il sensore e prova nuovamente"
-
-#: misc/pam-module/pam_auth.c:311
-#, c-format
-msgid "Finger not centered"
-msgstr "Impronta non al centro del sensore"
-
-#: misc/pam-module/pam_auth.c:319
-#, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr ""
-"L'impronta non è abbastanza visibile, pulisci il dito ed il sensore prima di"
-" riprovare"
-
-#: misc/pam-module/pam_auth.c:323
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr ""
-"Il dito è stato mosso troppo rapidamente, non spostarlo sino a quando non "
-"riceverai ulteriori istruzioni"
-
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
-#, c-format
-msgid "Password"
-msgstr "Password"
-
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
+#: lib/deepin_pw_check.c:527
+msgid "Checking successful"
 msgstr "Verifica completata con successo"
 
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "Sblocco con impronta bloccato, utilizza la password"
+#: lib/deepin_pw_check.c:529
+msgid "The password cannot be empty"
+msgstr "La password non può essere vuota"
 
-#: misc/pam-module/pam_auth.c:461
+#: lib/deepin_pw_check.c:532
 #, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Verifica fallita, %d tentativi rimanenti"
+msgid "Password must have at least %d characters"
+msgstr "La password deve avere almeno %d caratteri"
 
-#: misc/pam-module/pam_auth.c:463
+#: lib/deepin_pw_check.c:536
 #, c-format
-msgid "Verification failed, only one chance left"
-msgstr "Verifica fallita, un solo tentativo rimanente"
+msgid "Password must be no more than %d characters"
+msgstr "La password non può eccedere i %d caratteri"
 
-#: misc/pam-module/pam_auth.c:589
+#: lib/deepin_pw_check.c:540
 #, c-format
-msgid "Please retry after %d minutes"
-msgstr ""
+msgid "Password can only contain %s"
+msgstr "La password può contenere solo %s"
 
-#: misc/pam-module/pam_auth.c:591
+#: lib/deepin_pw_check.c:544
 #, c-format
-msgid "Please retry after one minute"
-msgstr ""
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "La password deve contenere più di %d caratteri palindromi"
 
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "Tentativi rimanenti: %d"
+#: lib/deepin_pw_check.c:547 lib/deepin_pw_check.c:549
+#: lib/deepin_pw_check.c:551 lib/deepin_pw_check.c:561
+msgid "It does not meet password rules"
+msgstr "Non rispecchia le regole della password"
 
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Verifica mediante impronta digitale o password"
+#: lib/deepin_pw_check.c:553
+msgid "Do not use common words and combinations as password"
+msgstr "Non utilizzare parole comuni o loro combinazioni come password"
+
+#: lib/deepin_pw_check.c:555
+msgid "Parameter options are invalid"
+msgstr "Le opzioni dei parametri non sono valide"
+
+#: lib/deepin_pw_check.c:557
+msgid "Internal error"
+msgstr "Errore interno"
+
+#: lib/deepin_pw_check.c:559
+msgid "Invalid user"
+msgstr "Utente non valido"

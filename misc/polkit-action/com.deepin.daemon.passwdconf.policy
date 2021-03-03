@@ -5,8 +5,8 @@
 	<vendor>LinuxDeepin</vendor>
 	<vendor_url>https://www.deepin.com/</vendor_url>
 	<action id="com.deepin.daemon.passwdconf.modify-config">
-		<description>Modify password check config</description>
-		<message>Authentication is required to modify password check config</message>
+		<description>Modify</description>
+		<message>Authentication is required to modify the configuration for password validation</message>
 		<defaults>
 			<allow_any>no</allow_any>
 			<allow_inactive>no</allow_inactive>

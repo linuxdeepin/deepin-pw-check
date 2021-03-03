@@ -4,8 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
-# e7b367b198a92ab3e6fd7f551a36a082, 2020
 # Béla Bajza, 2021
 # 
 #, fuzzy
@@ -13,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-03-03 14:59+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Béla Bajza, 2021\n"
 "Language-Team: Hungarian (https://www.transifex.com/linuxdeepin/teams/3617/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -23,78 +21,55 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "Ellenőrzési hiba"
+#: lib/deepin_pw_check.c:516
+msgid "Invalid error type"
+msgstr "Érvénytelen hibatípus"
 
-#: misc/pam-module/pam_auth.c:287
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr "Az ujjlenyomat azonosítás nem elérhető, kérjük adja meg a jelszavát"
-
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "Tisztítsa meg az ujját, és próbálja újra"
-
-#: misc/pam-module/pam_auth.c:311
-#, c-format
-msgid "Finger not centered"
-msgstr "Az ujja nincs középen"
-
-#: misc/pam-module/pam_auth.c:319
-#, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr ""
-"Nem tiszta az ujjlenyomat, kérjük tisztítsa meg az ujját, és próbálja újra"
-
-#: misc/pam-module/pam_auth.c:323
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr "Az ujja túl gyorsan elemelve, kérjük ne vegye el, amíg nem jelezzük"
-
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
-#, c-format
-msgid "Password"
-msgstr "Jelszó"
-
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
+#: lib/deepin_pw_check.c:527
+msgid "Checking successful"
 msgstr "Az ellenőrzés sikeres"
 
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "Az ujjlenyomat zárolva, kérem használja a jelszavát"
+#: lib/deepin_pw_check.c:529
+msgid "The password cannot be empty"
+msgstr "A jelszó nem lehet üres"
 
-#: misc/pam-module/pam_auth.c:461
+#: lib/deepin_pw_check.c:532
 #, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Az ellenőrzés sikertelen, %d próbálkozása maradt"
+msgid "Password must have at least %d characters"
+msgstr "A jelszónak legalább %d karakterből kell állnia"
 
-#: misc/pam-module/pam_auth.c:463
+#: lib/deepin_pw_check.c:536
 #, c-format
-msgid "Verification failed, only one chance left"
-msgstr "Az ellenőrzés sikertelen, egy próbálkozása maradt"
+msgid "Password must be no more than %d characters"
+msgstr "Jelszó nem lehet hosszabb mint %d karakter"
 
-#: misc/pam-module/pam_auth.c:589
+#: lib/deepin_pw_check.c:540
 #, c-format
-msgid "Please retry after %d minutes"
-msgstr "Kérjük próbálja újra %d perc múlva"
+msgid "Password can only contain %s"
+msgstr "A jelszó csak a következőket tartalmazhatja: %s"
 
-#: misc/pam-module/pam_auth.c:591
+#: lib/deepin_pw_check.c:544
 #, c-format
-msgid "Please retry after one minute"
-msgstr "Kérjük próbálja újra egy perc múlva"
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "A jelszó legfeljebb %d palindróm karaktereket tartalmazhat"
 
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "Hátra lévő próbálkozás: %d"
+#: lib/deepin_pw_check.c:547 lib/deepin_pw_check.c:549
+#: lib/deepin_pw_check.c:551 lib/deepin_pw_check.c:561
+msgid "It does not meet password rules"
+msgstr "Nem felel meg a jelszavakra vonatkozó szabályoknak"
 
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Ujjlenyomat vagy jelszó ellenőrzése"
+#: lib/deepin_pw_check.c:553
+msgid "Do not use common words and combinations as password"
+msgstr "Ne használjon jelszóként gyakori szavakat és kombinációkat"
+
+#: lib/deepin_pw_check.c:555
+msgid "Parameter options are invalid"
+msgstr "A paraméterbeállítások érvénytelenek"
+
+#: lib/deepin_pw_check.c:557
+msgid "Internal error"
+msgstr "Belső hiba"
+
+#: lib/deepin_pw_check.c:559
+msgid "Invalid user"
+msgstr "Érvénytelen felhasználó"

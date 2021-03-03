@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-03-03 14:59+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Cindy0514, 2021\n"
 "Language-Team: Chinese (Hong Kong) (https://www.transifex.com/linuxdeepin/teams/3617/zh_HK/)\n"
 "MIME-Version: 1.0\n"
@@ -21,77 +21,55 @@ msgstr ""
 "Language: zh_HK\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "驗證錯誤"
+#: lib/deepin_pw_check.c:516
+msgid "Invalid error type"
+msgstr "無效錯誤類型"
 
-#: misc/pam-module/pam_auth.c:287
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr "指紋不可用，請輸入密碼"
+#: lib/deepin_pw_check.c:527
+msgid "Checking successful"
+msgstr "校驗成功"
 
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "請清潔手指後再次驗證"
+#: lib/deepin_pw_check.c:529
+msgid "The password cannot be empty"
+msgstr "密碼不能為空"
 
-#: misc/pam-module/pam_auth.c:311
+#: lib/deepin_pw_check.c:532
 #, c-format
-msgid "Finger not centered"
-msgstr "手指不在中間"
+msgid "Password must have at least %d characters"
+msgstr "密碼長度不能少於%d個字符"
 
-#: misc/pam-module/pam_auth.c:319
+#: lib/deepin_pw_check.c:536
 #, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr "圖像模糊，請清潔手指後再次驗證"
+msgid "Password must be no more than %d characters"
+msgstr "密碼長度不能超過%d個字符"
 
-#: misc/pam-module/pam_auth.c:323
+#: lib/deepin_pw_check.c:540
 #, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr "接觸時間短，驗證時請勿移動手指"
+msgid "Password can only contain %s"
+msgstr " 密碼只能由%s組成"
 
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
+#: lib/deepin_pw_check.c:544
 #, c-format
-msgid "Password"
-msgstr "密碼"
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "密碼不得含有連續%d個以上的回文字符"
 
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
-msgstr "驗證成功"
+#: lib/deepin_pw_check.c:547 lib/deepin_pw_check.c:549
+#: lib/deepin_pw_check.c:551 lib/deepin_pw_check.c:561
+msgid "It does not meet password rules"
+msgstr "密碼不符合安全要求"
 
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "指紋已鎖定，請輸入密碼"
+#: lib/deepin_pw_check.c:553
+msgid "Do not use common words and combinations as password"
+msgstr "密碼不能是常見單詞及組合"
 
-#: misc/pam-module/pam_auth.c:461
-#, c-format
-msgid "Verification failed, %d chances left"
-msgstr "驗證失敗，您還可以嘗試%d次"
+#: lib/deepin_pw_check.c:555
+msgid "Parameter options are invalid"
+msgstr "無效參數選項"
 
-#: misc/pam-module/pam_auth.c:463
-#, c-format
-msgid "Verification failed, only one chance left"
-msgstr "驗證失敗，您還可以嘗試1次"
+#: lib/deepin_pw_check.c:557
+msgid "Internal error"
+msgstr "內部錯誤"
 
-#: misc/pam-module/pam_auth.c:589
-#, c-format
-msgid "Please retry after %d minutes"
-msgstr "請%d分鐘後再試"
-
-#: misc/pam-module/pam_auth.c:591
-#, c-format
-msgid "Please retry after one minute"
-msgstr "請1分鐘後再試"
-
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "剩餘重試次數：%d"
-
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr "請驗證指紋或輸入密碼"
+#: lib/deepin_pw_check.c:559
+msgid "Invalid user"
+msgstr "無效用戶"

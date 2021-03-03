@@ -48,7 +48,7 @@ void get_validate_policy(char* data) {
     if ( f == NULL ) {
         return;
     }
-    
+
     while( !feof(f) ) {
         fgets(buff , 512 , f);
         if (!strncmp(buff, "VALIDATE_POLICY", strlen("VALIDATA_POLICY"))) {
@@ -513,7 +513,7 @@ int get_pw_palimdrome_num(int level) {
 
 const char* err_to_string(PW_ERROR_TYPE err){
     if (err >= PW_ERR_MAX) {
-        return gettext("invalid error type");
+        return gettext("Invalid error type");
     }
 
     setlocale(LC_ALL, "");
@@ -524,12 +524,12 @@ const char* err_to_string(PW_ERROR_TYPE err){
     switch (err)
     {
     case PW_NO_ERR:
-        return gettext("check success");
+        return gettext("Checking successful");
     case PW_ERR_PASSWORD_EMPTY:
-        return gettext("password cannot be empty");
+        return gettext("The password cannot be empty");
     case PW_ERR_LENGTH_SHORT:
         len = get_pw_min_length(0);
-        snprintf(out_buff, BUFF_SIZE, gettext("Password must have at least %d characters"), len);
+        snprintf(out_buff, BUFF_SIZE, gettext("Password must have at least %d characters"), len);
         return out_buff;
     case PW_ERR_LENGTH_LONG:
         len = get_pw_max_length(0);
@@ -552,7 +552,7 @@ const char* err_to_string(PW_ERROR_TYPE err){
     case PW_ERR_WORD:
         return gettext("Do not use common words and combinations as password");
     case PW_ERR_PARA:
-        return gettext("Parameter options is invalid");
+        return gettext("Parameter options are invalid");
     case PW_ERR_INTERNAL:
         return gettext("Internal error");
     case PW_ERR_USER:
