@@ -41,9 +41,57 @@ struct Options {
     int consecutive_same_character_num;         // 连续相似字符个数
 };
 
+void get_validate_policy(char* data) {
+    FILE* f = fopen(PASSWD_CONF_FILE, "r");
+    char buff[512];
+    
+    if ( f == NULL ) {
+        return;
+    }
+    
+    while( !feof(f) ) {
+        fgets(buff , 512 , f);
+        if (!strncmp(buff, "VALIDATE_POLICY", strlen("VALIDATA_POLICY"))) {
+            char * p = strchr(buff, '=');
+            char * end = strchr(buff, '\n');
+
+            if (p != NULL) {
+                int space_cnt = 1;
+                int find_quot = 0;
+                while( p[space_cnt] == ' ') {
+                    space_cnt++;
+                }
+                while( p[space_cnt] == '\"') {
+                    space_cnt++;
+                    find_quot = 1;
+                }
+                p = &p[space_cnt];
+                if ( end != NULL ) {
+                    int sub = 0;
+                    if ( find_quot && (p[end - p -1] == '\"')) {
+                        sub = 1;
+                    }
+                    strncpy(data , p , end - p - sub);
+                    data[end - p - sub] = '\0';
+                } else {
+                    int sub = 0;
+                    if ( find_quot && (p[strlen(p) -1] == '\"')) {
+                        sub = 1;
+                    }
+                    strncpy(data , p , strlen(p) - sub);
+                    data[strlen(p) - sub] = '\0';
+                }
+            }
+            break;
+        }
+    }
+    fclose(f);
+}
+
 static int load_pwd_conf(struct Options* options) {
     dictionary *dic;
-    const char* buff;
+    const char* dict_buff;
+    char read_buff[512];
 	if(NULL == (dic = iniparser_load(PASSWD_CONF_FILE))) {
 		DEBUG("ERROR: open file %s failed!", PASSWD_CONF_FILE);
         return -1;
@@ -52,13 +100,19 @@ static int load_pwd_conf(struct Options* options) {
     options->enabled = iniparser_getboolean(dic, "Password:STRONG_PASSWORD", 1);
     options->min_len = iniparser_getint(dic, "Password:PASSWORD_MIN_LENGTH", 1);
     options->max_len = iniparser_getint(dic, "Password:PASSWORD_MAX_LENGTH", 512);
-    buff = (char*)iniparser_getstring(dic, "Password:VALIDATE_POLICY", "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~!@#$\%^&*()[]{}\\|/?,.<>");
-    strcpy(options->character_type,buff);
+    if (iniparser_find_entry(dic,"Password:VALIDATE_POLICY") == 0) {
+        strcpy(read_buff , "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/");
+    } else {
+        DEBUG("get_validate_policy");
+        get_validate_policy(read_buff);
+    }
+    // buff = (char*)iniparser_getstring(dic, "Password:VALIDATE_POLICY", "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~!@#$\%^&*()[]{}\\|/?,.<>");
+    strcpy(options->character_type,read_buff);
     options->character_num_required = iniparser_getint(dic, "Password:VALIDATE_REQUIRED", 1);
     options->palindrome_min_num = iniparser_getint(dic, "Password:PALINDROME_NUM", 0);
     options->check_word = iniparser_getint(dic, "Password:WORD_CHECK", 0);
-    buff = iniparser_getstring(dic, "Password:DICT_PATH", "");
-    strcpy(options->dict_path,buff);
+    dict_buff = iniparser_getstring(dic, "Password:DICT_PATH", "");
+    strcpy(options->dict_path,dict_buff);
     options->monotone_character_num = iniparser_getint(dic, "Password:MONOTONE_CHARACTER_NUM", 0);
     options->consecutive_same_character_num = iniparser_getint(dic, "Password:CONSECUTIVE_SAME_CHARACTER_NUM", 0);
     options->first_letter_uppercase = iniparser_getboolean(dic, "Password:FIRST_LETTER_UPPERCASE", 0);
