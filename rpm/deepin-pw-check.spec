@@ -6,7 +6,7 @@
 %global debug_package   %{nil}
 %endif
 Name:           deepin-pw-check
-Version:        5.0.12
+Version:        5.0.13
 Release:        1
 Summary:        Used to check password and manager the configuration for password.
 License:        GPLv3
@@ -70,5 +70,5 @@ export PKG_FILE_DIR=%{_libdir}/pkgconfig
 %{_includedir}/deepin_pw_check.h
 
 %changelog
-* Wed Mar 12 2021 uoser <uoser@uniontech.com> - 5.0.12-1
-- Update to 5.0.12
+* Wed Mar 12 2021 uoser <uoser@uniontech.com> - 5.0.13-1
+- Update to 5.0.13
