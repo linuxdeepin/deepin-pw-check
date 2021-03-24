@@ -11,8 +11,7 @@ Release:        1
 Summary:        Used to check password and manager the configuration for password.
 License:        GPLv3
 URL:            %{gourl}
-Source0:        %{name}_%{version}.orig.tar.xz
-Patch0:			rpm/0001-fix-for-UonioTech.patch
+Source0:        %{name}-%{version}.orig.tar.xz
 BuildRequires:  compiler(go-compiler)
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig(gio-2.0)
@@ -21,7 +20,9 @@ BuildRequires:  gocode
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  cracklib-devel
 BuildRequires:  iniparser-devel
-
+BuildRequires:  golang-github-linuxdeepin-go-dbus-factory-devel
+BuildRequires:  go-lib-devel
+BuildRequires:  go-gir-generator
 
 Requires:		polkit
 %description
@@ -38,7 +39,8 @@ In order to unify the authentication interface,
 this interface is designed to adapt to fingerprint, face and other authentication methods.
 
 %prep
-%autosetup -p 1 -n %{name}-%{version}
+%setup -q
+patch -p1 < rpm/0001-fix-for-UonioTech.patch
 
 %build
 BUILDID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
