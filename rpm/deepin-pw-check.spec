@@ -12,7 +12,7 @@ Summary:        Used to check password and manager the configuration for passwor
 License:        GPLv3
 URL:            %{gourl}
 Source0:        %{name}_%{version}.orig.tar.xz
-Patch0:			0001-fix-for-UonioTech.patch
+Patch0:			rpm/0001-fix-for-UonioTech.patch
 BuildRequires:  compiler(go-compiler)
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig(gio-2.0)
