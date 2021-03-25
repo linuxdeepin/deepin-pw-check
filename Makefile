@@ -38,6 +38,7 @@ link:
 	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrypt.a
 	pwd
 	ls -lh
+	ls -lh lib/*.o
 	ar rcs out/libdeepin_pw_check.a lib/*.o
 
 static_lib: $(addprefix lib/, ${LIBSRCS_C}) link
