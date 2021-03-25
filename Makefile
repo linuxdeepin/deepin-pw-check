@@ -32,16 +32,16 @@ out/${LIBRARIES}:
 lib/%:
 	gcc $(addsuffix .c, $@) -c -DIN_CRACKLIB -z noexecstack -o $(addsuffix .o, $@)
 
-link:
+link: $(addprefix lib/, ${LIBSRCS_C})
 	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libiniparser.a
 	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrack.a
 	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrypt.a
 	pwd
 	ls -lh
-	ls -lh lib/*.o
+	ls -lh lib/
 	ar rcs out/libdeepin_pw_check.a lib/*.o
 
-static_lib: $(addprefix lib/, ${LIBSRCS_C}) link
+static_lib: link
 
 out/${PAM_MODULE}:
 	gcc pam/*.c -fPIC -shared -lpam -L./out/ -ldeepin_pw_check -o $@ $^
