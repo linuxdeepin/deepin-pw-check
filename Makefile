@@ -36,14 +36,11 @@ link: $(addprefix lib/, ${LIBSRCS_C})
 	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libiniparser.a
 	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrack.a
 	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libcrypt.a
-	pwd
-	ls -lh
-	ls -lh lib/
 	ar rcs out/libdeepin_pw_check.a lib/*.o
 
 static_lib: link
 
-out/${PAM_MODULE}:
+out/${PAM_MODULE}: out/${LIBRARIES}
 	gcc pam/*.c -fPIC -shared -lpam -L./out/ -ldeepin_pw_check -o $@ $^
 
 build_tool: prepare
