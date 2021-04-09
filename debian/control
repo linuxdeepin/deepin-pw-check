@@ -26,6 +26,7 @@ Description: deepin password check interface
 Package: libdeepin-pw-check
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
+ cracklib-runtime,
  libcrack2,
  libiniparser1,
 Description: deepin password check interface
