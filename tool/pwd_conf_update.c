@@ -118,7 +118,7 @@ int update_conf(OS_TYPE os_type) {
     }
 
     if (iniparser_find_entry(dic,"Password:PASSWORD_MAX_LENGTH") == 0) {
-        sprintf(append_string,"%sPASSWORD_MAX_LENGTH = %d\n",append_string, os_type == OS_PROFESSIONAL? 512:512);
+        sprintf(append_string,"%sPASSWORD_MAX_LENGTH = %d\n",append_string, os_type == OS_PROFESSIONAL? 511:511);
         DEBUG("set PASSWORD_MAX_LENGTH");
     }
 
