@@ -47,6 +47,9 @@ BUILDID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
 export GOPATH=/usr/share/gocode
 %make_build GO_BUILD_FLAGS=-trimpath GOBUILD="go build -compiler gc -ldflags \"-B $BUILDID\""
 
+%post
+pwd-conf-update
+
 %install
 export GOPATH=%{_datadir}/gocode
 export PKG_FILE_DIR=%{_libdir}/pkgconfig
