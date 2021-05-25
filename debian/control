@@ -29,6 +29,8 @@ Depends: ${misc:Depends}, ${shlibs:Depends},
  cracklib-runtime,
  libcrack2,
  libiniparser1,
+Breaks: libpam-cracklib
+Replaces: libpam-cracklib
 Description: deepin password check interface
  deepin-pw-check is a tool to verify the validity of the password
 
