@@ -138,7 +138,7 @@ int update_conf(OS_TYPE os_type) {
         DEBUG("set PASSWORD_MIN_LENGTH");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sPASSWORD_MIN_LENGTH = %d\n", append_string, 1);
+            sprintf(append_string, "%sPASSWORD_MIN_LENGTH = %d\n", append_string, 8);
             DEBUG("restore PASSWORD_MIN_LENGTH");
         } else {
             sprintf(append_string,
