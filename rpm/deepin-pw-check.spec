@@ -6,7 +6,7 @@
 %global debug_package   %{nil}
 %endif
 Name:           deepin-pw-check
-Version:        5.0.13
+Version:        5.0.18.1
 Release:        1
 Summary:        Used to check password and manager the configuration for password.
 License:        GPLv3
@@ -49,6 +49,14 @@ export GOPATH=/usr/share/gocode
 
 %post
 pwd-conf-update
+sed -i "s/pam_pwquality.so/pam_deepin_pw_check.so/g" /etc/pam.d/system-auth
+sed -i "s/pam_pwquality.so/pam_deepin_pw_check.so/g" /etc/pam.d/password-auth
+
+%postun
+if [ "$1" = "0" ] ; then
+	sed -i "s/pam_deepin_pw_check.so/pam_pwquality.so/g" /etc/pam.d/system-auth
+	sed -i "s/pam_deepin_pw_check.so/pam_pwquality.so/g" /etc/pam.d/password-auth
+fi
 
 %install
 export GOPATH=%{_datadir}/gocode
@@ -75,5 +83,5 @@ export PKG_FILE_DIR=%{_libdir}/pkgconfig
 %{_includedir}/deepin_pw_check.h
 
 %changelog
-* Wed Mar 12 2021 uoser <uoser@uniontech.com> - 5.0.13-1
-- Update to 5.0.13
+* Wed Mar 12 2021 uoser <uoser@uniontech.com> - 5.0.18.1-1
+- Update to 5.0.18.1
