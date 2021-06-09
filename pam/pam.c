@@ -89,64 +89,22 @@ int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
         const char *new_token = NULL;
 
         int cur_cnt = paras.retry_cnt;
+        void *item = NULL;
         while (cur_cnt) {
 
             cur_cnt--;
 
             ret = pam_get_authtok(pamh, PAM_AUTHTOK, &new_token, NULL);
-            if (ret == PAM_SUCCESS) {
-                goto check;
-            }
-
-            ret = pam_get_authtok_noverify(pamh, &new_token, gettext("New password: "));
-
             if (ret != PAM_SUCCESS) {
-                pam_syslog(pamh,
-                           LOG_ERR,
-                           "pam_get_authtok_noverify returned error: %s",
-                           pam_strerror(pamh, ret));
-                DEBUG("pam_get_authtok_noverify returned error: %s", pam_strerror(pamh, ret));
-                continue;
-            } else if (new_token == NULL) { /* user aborted password change, quit */
-                return PAM_AUTHTOK_ERR;
+                DEBUG("get authtok err.");
+                return ret;
             }
 
-            DEBUG("new password is %s\n", new_token);
-            ret = deepin_pw_check(user, new_token, paras.level, paras.dict_path);
-
-            if (ret != PW_NO_ERR) {
-                sprintf(outbuf, "Bad Password: %s\n", err_to_string((PW_ERROR_TYPE)ret));
-                printf(gettext(outbuf));
-                continue;
-            }
-
-            char *new_token2;
-            ret = pam_prompt(pamh,
-                             PAM_PROMPT_ECHO_OFF,
-                             &new_token2,
-                             gettext("Retype new password: "));
-
-            if (ret != PAM_SUCCESS) {
-                pam_syslog(pamh,
-                           LOG_ERR,
-                           "pam_get_authtok_noverify returned error: %s",
-                           pam_strerror(pamh, ret));
-                DEBUG("pam_get_authtok_noverify returned error: %s", pam_strerror(pamh, ret));
-                continue;
-            } else if (new_token == NULL) { /* user aborted password change, quit */
-                return PAM_AUTHTOK_ERR;
-            }
-
-            if (strcmp(new_token, new_token2)) {
-                sprintf(outbuf, "Sorry, passwords do not match\n");
-                printf(gettext(outbuf));
-                continue;
-            }
-        check:
             ret = deepin_pw_check(user, new_token, paras.level, paras.dict_path);
             DEBUG("check ret: %d", ret);
 
             if (ret != PW_NO_ERR) {
+                pam_set_item(pamh, PAM_AUTHTOK, NULL);
                 continue;
             }
 
