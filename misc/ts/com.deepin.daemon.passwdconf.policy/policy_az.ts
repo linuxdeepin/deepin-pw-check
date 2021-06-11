@@ -2,44 +2,14 @@
 	<context>
 		<name>policy</name>
 		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.enroll!message" line="0"/>
-			<source>Authentication is required to add fingerprint password</source>
-			<translation>Barmaq izi şifrəsini əlavə etmək üçün doğrulama tələb edilir</translation>
+			<location filename="com.deepin.daemon.passwdconf.modify-config!message" line="0"/>
+			<source>Authentication is required to modify the configuration for password validation</source>
+			<translation>Şifrələrin təsdiq edilməsi üçün tənzimləmələrin dəyişdirilməsinə kimlik doğrulaması tələb olunur</translation>
 		</message>
 		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.enroll!description" line="0"/>
-			<source>Add fingerprint password</source>
-			<translation>Barmaq izi şifrəsi əlavə etmək</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.delete-enrolled-fingers!message" line="0"/>
-			<source>Authentication is required to clear fingerprint passwords</source>
-			<translation>Barmaq izi şifrəsini silmək üçün doğrulama tələb edilir</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.delete-enrolled-fingers!description" line="0"/>
-			<source>Clear fingerprint passwords</source>
-			<translation>Barmaq izi şifrəsini silmək</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.rename-enrolled-finger!message" line="0"/>
-			<source>Authentication is required to rename fingerprint password</source>
-			<translation>Barmaq izi şifrəsinin adını dəyişmək üçün doğrulama tələb edilir</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.rename-enrolled-finger!description" line="0"/>
-			<source>Rename fingerprint password</source>
-			<translation>Barmaq izi şifrəsinin adını dəyişmək</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.manage!message" line="0"/>
-			<source>Password is required to perform this action</source>
-			<translation>Bu əməlin icra edilməsi üçün şifrə tələb olunur</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.manage!description" line="0"/>
-			<source>Manage fingerprint passwords</source>
-			<translation>Barmaq izi şifrələrinin idarə edilməsi</translation>
+			<location filename="com.deepin.daemon.passwdconf.modify-config!description" line="0"/>
+			<source>Modify</source>
+			<translation>Dəyişdirin</translation>
 		</message>
 	</context>
 </TS>

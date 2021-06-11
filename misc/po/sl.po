@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
 # Arnold Marko <arnold.marko@gmail.com>, 2021
 # 
 #, fuzzy
@@ -12,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2021\n"
 "Language-Team: Slovenian (https://www.transifex.com/linuxdeepin/teams/3617/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -22,77 +21,64 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "Napaka pri preverjanju"
+#: lib/deepin_pw_check.c:545
+msgid "Invalid error type"
+msgstr "Neveljavna vrsta napake"
 
-#: misc/pam-module/pam_auth.c:287
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr "Preverjanje prstnega odtisa ni na voljo, vnesite geslo"
+#: lib/deepin_pw_check.c:555
+msgid "Checking successful"
+msgstr "Preverjanje je bilo uspešno"
 
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "Očistite prst in poskusite znova"
+#: lib/deepin_pw_check.c:557
+msgid "The password cannot be empty"
+msgstr "Geslo ne more biti prazno"
 
-#: misc/pam-module/pam_auth.c:311
+#: lib/deepin_pw_check.c:561
 #, c-format
-msgid "Finger not centered"
-msgstr "Prst ni poravnan"
+msgid "Password must have at least %d characters"
+msgstr "Geslo mora imeti vsaj %d znakov"
 
-#: misc/pam-module/pam_auth.c:319
+#: lib/deepin_pw_check.c:566
 #, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr "Nejasen prstni odtis, očistitie si prst inj poskusite znova"
+msgid "Password must be no more than %d characters"
+msgstr "Geslo ne sme imeti več kot %d znakov"
 
-#: misc/pam-module/pam_auth.c:323
+#: lib/deepin_pw_check.c:570
 #, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr "Prehiter premik prsta. Ne dvigujte pred pozivom"
+msgid "Password can only contain %s"
+msgstr "Geslo lahko vsebuje le %s"
 
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
+#: lib/deepin_pw_check.c:577
 #, c-format
-msgid "Password"
-msgstr "Geslo"
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "Geslo ne sme vsebovati več kot %d palindromne znake"
 
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
-msgstr "Uspešno preverjanje"
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
+msgstr "Prosimo, da ustvarite močno geslo"
 
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "Prstni odtis je zaklenjen, uporabite geslo"
+#: lib/deepin_pw_check.c:587
+msgid "Do not use common words and combinations as password"
+msgstr "Za geslo ne uporabljajte pogostih besed in fraz"
 
-#: misc/pam-module/pam_auth.c:461
-#, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Preverjanje ni uspelo. Še %d poskusov"
+#: lib/deepin_pw_check.c:589
+msgid "Parameter options are invalid"
+msgstr "Neveljavne opcije parametra"
 
-#: misc/pam-module/pam_auth.c:463
-#, c-format
-msgid "Verification failed, only one chance left"
-msgstr "Neuspešna overitev. Ostal je le še en poskus"
+#: lib/deepin_pw_check.c:591
+msgid "Internal error"
+msgstr "Notranja napaka"
 
-#: misc/pam-module/pam_auth.c:589
+#: lib/deepin_pw_check.c:593
+msgid "Invalid user"
+msgstr "Napačen uporabnik"
+
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "Ne ustreza pravilom za geslo"
+
+#: pam/pam.c:107
 #, c-format
-msgid "Please retry after %d minutes"
+msgid "Bad password: %s"
 msgstr ""
-
-#: misc/pam-module/pam_auth.c:591
-#, c-format
-msgid "Please retry after one minute"
-msgstr ""
-
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "Preostalih poskusov: %d"
-
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Preverjanje prstnega odtisa ali gesla"

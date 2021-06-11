@@ -4,8 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
-# نۇرمۇھەممەت ئۆمەر <tanha451634873@qq.com>, 2020
 # 阿迪力 买买提明 <251078110@qq.com>, 2021
 # 
 #, fuzzy
@@ -13,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: 阿迪力 买买提明 <251078110@qq.com>, 2021\n"
 "Language-Team: Uyghur (https://www.transifex.com/linuxdeepin/teams/3617/ug/)\n"
 "MIME-Version: 1.0\n"
@@ -23,78 +21,65 @@ msgstr ""
 "Language: ug\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "دەلىللەش خاتالىقى"
+#: lib/deepin_pw_check.c:545
+msgid "Invalid error type"
+msgstr "ئۈنۈمسىز خاتالىق تۈرى"
 
-#: misc/pam-module/pam_auth.c:287
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr "بارماق ئىزىنى ئىشلەتكىلى بولمايدۇ، پارول كىرگۈزۈڭ"
-
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "بارمىقىڭىزنى تازىلاپ قايتا دەلىللەپ بېقىڭ"
-
-#: misc/pam-module/pam_auth.c:311
-#, c-format
-msgid "Finger not centered"
-msgstr "بارماق ئوتتۇرىغا قويۇلمىدى"
-
-#: misc/pam-module/pam_auth.c:319
-#, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr "سۈرەت غۇۋا، بارمىقىڭىزنى تازىلاپ قايتا دەلىللەپ بېقىڭ"
-
-#: misc/pam-module/pam_auth.c:323
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr ""
-"تېگىشىش ۋاقتى قىسقا بولۇپ قالدى، دەلىللىگەندە بارمىقىڭىزنى مىدىرلاتماڭ"
-
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
-#, c-format
-msgid "Password"
-msgstr "پارول"
-
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
+#: lib/deepin_pw_check.c:555
+msgid "Checking successful"
 msgstr "دەلىللەندى"
 
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "بارماق ئىزى قۇلۇپلاندى، پارول كىرگۈزۈڭ"
+#: lib/deepin_pw_check.c:557
+msgid "The password cannot be empty"
+msgstr "پارول قۇرۇق قالسا بولمايدۇ"
 
-#: misc/pam-module/pam_auth.c:461
+#: lib/deepin_pw_check.c:561
 #, c-format
-msgid "Verification failed, %d chances left"
-msgstr "دەلىللەش مەغلۇپ بولدى، يەنە %d قېتىم سىنىيالايسىز"
+msgid "Password must have at least %d characters"
+msgstr "پارول %d ھەرپتىن كەم بولماسلىقى كېرەك"
 
-#: misc/pam-module/pam_auth.c:463
+#: lib/deepin_pw_check.c:566
 #, c-format
-msgid "Verification failed, only one chance left"
-msgstr "دەلىللەش مەغلۇپ بولدى، يەنە 1 قېتىم سىنىيالايسىز"
+msgid "Password must be no more than %d characters"
+msgstr "پارول %d ھەرپتىن ئېشىپ كەتمەسلىكى كېرەك"
 
-#: misc/pam-module/pam_auth.c:589
+#: lib/deepin_pw_check.c:570
 #, c-format
-msgid "Please retry after %d minutes"
+msgid "Password can only contain %s"
+msgstr "پارول پەقەت %s بولۇشى كېرەك"
+
+#: lib/deepin_pw_check.c:577
+#, c-format
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "پارولدا ئۇدا %d تىن ئارتۇق قايتىلانما ھەرپ-بەلگە بولسا بولمايدۇ"
+
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
+msgstr "پارول بەك ئاددىي، مۇرەككەپرەك بېكىتىڭ"
+
+#: lib/deepin_pw_check.c:587
+msgid "Do not use common words and combinations as password"
 msgstr ""
+"پارولدا دائىم ئۇچرايدىغان ئاددىي سۆز ۋە سۆز بىرىكمىلىرى بولسا بولمايدۇ"
 
-#: misc/pam-module/pam_auth.c:591
+#: lib/deepin_pw_check.c:589
+msgid "Parameter options are invalid"
+msgstr "ئۈنۈمسىز پارامېتىر تاللىشى"
+
+#: lib/deepin_pw_check.c:591
+msgid "Internal error"
+msgstr "ئىچكى خاتالىق"
+
+#: lib/deepin_pw_check.c:593
+msgid "Invalid user"
+msgstr "ئىناۋەتسىز ئىشلەتكۈچى"
+
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "پارول بىخەتەرلىك تەلىپىگە ئۇيغۇن كەلمەيدۇ"
+
+#: pam/pam.c:107
 #, c-format
-msgid "Please retry after one minute"
+msgid "Bad password: %s"
 msgstr ""
-
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "سىناش پۇرسىتىڭىز سانى: %d"
-
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr " بارماق ئىزىڭىز ياكى مەخپىي نومۇرنى دەلىللىشىڭىز كېرەك "

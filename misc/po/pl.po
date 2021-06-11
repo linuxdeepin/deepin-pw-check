@@ -4,18 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
-# Karol Machajewski <charleslavard@gmail.com>, 2020
-# Marcin Kozioł <koziol.martin@gmail.com>, 2020
+# Marcin Kozioł <koziol.martin@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-02 17:59+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
-"Last-Translator: Marcin Kozioł <koziol.martin@gmail.com>, 2020\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
+"Last-Translator: Marcin Kozioł <koziol.martin@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/linuxdeepin/teams/3617/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,63 +21,64 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: misc/pam-module/pam_auth.c:222
-#, c-format
-msgid "Verification error"
-msgstr "Błąd weryfikacji"
+#: lib/deepin_pw_check.c:545
+msgid "Invalid error type"
+msgstr "Nieprawidłowy typ błędu"
 
-#: misc/pam-module/pam_auth.c:226
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr "Weryfikacja odciskiem palca jest niedostępna, proszę wprowadzić hasło"
+#: lib/deepin_pw_check.c:555
+msgid "Checking successful"
+msgstr "Sprawdzanie powiodło się"
 
-#: misc/pam-module/pam_auth.c:246 misc/pam-module/pam_auth.c:254
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "Wyczyść swój palec i spróbuj ponownie"
+#: lib/deepin_pw_check.c:557
+msgid "The password cannot be empty"
+msgstr "Hasło nie może być puste"
 
-#: misc/pam-module/pam_auth.c:250
+#: lib/deepin_pw_check.c:561
 #, c-format
-msgid "Finger not centered"
-msgstr "Palec nie jest wycentrowany"
+msgid "Password must have at least %d characters"
+msgstr "Hasło musi mieć co najmniej %d znaków"
 
-#: misc/pam-module/pam_auth.c:258
+#: lib/deepin_pw_check.c:566
 #, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr "Niewyraźny odcisk palca, proszę wyczyść palec i spróbuj ponownie "
+msgid "Password must be no more than %d characters"
+msgstr "Hasło nie może zawierać więcej niż %d znaków"
 
-#: misc/pam-module/pam_auth.c:262
+#: lib/deepin_pw_check.c:570
 #, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
+msgid "Password can only contain %s"
+msgstr "Hasło może zawierać tylko %s"
+
+#: lib/deepin_pw_check.c:577
+#, c-format
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "Hasło nie może zawierać więcej niż %d znaków palindromowych "
+
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
 msgstr ""
-"Palec przesunięty za szybko, proszę nie podnoś palca przed komunikatem "
 
-#: misc/pam-module/pam_auth.c:274 misc/pam-module/pam_auth.c:532
-#, c-format
-msgid "Password"
-msgstr "Hasło"
+#: lib/deepin_pw_check.c:587
+msgid "Do not use common words and combinations as password"
+msgstr "Nie używaj popularnych słów i kombinacji jako hasła"
 
-#: misc/pam-module/pam_auth.c:380
-#, c-format
-msgid "Verification successful"
-msgstr "Weryfikacja pomyślna"
+#: lib/deepin_pw_check.c:589
+msgid "Parameter options are invalid"
+msgstr "Opcje parametrów są nieprawidłowe"
 
-#: misc/pam-module/pam_auth.c:397
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "Odcisk palca zablokowany, użyj hasła"
+#: lib/deepin_pw_check.c:591
+msgid "Internal error"
+msgstr "Błąd wewnętrzny"
 
-#: misc/pam-module/pam_auth.c:401
-#, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Nieudana weryfikacja, zostało %d prób "
+#: lib/deepin_pw_check.c:593
+msgid "Invalid user"
+msgstr "Nieprawidłowy użytkownik"
 
-#: misc/pam-module/pam_auth.c:403
-#, c-format
-msgid "Verification failed, 1 chance left"
-msgstr "Nieudana weryfikacja, została 1 próba "
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "Nie spełnia zasad dotyczących haseł"
 
-#: misc/pam-module/pam_auth.c:529
+#: pam/pam.c:107
 #, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Zweryfikuj swój odcisk palca bądź hasło "
+msgid "Bad password: %s"
+msgstr ""

@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
 # Besnik Bleta <besnik@programeshqip.org>, 2021
 # 
 #, fuzzy
@@ -12,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2021\n"
 "Language-Team: Albanian (https://www.transifex.com/linuxdeepin/teams/3617/sq/)\n"
 "MIME-Version: 1.0\n"
@@ -22,79 +21,64 @@ msgstr ""
 "Language: sq\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "Gabim verifikimi"
+#: lib/deepin_pw_check.c:545
+msgid "Invalid error type"
+msgstr "Lloj i pavlefshëm gabimi"
 
-#: misc/pam-module/pam_auth.c:287
+#: lib/deepin_pw_check.c:555
+msgid "Checking successful"
+msgstr "Kontroll i suksesshëm"
+
+#: lib/deepin_pw_check.c:557
+msgid "The password cannot be empty"
+msgstr "Fjalëkalimi s’mund të jetë i zbrazët"
+
+#: lib/deepin_pw_check.c:561
 #, c-format
-msgid "Fingerprint verification unavailable, please input password"
+msgid "Password must have at least %d characters"
+msgstr "Fjalëkalimi duhet të ketë të paktën 1%d shenja"
+
+#: lib/deepin_pw_check.c:566
+#, c-format
+msgid "Password must be no more than %d characters"
+msgstr "Fjalëkalimi s’duhet të jetë më i madh se 1%d shenja"
+
+#: lib/deepin_pw_check.c:570
+#, c-format
+msgid "Password can only contain %s"
+msgstr "Fjalëkalimi mund të përmbajë vetëm %s"
+
+#: lib/deepin_pw_check.c:577
+#, c-format
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "Fjalëkalimi s’duhet të përmbajë më shumë se 1%d shenja palindromike"
+
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
+msgstr "Ju lutemi, krijoni një fjalëkalim të fortë"
+
+#: lib/deepin_pw_check.c:587
+msgid "Do not use common words and combinations as password"
+msgstr "Mos përdorni si fjalëkalim fjalë të zakonshme dhe kombinime të tyre"
+
+#: lib/deepin_pw_check.c:589
+msgid "Parameter options are invalid"
+msgstr "Mundësitë e parametrit janë të pavlefshme"
+
+#: lib/deepin_pw_check.c:591
+msgid "Internal error"
+msgstr "Gabim i brendshëm"
+
+#: lib/deepin_pw_check.c:593
+msgid "Invalid user"
+msgstr "Përdorues i pavlefshëm"
+
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "S’plotëson rregullat për fjalëkalime"
+
+#: pam/pam.c:107
+#, c-format
+msgid "Bad password: %s"
 msgstr ""
-"Verifikimi me shenja gishti s’është i mundur, ju lutemi, jepni fjalëkalim"
-
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "Pastroni gishtin dhe riprovoni"
-
-#: misc/pam-module/pam_auth.c:311
-#, c-format
-msgid "Finger not centered"
-msgstr "Gishti s’është në qendër"
-
-#: misc/pam-module/pam_auth.c:319
-#, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr "Shenja të paqarta gishti, ju lutemi, pastroni gishtin dhe riprovoni"
-
-#: misc/pam-module/pam_auth.c:323
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr ""
-"Gishti lëvizi shumë shpejt, ju lutemi, mos e ngrini para se t’ju kërkohet"
-
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
-#, c-format
-msgid "Password"
-msgstr "Fjalëkalim"
-
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
-msgstr "Verifikim i suksesshëm"
-
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "Shenja gishti të kyçura, ju lutemi, përdorni fjalëkalim"
-
-#: misc/pam-module/pam_auth.c:461
-#, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Verifikimi dështoi, edhe %d prova"
-
-#: misc/pam-module/pam_auth.c:463
-#, c-format
-msgid "Verification failed, only one chance left"
-msgstr "Verifikimi dështoi, edhe një provë"
-
-#: misc/pam-module/pam_auth.c:589
-#, c-format
-msgid "Please retry after %d minutes"
-msgstr "Ju lutemi, riprovoni pas %d minutash"
-
-#: misc/pam-module/pam_auth.c:591
-#, c-format
-msgid "Please retry after one minute"
-msgstr "Ju lutemi, riprovoni pas një minute"
-
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "Prova të mbetura: %d"
-
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Verifikoni shenja gishti ose fjalëkalimin tuaj"

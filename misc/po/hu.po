@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-03 14:59+0800\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
 "PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Béla Bajza, 2021\n"
 "Language-Team: Hungarian (https://www.transifex.com/linuxdeepin/teams/3617/hu/)\n"
@@ -21,55 +21,64 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: lib/deepin_pw_check.c:516
+#: lib/deepin_pw_check.c:545
 msgid "Invalid error type"
 msgstr "Érvénytelen hibatípus"
 
-#: lib/deepin_pw_check.c:527
+#: lib/deepin_pw_check.c:555
 msgid "Checking successful"
 msgstr "Az ellenőrzés sikeres"
 
-#: lib/deepin_pw_check.c:529
+#: lib/deepin_pw_check.c:557
 msgid "The password cannot be empty"
 msgstr "A jelszó nem lehet üres"
 
-#: lib/deepin_pw_check.c:532
+#: lib/deepin_pw_check.c:561
 #, c-format
 msgid "Password must have at least %d characters"
 msgstr "A jelszónak legalább %d karakterből kell állnia"
 
-#: lib/deepin_pw_check.c:536
+#: lib/deepin_pw_check.c:566
 #, c-format
 msgid "Password must be no more than %d characters"
 msgstr "Jelszó nem lehet hosszabb mint %d karakter"
 
-#: lib/deepin_pw_check.c:540
+#: lib/deepin_pw_check.c:570
 #, c-format
 msgid "Password can only contain %s"
 msgstr "A jelszó csak a következőket tartalmazhatja: %s"
 
-#: lib/deepin_pw_check.c:544
+#: lib/deepin_pw_check.c:577
 #, c-format
 msgid "Password must not contain more than %d palindrome characters"
 msgstr "A jelszó legfeljebb %d palindróm karaktereket tartalmazhat"
 
-#: lib/deepin_pw_check.c:547 lib/deepin_pw_check.c:549
-#: lib/deepin_pw_check.c:551 lib/deepin_pw_check.c:561
-msgid "It does not meet password rules"
-msgstr "Nem felel meg a jelszavakra vonatkozó szabályoknak"
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
+msgstr "Kérjük hozzon létre egy erős jelszót"
 
-#: lib/deepin_pw_check.c:553
+#: lib/deepin_pw_check.c:587
 msgid "Do not use common words and combinations as password"
 msgstr "Ne használjon jelszóként gyakori szavakat és kombinációkat"
 
-#: lib/deepin_pw_check.c:555
+#: lib/deepin_pw_check.c:589
 msgid "Parameter options are invalid"
 msgstr "A paraméterbeállítások érvénytelenek"
 
-#: lib/deepin_pw_check.c:557
+#: lib/deepin_pw_check.c:591
 msgid "Internal error"
 msgstr "Belső hiba"
 
-#: lib/deepin_pw_check.c:559
+#: lib/deepin_pw_check.c:593
 msgid "Invalid user"
 msgstr "Érvénytelen felhasználó"
+
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "Nem felel meg a jelszavakra vonatkozó szabályoknak"
+
+#: pam/pam.c:107
+#, c-format
+msgid "Bad password: %s"
+msgstr ""

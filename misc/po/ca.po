@@ -4,8 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Jaime Muñoz Martín <jmmartin_5@outlook.com>, 2020
-# Cindy0514, 2020
 # Davidmp <medipas@gmail.com>, 2021
 # 
 #, fuzzy
@@ -13,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>, 2021\n"
 "Language-Team: Catalan (https://www.transifex.com/linuxdeepin/teams/3617/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -23,80 +21,64 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "Error de verificació"
+#: lib/deepin_pw_check.c:545
+msgid "Invalid error type"
+msgstr "Tipus d'error no vàlid"
 
-#: misc/pam-module/pam_auth.c:287
+#: lib/deepin_pw_check.c:555
+msgid "Checking successful"
+msgstr "Comprovació correcta"
+
+#: lib/deepin_pw_check.c:557
+msgid "The password cannot be empty"
+msgstr "La contrasenya no es pot deixar en blanc."
+
+#: lib/deepin_pw_check.c:561
 #, c-format
-msgid "Fingerprint verification unavailable, please input password"
+msgid "Password must have at least %d characters"
+msgstr "La contrasenya ha de tenir com a mínim %d caràcters."
+
+#: lib/deepin_pw_check.c:566
+#, c-format
+msgid "Password must be no more than %d characters"
+msgstr "La contrasenya no ha de tenir més de %d caràcters."
+
+#: lib/deepin_pw_check.c:570
+#, c-format
+msgid "Password can only contain %s"
+msgstr "La contrasenya només pot tenir %s."
+
+#: lib/deepin_pw_check.c:577
+#, c-format
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "La contrasenya no ha de tenir més de %d caràcters palíndroms."
+
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
+msgstr "Si us plau, creeu una contrasenya forta."
+
+#: lib/deepin_pw_check.c:587
+msgid "Do not use common words and combinations as password"
+msgstr "No useu paraules i combinacions habituals com a contrasenya."
+
+#: lib/deepin_pw_check.c:589
+msgid "Parameter options are invalid"
+msgstr "Les opcions dels paràmetres no són vàlides."
+
+#: lib/deepin_pw_check.c:591
+msgid "Internal error"
+msgstr "Error intern"
+
+#: lib/deepin_pw_check.c:593
+msgid "Invalid user"
+msgstr "Usuari no vàlid"
+
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "No compleix les regles de la contrasenya."
+
+#: pam/pam.c:107
+#, c-format
+msgid "Bad password: %s"
 msgstr ""
-"La verificació d'empremtes no està disponible. Introduïu la contrasenya."
-
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "Netegeu-vos el dit i torneu-ho a provar."
-
-#: misc/pam-module/pam_auth.c:311
-#, c-format
-msgid "Finger not centered"
-msgstr "Dit no centrat"
-
-#: misc/pam-module/pam_auth.c:319
-#, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr ""
-"Empremta poc clara; si us plau, netegeu-vos el dit i torneu-ho a provar."
-
-#: misc/pam-module/pam_auth.c:323
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr ""
-"El dit s'ha mogut massa de pressa. Si us plau, no l'alceu fins que s'avisi."
-
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
-#, c-format
-msgid "Password"
-msgstr "Contrasenya"
-
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
-msgstr "Verificació correcta"
-
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "Empremta blocada. Si us plau, useu la contrasenya."
-
-#: misc/pam-module/pam_auth.c:461
-#, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Ha fallat la verificació, resten %d intents."
-
-#: misc/pam-module/pam_auth.c:463
-#, c-format
-msgid "Verification failed, only one chance left"
-msgstr "Ha fallat la verificació. Només resta un intent."
-
-#: misc/pam-module/pam_auth.c:589
-#, c-format
-msgid "Please retry after %d minutes"
-msgstr ""
-
-#: misc/pam-module/pam_auth.c:591
-#, c-format
-msgid "Please retry after one minute"
-msgstr ""
-
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "Intents restants: %d"
-
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Verifiqueu l'empremta o contrasenya."

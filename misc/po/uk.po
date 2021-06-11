@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
 # Yuri Chornoivan <yurchor@ukr.net>, 2021
 # 
 #, fuzzy
@@ -12,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2021\n"
 "Language-Team: Ukrainian (https://www.transifex.com/linuxdeepin/teams/3617/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -22,79 +21,65 @@ msgstr ""
 "Language: uk\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "Помилка під час перевірки"
+#: lib/deepin_pw_check.c:545
+msgid "Invalid error type"
+msgstr "Некоректний тип помилки"
 
-#: misc/pam-module/pam_auth.c:287
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr "Перевірка за відбитком недоступна. Будь ласка, введіть пароль."
+#: lib/deepin_pw_check.c:555
+msgid "Checking successful"
+msgstr "Успішна перевірка"
 
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "Витріть палець і повторіть спробу"
+#: lib/deepin_pw_check.c:557
+msgid "The password cannot be empty"
+msgstr "Пароль не може бути порожнім"
 
-#: misc/pam-module/pam_auth.c:311
+#: lib/deepin_pw_check.c:561
 #, c-format
-msgid "Finger not centered"
-msgstr "Палець розташовано не за центром"
+msgid "Password must have at least %d characters"
+msgstr "Пароль має складатися із принаймні %d символів"
 
-#: misc/pam-module/pam_auth.c:319
+#: lib/deepin_pw_check.c:566
 #, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr "Брудний палець. Будь ласка, витріть палець і повторіть спробу."
+msgid "Password must be no more than %d characters"
+msgstr "У паролі має бути не більше %d символів"
 
-#: misc/pam-module/pam_auth.c:323
+#: lib/deepin_pw_check.c:570
 #, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
+msgid "Password can only contain %s"
+msgstr "Пароль має складатися лише з %s"
+
+#: lib/deepin_pw_check.c:577
+#, c-format
+msgid "Password must not contain more than %d palindrome characters"
 msgstr ""
-"Палець прибрано надто швидко. Будь ласка, не знімайте палець, доки програма "
-"вас про це не попросить."
+"У паролі не повинно бути паліндромів, що складаються з понад %d символів"
 
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
-#, c-format
-msgid "Password"
-msgstr "Пароль"
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
+msgstr "Будь ласка, створіть складний пароль"
 
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
-msgstr "Перевірку пройдено"
+#: lib/deepin_pw_check.c:587
+msgid "Do not use common words and combinations as password"
+msgstr "Не використовуйте поширені слова або їхні комбінації як пароль"
 
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "Відбиток заблоковано. Будь ласка, скористайтеся паролем."
+#: lib/deepin_pw_check.c:589
+msgid "Parameter options are invalid"
+msgstr "Варіанти параметра є некоректними"
 
-#: misc/pam-module/pam_auth.c:461
-#, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Перевірку не пройдено, лишилося %d спроб"
+#: lib/deepin_pw_check.c:591
+msgid "Internal error"
+msgstr "Внутрішня помилка"
 
-#: misc/pam-module/pam_auth.c:463
-#, c-format
-msgid "Verification failed, only one chance left"
-msgstr "Перевірку не пройдено. Лишилася одна спроба."
+#: lib/deepin_pw_check.c:593
+msgid "Invalid user"
+msgstr "Некоректний користувач"
 
-#: misc/pam-module/pam_auth.c:589
-#, c-format
-msgid "Please retry after %d minutes"
-msgstr "Будь ласка, повторіть спробу за %d хвилин"
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "Не відповідає правилам щодо паролів"
 
-#: misc/pam-module/pam_auth.c:591
+#: pam/pam.c:107
 #, c-format
-msgid "Please retry after one minute"
-msgstr "Будь ласка, повторіть спробу за хвилину"
-
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "Лишилося спроб: %d"
-
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Пройдіть перевірку за відбитком або паролем"
+msgid "Bad password: %s"
+msgstr ""

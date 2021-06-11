@@ -2,44 +2,14 @@
 	<context>
 		<name>policy</name>
 		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.enroll!message" line="0"/>
-			<source>Authentication is required to add fingerprint password</source>
-			<translation>Une authentification est requise pour ajouter une empreinte digitale comme mot de passe</translation>
+			<location filename="com.deepin.daemon.passwdconf.modify-config!message" line="0"/>
+			<source>Authentication is required to modify the configuration for password validation</source>
+			<translation>Une authentification est requise pour modifier la configuration du mot de passe</translation>
 		</message>
 		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.enroll!description" line="0"/>
-			<source>Add fingerprint password</source>
-			<translation>Ajouter une empreinte digitale comme mot de passe</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.delete-enrolled-fingers!message" line="0"/>
-			<source>Authentication is required to clear fingerprint passwords</source>
-			<translation>Une authentification est requise pour effacer les empreintes digitales enregistrées</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.delete-enrolled-fingers!description" line="0"/>
-			<source>Clear fingerprint passwords</source>
-			<translation>Effacer les empreintes digitales enregistrées</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.rename-enrolled-finger!message" line="0"/>
-			<source>Authentication is required to rename fingerprint password</source>
-			<translation>Une authentification est requise pour changer le mot de passe d&apos;une empreinte digitale</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.rename-enrolled-finger!description" line="0"/>
-			<source>Rename fingerprint password</source>
-			<translation>Changer une empreinte digitale</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.manage!message" line="0"/>
-			<source>Password is required to perform this action</source>
-			<translation>Mot de passe requis pour effectuer cette action</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.manage!description" line="0"/>
-			<source>Manage fingerprint passwords</source>
-			<translation>Gérer les empreintes digitales</translation>
+			<location filename="com.deepin.daemon.passwdconf.modify-config!description" line="0"/>
+			<source>Modify</source>
+			<translation>Modifier</translation>
 		</message>
 	</context>
 </TS>

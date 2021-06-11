@@ -578,11 +578,11 @@ const char *err_to_string(PW_ERROR_TYPE err) {
         num);
     return out_buff;
   case PW_ERR_PW_CONSECUTIVE_SAME:
-    return gettext("It does not meet password rules");
+    return gettext("Create a strong password please");
   case PW_ERR_PW_MONOTONE:
-    return gettext("It does not meet password rules");
+    return gettext("Create a strong password please");
   case PW_ERR_PW_FIRST_UPPERM:
-    return gettext("It does not meet password rules");
+    return gettext("Create a strong password please");
   case PW_ERR_WORD:
     return gettext("Do not use common words and combinations as password");
   case PW_ERR_PARA:

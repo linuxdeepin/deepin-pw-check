@@ -2,44 +2,14 @@
 	<context>
 		<name>policy</name>
 		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.enroll!message" line="0"/>
-			<source>Authentication is required to add fingerprint password</source>
-			<translation>Требуется аутентификация для добавления пароля по отпечатку пальца</translation>
+			<location filename="com.deepin.daemon.passwdconf.modify-config!message" line="0"/>
+			<source>Authentication is required to modify the configuration for password validation</source>
+			<translation>Аутентификация необходима для изменения конфигурации проверки пароля</translation>
 		</message>
 		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.enroll!description" line="0"/>
-			<source>Add fingerprint password</source>
-			<translation>Добавить пароль по отпечатку пальца</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.delete-enrolled-fingers!message" line="0"/>
-			<source>Authentication is required to clear fingerprint passwords</source>
-			<translation>Требуется аутентификация для  очистки паролей по отпечатку пальца</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.delete-enrolled-fingers!description" line="0"/>
-			<source>Clear fingerprint passwords</source>
-			<translation>Очистка паролей по отпечатку пальца</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.rename-enrolled-finger!message" line="0"/>
-			<source>Authentication is required to rename fingerprint password</source>
-			<translation>Требуется аутентификация для переименования пароля отпечатка пальца</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.rename-enrolled-finger!description" line="0"/>
-			<source>Rename fingerprint password</source>
-			<translation>Переименовать пароль отпечатка пальца</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.manage!message" line="0"/>
-			<source>Password is required to perform this action</source>
-			<translation>Необходим пароль для выполнения этого действия</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.manage!description" line="0"/>
-			<source>Manage fingerprint passwords</source>
-			<translation>Управление паролями отпечатков пальцев</translation>
+			<location filename="com.deepin.daemon.passwdconf.modify-config!description" line="0"/>
+			<source>Modify</source>
+			<translation>Изменить</translation>
 		</message>
 	</context>
 </TS>

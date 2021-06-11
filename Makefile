@@ -85,7 +85,7 @@ clean_test: $(addprefix unit_test/, $(SRCS_C))
 	rm -f $^
 
 pot:
-	xgettext --from-code utf-8 lib/* -o misc/po/deepin-pw-check.pot
+	xgettext --from-code utf-8 lib/*.c pam/*.c -o misc/po/deepin-pw-check.pot
 
 POLICY_NAME = com.deepin.daemon.passwdconf
 

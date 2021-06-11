@@ -104,6 +104,8 @@ int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
             DEBUG("check ret: %d", ret);
 
             if (ret != PW_NO_ERR) {
+                sprintf(outbuf, gettext("Bad password: %s"), err_to_string((PW_ERROR_TYPE)ret));
+                printf("%s\n", outbuf);
                 pam_set_item(pamh, PAM_AUTHTOK, NULL);
                 continue;
             }

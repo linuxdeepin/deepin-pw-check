@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
 # Kimmo Kujansuu <mrkujansuu@gmail.com>, 2021
 # 
 #, fuzzy
@@ -12,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>, 2021\n"
 "Language-Team: Finnish (https://www.transifex.com/linuxdeepin/teams/3617/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -22,77 +21,64 @@ msgstr ""
 "Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "Tarkistusvirhe"
+#: lib/deepin_pw_check.c:545
+msgid "Invalid error type"
+msgstr "Virheellinen virhetyyppi"
 
-#: misc/pam-module/pam_auth.c:287
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr "Sormenjäljen tarkistus ei ole käytettävissä, syötä salasana"
-
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "Puhdista sormi ja yritä uudelleen"
-
-#: misc/pam-module/pam_auth.c:311
-#, c-format
-msgid "Finger not centered"
-msgstr "Sormea ei keskitetty"
-
-#: misc/pam-module/pam_auth.c:319
-#, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr "Epäselvä sormenjälki, puhdista sormesi ja yritä uudelleen"
-
-#: misc/pam-module/pam_auth.c:323
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr "Olet liian nopea, älä nosta sormea ennen kuin pyydetään"
-
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
-#, c-format
-msgid "Password"
-msgstr "Salasana"
-
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
+#: lib/deepin_pw_check.c:555
+msgid "Checking successful"
 msgstr "Tarkistus onnistui"
 
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "Sormenjälki lukittu, käytä salasanaa"
+#: lib/deepin_pw_check.c:557
+msgid "The password cannot be empty"
+msgstr "Salasana ei voi olla tyhjä"
 
-#: misc/pam-module/pam_auth.c:461
+#: lib/deepin_pw_check.c:561
 #, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Tarkistus epäonnistui, %d yritystä jäljellä"
+msgid "Password must have at least %d characters"
+msgstr "Salasanassa on oltava vähintään %d merkkiä"
 
-#: misc/pam-module/pam_auth.c:463
+#: lib/deepin_pw_check.c:566
 #, c-format
-msgid "Verification failed, only one chance left"
-msgstr "Tarkistus epäonnistui, yksi yritys jäljellä"
+msgid "Password must be no more than %d characters"
+msgstr "Salasanassa saa olla enintään %d merkkiä"
 
-#: misc/pam-module/pam_auth.c:589
+#: lib/deepin_pw_check.c:570
 #, c-format
-msgid "Please retry after %d minutes"
-msgstr "Yritä uudelleen %d minuutin kuluttua"
+msgid "Password can only contain %s"
+msgstr "Salasana voi sisältää vain %s"
 
-#: misc/pam-module/pam_auth.c:591
+#: lib/deepin_pw_check.c:577
 #, c-format
-msgid "Please retry after one minute"
-msgstr "Yritä uudelleen minuutin kuluttua"
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "Salasana ei saa sisältää takaperin enempää kuin %d merkkiä"
 
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "Yrityksiä %d jäljellä:"
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
+msgstr "Luo vahva salasana"
 
-#: misc/pam-module/pam_auth.c:635
+#: lib/deepin_pw_check.c:587
+msgid "Do not use common words and combinations as password"
+msgstr "Älä käytä yleisiä sanoja ja yhdistelmiä salasanassa"
+
+#: lib/deepin_pw_check.c:589
+msgid "Parameter options are invalid"
+msgstr "Parametrin asetukset ovat virheellisiä"
+
+#: lib/deepin_pw_check.c:591
+msgid "Internal error"
+msgstr "Sisäinen virhe"
+
+#: lib/deepin_pw_check.c:593
+msgid "Invalid user"
+msgstr "Virheellinen käyttäjä"
+
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "Tämä ei täytä salasanan sääntöjä"
+
+#: pam/pam.c:107
 #, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Vahvista sormenjäljellä tai salasanalla"
+msgid "Bad password: %s"
+msgstr ""

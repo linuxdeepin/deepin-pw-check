@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-03 14:59+0800\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
 "PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Cindy0514, 2021\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/linuxdeepin/teams/3617/zh_TW/)\n"
@@ -21,55 +21,64 @@ msgstr ""
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: lib/deepin_pw_check.c:516
+#: lib/deepin_pw_check.c:545
 msgid "Invalid error type"
 msgstr "無效錯誤類型"
 
-#: lib/deepin_pw_check.c:527
+#: lib/deepin_pw_check.c:555
 msgid "Checking successful"
 msgstr "校驗成功"
 
-#: lib/deepin_pw_check.c:529
+#: lib/deepin_pw_check.c:557
 msgid "The password cannot be empty"
 msgstr "密碼不能為空"
 
-#: lib/deepin_pw_check.c:532
+#: lib/deepin_pw_check.c:561
 #, c-format
 msgid "Password must have at least %d characters"
 msgstr "密碼長度不能少於%d個字元"
 
-#: lib/deepin_pw_check.c:536
+#: lib/deepin_pw_check.c:566
 #, c-format
 msgid "Password must be no more than %d characters"
 msgstr "密碼長度不能超過%d個字元"
 
-#: lib/deepin_pw_check.c:540
+#: lib/deepin_pw_check.c:570
 #, c-format
 msgid "Password can only contain %s"
 msgstr "密碼只能由%s組成"
 
-#: lib/deepin_pw_check.c:544
+#: lib/deepin_pw_check.c:577
 #, c-format
 msgid "Password must not contain more than %d palindrome characters"
 msgstr "密碼不得含有連續%d個以上的回文字元"
 
-#: lib/deepin_pw_check.c:547 lib/deepin_pw_check.c:549
-#: lib/deepin_pw_check.c:551 lib/deepin_pw_check.c:561
-msgid "It does not meet password rules"
-msgstr "密碼不符合安全要求"
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
+msgstr "密碼過於簡單，請增加密碼複雜度"
 
-#: lib/deepin_pw_check.c:553
+#: lib/deepin_pw_check.c:587
 msgid "Do not use common words and combinations as password"
 msgstr "密碼不能是常見單詞及組合"
 
-#: lib/deepin_pw_check.c:555
+#: lib/deepin_pw_check.c:589
 msgid "Parameter options are invalid"
 msgstr "無效參數選項"
 
-#: lib/deepin_pw_check.c:557
+#: lib/deepin_pw_check.c:591
 msgid "Internal error"
 msgstr "內部錯誤"
 
-#: lib/deepin_pw_check.c:559
+#: lib/deepin_pw_check.c:593
 msgid "Invalid user"
 msgstr "無效使用者"
+
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "密碼不符合安全要求"
+
+#: pam/pam.c:107
+#, c-format
+msgid "Bad password: %s"
+msgstr "無效的密碼：%s"

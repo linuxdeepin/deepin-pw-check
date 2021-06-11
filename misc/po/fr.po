@@ -4,9 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
-# n1coc4cola <n1coc4cola@gmail.com>, 2020
-# ba56da5c479245883255d97580e861b5_327de87 <cc1517672f7d7ecc8d2a76b655e9f30b_134975>, 2021
+# steph gamersys <s.gamersys@gmail.com>, 2021
 # roxfr <roxfr@outlook.fr>, 2021
 # 
 #, fuzzy
@@ -14,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: roxfr <roxfr@outlook.fr>, 2021\n"
 "Language-Team: French (https://www.transifex.com/linuxdeepin/teams/3617/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -24,83 +22,64 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "Erreur de vérification"
+#: lib/deepin_pw_check.c:545
+msgid "Invalid error type"
+msgstr "Type invalide"
 
-#: misc/pam-module/pam_auth.c:287
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr ""
-"Vérification des empreintes digitales non disponible, veuillez saisir le mot"
-" de passe"
-
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "Nettoyez votre doigt et réessayer"
-
-#: misc/pam-module/pam_auth.c:311
-#, c-format
-msgid "Finger not centered"
-msgstr "Doigt non centré"
-
-#: misc/pam-module/pam_auth.c:319
-#, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr ""
-"Empreinte digitale peu claire, veuillez nettoyer votre doigt et réessayer"
-
-#: misc/pam-module/pam_auth.c:323
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr ""
-"Le doigt s'est déplacé trop rapidement, veuillez ne pas le soulever avant "
-"d'y être invité"
-
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
-#, c-format
-msgid "Password"
-msgstr "Mot de passe"
-
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
+#: lib/deepin_pw_check.c:555
+msgid "Checking successful"
 msgstr "Vérification réussie"
 
-#: misc/pam-module/pam_auth.c:457
+#: lib/deepin_pw_check.c:557
+msgid "The password cannot be empty"
+msgstr "Le mot de passe ne peut pas être vide"
+
+#: lib/deepin_pw_check.c:561
 #, c-format
-msgid "Fingerprint locked, use password please"
+msgid "Password must have at least %d characters"
+msgstr "Le mot de passe doit comporter au moins %d caractères"
+
+#: lib/deepin_pw_check.c:566
+#, c-format
+msgid "Password must be no more than %d characters"
+msgstr "Le mot de passe ne doit pas comporter plus de %dcaractères"
+
+#: lib/deepin_pw_check.c:570
+#, c-format
+msgid "Password can only contain %s"
+msgstr "Le mot de passe peut seulement contenir %s "
+
+#: lib/deepin_pw_check.c:577
+#, c-format
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "Le mot de passe ne doit pas contenir plus de %dcaractères spéciaux "
+
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
+msgstr "Veuillez créer un mot de passe fort, s'il vous plaît"
+
+#: lib/deepin_pw_check.c:587
+msgid "Do not use common words and combinations as password"
+msgstr "N'utiliser pas de mots et de combinaisons courants comme mot de passe"
+
+#: lib/deepin_pw_check.c:589
+msgid "Parameter options are invalid"
+msgstr "Options paramètres invalide"
+
+#: lib/deepin_pw_check.c:591
+msgid "Internal error"
+msgstr "Erreur Interne"
+
+#: lib/deepin_pw_check.c:593
+msgid "Invalid user"
+msgstr "Utilisateur Invalide"
+
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "Le mot de passe ne répond pas aux règles "
+
+#: pam/pam.c:107
+#, c-format
+msgid "Bad password: %s"
 msgstr ""
-"Empreinte digitale verrouillée, utiliser le mot de passe, s'il vous plaît"
-
-#: misc/pam-module/pam_auth.c:461
-#, c-format
-msgid "Verification failed, %d chances left"
-msgstr "La vérification a échoué, il vous reste %d essais"
-
-#: misc/pam-module/pam_auth.c:463
-#, c-format
-msgid "Verification failed, only one chance left"
-msgstr "La vérification a échoué, il ne reste qu'une seule chance"
-
-#: misc/pam-module/pam_auth.c:589
-#, c-format
-msgid "Please retry after %d minutes"
-msgstr ""
-
-#: misc/pam-module/pam_auth.c:591
-#, c-format
-msgid "Please retry after one minute"
-msgstr ""
-
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "Chances restantes : %d"
-
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Vérifiez votre empreinte digitale ou votre mot de passe"

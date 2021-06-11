@@ -4,8 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Diego Sanguinetti, 2021
-# jhalo <jhalo@protonmail.com>, 2021
+# Panwar108 <caspian7pena@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
@@ -14,70 +13,70 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-11 15:30+0800\n"
 "PO-Revision-Date: 2021-03-03 05:18+0000\n"
-"Last-Translator: jhalo <jhalo@protonmail.com>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/linuxdeepin/teams/3617/es/)\n"
+"Last-Translator: Panwar108 <caspian7pena@gmail.com>, 2021\n"
+"Language-Team: Hindi (India) (https://www.transifex.com/linuxdeepin/teams/3617/hi_IN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
+"Language: hi_IN\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: lib/deepin_pw_check.c:545
 msgid "Invalid error type"
-msgstr "Error de tipo inválido"
+msgstr "अमान्य त्रुटि प्रकार"
 
 #: lib/deepin_pw_check.c:555
 msgid "Checking successful"
-msgstr "Verificación exitosa"
+msgstr "जाँच सफल"
 
 #: lib/deepin_pw_check.c:557
 msgid "The password cannot be empty"
-msgstr "La contraseña no puede estar vacía"
+msgstr "कूटशब्द रिक्त नहीं होना चाहिए"
 
 #: lib/deepin_pw_check.c:561
 #, c-format
 msgid "Password must have at least %d characters"
-msgstr "La contraseña debe tener al menos %d caracteres"
+msgstr "कूटशब्द में कम-से-कम %d अक्षर होना आवश्यक है"
 
 #: lib/deepin_pw_check.c:566
 #, c-format
 msgid "Password must be no more than %d characters"
-msgstr "La contraseña no debe tener más de %d caracteres"
+msgstr "कूटशब्द में %d से अधिक अक्षर नहीं होने चाहिए"
 
 #: lib/deepin_pw_check.c:570
 #, c-format
 msgid "Password can only contain %s"
-msgstr "La contraseña solo puede tener %s"
+msgstr "कूटशब्द में केवल %s होना स्वीकार्य है"
 
 #: lib/deepin_pw_check.c:577
 #, c-format
 msgid "Password must not contain more than %d palindrome characters"
-msgstr "La contraseña no puede tener más de %d caracteres palíndromos"
+msgstr "कूटशब्द में %d से अधिक विलोमपद अक्षर नहीं होने चाहिए"
 
 #: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
 #: lib/deepin_pw_check.c:585
 msgid "Create a strong password please"
-msgstr "Por favor, cree una contraseña fuerte"
+msgstr ""
 
 #: lib/deepin_pw_check.c:587
 msgid "Do not use common words and combinations as password"
-msgstr "No use palabras o combinaciones comunes como contraseña"
+msgstr "कूटशब्द हेतु साधारण शब्द व संयोजन उपयोग न करें"
 
 #: lib/deepin_pw_check.c:589
 msgid "Parameter options are invalid"
-msgstr "Las opciones parametrales no son válidas"
+msgstr "अमान्य मापदंड विकल्प"
 
 #: lib/deepin_pw_check.c:591
 msgid "Internal error"
-msgstr "Error interno"
+msgstr "आंतरिक त्रुटि"
 
 #: lib/deepin_pw_check.c:593
 msgid "Invalid user"
-msgstr "Usuario invalido"
+msgstr "अमान्य उपयोक्ता"
 
 #: lib/deepin_pw_check.c:595
 msgid "It does not meet password rules"
-msgstr "No cumple con las reglas de la contraseña"
+msgstr "यह कूटशब्द नियमानुसार नहीं है"
 
 #: pam/pam.c:107
 #, c-format

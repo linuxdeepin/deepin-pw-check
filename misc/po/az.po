@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
 # Xəyyam Qocayev <xxmn77@gmail.com>, 2021
 # 
 #, fuzzy
@@ -12,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Xəyyam Qocayev <xxmn77@gmail.com>, 2021\n"
 "Language-Team: Azerbaijani (https://www.transifex.com/linuxdeepin/teams/3617/az/)\n"
 "MIME-Version: 1.0\n"
@@ -22,80 +21,64 @@ msgstr ""
 "Language: az\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "Doörulama xətası"
+#: lib/deepin_pw_check.c:545
+msgid "Invalid error type"
+msgstr "Səhv xəta növü"
 
-#: misc/pam-module/pam_auth.c:287
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr "Barmaq izi doğrulaması mümkün deyil, lütfən şifrəni daxil edin"
+#: lib/deepin_pw_check.c:555
+msgid "Checking successful"
+msgstr "Uğurla yoxlanıldı"
 
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
-#, c-format
-msgid "Clean your finger and try again"
-msgstr "Barmağınızı təmizləyin və yenidən cəhd edin"
+#: lib/deepin_pw_check.c:557
+msgid "The password cannot be empty"
+msgstr "Şifrə boş ola bilməz"
 
-#: misc/pam-module/pam_auth.c:311
+#: lib/deepin_pw_check.c:561
 #, c-format
-msgid "Finger not centered"
-msgstr "Barmaq sensorun ortasında deyil"
+msgid "Password must have at least %d characters"
+msgstr "Şifrə ən az %d simvoldan ibarət olmalıdır"
 
-#: misc/pam-module/pam_auth.c:319
+#: lib/deepin_pw_check.c:566
 #, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
+msgid "Password must be no more than %d characters"
+msgstr "Şifrə %d simvoldan böyük olmamalıdır"
+
+#: lib/deepin_pw_check.c:570
+#, c-format
+msgid "Password can only contain %s"
+msgstr "Şifrədə yalnız %s ola bilər"
+
+#: lib/deepin_pw_check.c:577
+#, c-format
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "Şifrə %d simvoldan çox palindromdan ibarət olmamalıdır"
+
+#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
+#: lib/deepin_pw_check.c:585
+msgid "Create a strong password please"
+msgstr "Lütfən güclü şifrə yaradın"
+
+#: lib/deepin_pw_check.c:587
+msgid "Do not use common words and combinations as password"
+msgstr "Şifrə olaraq ümumi sözlərdən və söz birləşmələrindən istifadə etməyin"
+
+#: lib/deepin_pw_check.c:589
+msgid "Parameter options are invalid"
+msgstr "Parametr seçimləri səhvdir"
+
+#: lib/deepin_pw_check.c:591
+msgid "Internal error"
+msgstr "Daxili xəta"
+
+#: lib/deepin_pw_check.c:593
+msgid "Invalid user"
+msgstr "Bu doğru istifadəçi deyil"
+
+#: lib/deepin_pw_check.c:595
+msgid "It does not meet password rules"
+msgstr "Bu, şifrə qaydalarına uyğun deyil"
+
+#: pam/pam.c:107
+#, c-format
+msgid "Bad password: %s"
 msgstr ""
-"Barmaq təmiz deyil, lütfən barmağınızı təmizləyin və yenidən cəhd edin"
-
-#: misc/pam-module/pam_auth.c:323
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr ""
-"Barmağı çox tez qaldırdınız, lütfən, cihaz kiliddən çıxana qədər barmağı "
-"qaldırmayın"
-
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
-#, c-format
-msgid "Password"
-msgstr "Şifrə"
-
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
-msgstr "Doğrulama uğurlu oldu"
-
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "Barmaq izi kilidləndi, şifrədən istifadə edin"
-
-#: misc/pam-module/pam_auth.c:461
-#, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Doğrulama alınmadı, %d cəhd qaldı"
-
-#: misc/pam-module/pam_auth.c:463
-#, c-format
-msgid "Verification failed, only one chance left"
-msgstr "Doğrulama alınmadı, yalnız bir cəhd qaldı"
-
-#: misc/pam-module/pam_auth.c:589
-#, c-format
-msgid "Please retry after %d minutes"
-msgstr ""
-
-#: misc/pam-module/pam_auth.c:591
-#, c-format
-msgid "Please retry after one minute"
-msgstr ""
-
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "Qalan cəhd: %d"
-
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Barmaq izi və ya şifrənizi doğrulayın"

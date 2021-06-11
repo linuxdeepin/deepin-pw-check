@@ -2,44 +2,14 @@
 	<context>
 		<name>policy</name>
 		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.enroll!message" line="0"/>
-			<source>Authentication is required to add fingerprint password</source>
-			<translation>Идентификација је неопходна да додате отисак лозинку</translation>
+			<location filename="com.deepin.daemon.passwdconf.modify-config!message" line="0"/>
+			<source>Authentication is required to modify the configuration for password validation</source>
+			<translation>Идентификација је неопходна да измените поставке за потврду лозинки</translation>
 		</message>
 		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.enroll!description" line="0"/>
-			<source>Add fingerprint password</source>
-			<translation>Додај отисак лозинку</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.delete-enrolled-fingers!message" line="0"/>
-			<source>Authentication is required to clear fingerprint passwords</source>
-			<translation>Идентификација је неопходна да обришете отисак лозинку</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.delete-enrolled-fingers!description" line="0"/>
-			<source>Clear fingerprint passwords</source>
-			<translation>Обриши отисак лозинку</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.rename-enrolled-finger!message" line="0"/>
-			<source>Authentication is required to rename fingerprint password</source>
-			<translation>Идентификација је неопходна да преименујете отисак лозинку</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.rename-enrolled-finger!description" line="0"/>
-			<source>Rename fingerprint password</source>
-			<translation>Преименуј отисак лозинку</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.manage!message" line="0"/>
-			<source>Password is required to perform this action</source>
-			<translation>Лозинка је потребна за овај поступак</translation>
-		</message>
-		<message>
-			<location filename="com.deepin.daemon.authenticate.Fingerprint.manage!description" line="0"/>
-			<source>Manage fingerprint passwords</source>
-			<translation>Управљај отисак лозинкама</translation>
+			<location filename="com.deepin.daemon.passwdconf.modify-config!description" line="0"/>
+			<source>Modify</source>
+			<translation>Измени</translation>
 		</message>
 	</context>
 </TS>
