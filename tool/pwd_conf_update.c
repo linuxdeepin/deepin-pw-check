@@ -170,8 +170,8 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sVALIDATE_POLICY = \"%s\"\n",
                 append_string,
-                "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~`!@#$%^&*()-_+=|"
-                "\\{}[]:\"'<>,.?/");
+                "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
+                ":;<=>?@[\\]^_`{|}~ /");
         DEBUG("set VALIDATE_POLICY");
     } else {
         char cmd[512];
@@ -180,8 +180,8 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sVALIDATE_POLICY = \"%s\"\n",
                 append_string,
-                "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~`!@#$%^&*()-_+=|"
-                "\\{}[]:\"'<>,.?/");
+                "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
+                ":;<=>?@[\\]^_`{|}~ /");
         DEBUG("set VALIDATE_POLICY after delete");
     }
 
