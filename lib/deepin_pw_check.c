@@ -209,21 +209,29 @@ bool is_type_valid(const char *pw, char *character_type, int character_num_requi
         char *next_data_addr = NULL;
 
         // 如果当前字符是特殊字符，并且下个 ; 之后的内容也是特殊字符, 则他们作为一组判断
-        if ((*p >= 33 && *p <= 64) || (*p >= 91 && *p <= 96) || (*p >= 123 && *p <= 126)) {
+        if ((*p >= 33 && *p <= 47) || (*p >= 58 && *p <= 64) || (*p >= 91 && *p <= 96) ||
+            (*p >= 123 && *p <= 126)) {
 
+            int character_type_length = strlen(character_type);
             next_data_addr = p + strlen(p) + 1;
-            if ((*next_data_addr >= 33 && *next_data_addr <= 64) ||
-                (*next_data_addr >= 91 && *next_data_addr <= 96) ||
-                (*next_data_addr >= 123 && *next_data_addr <= 126)) {
-                char p_tmp[BUFF_SIZE];
-                memset(p_tmp, 0, BUFF_SIZE);
-                memcpy(p_tmp, p, strlen(p));
-                int offset = strlen(p);
-                p_tmp[strlen(p)] = ';';
-                offset += 1;
-                p = strtok(NULL, ";");
-                memcpy(p_tmp + offset, p, strlen(p));
-                p = p_tmp;
+
+            if (next_data_addr - character_type_tmp < character_type_length) {
+                if ((*next_data_addr >= 33 && *next_data_addr <= 47) ||
+                    (*next_data_addr >= 58 && *next_data_addr <= 64) ||
+                    (*next_data_addr >= 91 && *next_data_addr <= 96) ||
+                    (*next_data_addr >= 123 && *next_data_addr <= 126)) {
+                    char p_tmp[BUFF_SIZE];
+                    memset(p_tmp, 0, BUFF_SIZE);
+                    memcpy(p_tmp, p, strlen(p));
+                    int offset = strlen(p);
+                    p_tmp[strlen(p)] = ';';
+                    offset += 1;
+                    char *pp = strtok(NULL, ";");
+                    if (pp != NULL) {
+                        memcpy(p_tmp + offset, pp, strlen(pp));
+                        p = p_tmp;
+                    }
+                }
             }
         }
 
