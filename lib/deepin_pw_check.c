@@ -188,6 +188,22 @@ PW_ERROR_TYPE is_length_valid(const char *pw, int min_len, int max_len) {
     return PW_NO_ERR;
 }
 
+bool include_chinese(const char *data) {
+    char c;
+    while (1) {
+        c = *data++;
+        //如果到字符串尾则说明该字符串没有中文字符
+        if (c == 0) {
+            break;
+        }
+        //如果字符高位为1且下一字符高位也是1则有中文字符
+        if (c & 0x80 && *data & 0x80) {
+            return true;
+        }
+    }
+    return false;
+}
+
 bool is_type_valid(const char *pw, char *character_type, int character_num_required) {
 
     DEBUG("called,pw is %s,character policy is %s,required is %d",
@@ -197,6 +213,11 @@ bool is_type_valid(const char *pw, char *character_type, int character_num_requi
 
     int pass = 0;
     char *p = NULL;
+
+    DEBUG("check include_chinese");
+    if (include_chinese(pw)) {
+        return false;
+    }
 
     char *character_type_tmp = (char *)malloc(strlen(character_type) + 1);
     strcpy(character_type_tmp, character_type);
