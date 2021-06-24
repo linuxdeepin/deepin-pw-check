@@ -7,10 +7,11 @@
 #include <errno.h>
 
 #define PASSWD_CONF_FILE_PATH "/etc/deepin/dde.conf"
-#define OS_VERSION_FILE_PATH "/etc/deepin-version"
+#define OS_VERSION_FILE_PATH "/etc/os-version"
 
-#define PROFESSIONAL_OS_TYPE_STRING "Professional"
+#define PROFESSIONAL_OS_TYPE "Professional"
 #define SERVER_OS_TYPE_STRING "Server"
+#define EULER_OS_TYPE_STRING "Euler"
 
 static bool debug_flag = 0;
 
@@ -29,8 +30,73 @@ typedef enum {
     OS_UNEXPECTED_ERR = -1,
     OS_PROFESSIONAL = 0,
     OS_SERVER,
+    OS_EULER,
     OS_UNKNOWN_TYPE,
 } OS_TYPE;
+
+const char *os_type_string[] = {
+        [OS_PROFESSIONAL] = PROFESSIONAL_OS_TYPE,
+        [OS_SERVER] = SERVER_OS_TYPE_STRING,
+        [OS_EULER] = EULER_OS_TYPE_STRING,
+        [OS_UNKNOWN_TYPE] = "UNKNOWN",
+};
+
+typedef struct {
+    int min_length;
+    int max_length;
+    char *validate_policy;
+    int validate_required;
+    int palindorme_num;
+    int word_check;
+    int monotone_same_character_num;
+    int consecutive_same_character_num;
+    int first_letter_uppercase;
+} _default_conf;
+
+const _default_conf default_conf[] = {
+        [OS_PROFESSIONAL] =
+                {
+                        .min_length = 1,
+                        .max_length = 511,
+                        .validate_policy = "1234567890;abcdefghijklmnopqrstuvwxyz;"
+                                           "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
+                                           ":;<=>?@[\\]^_`{|}~ /",
+                        .validate_required = 1,
+                        .palindorme_num = 0,
+                        .word_check = 0,
+                        .monotone_same_character_num = 0,
+                        .consecutive_same_character_num = 0,
+                        .first_letter_uppercase = 0,
+                },
+        [OS_SERVER] =
+                {
+                        .min_length = 8,
+                        .max_length = 511,
+                        .validate_policy = "1234567890;abcdefghijklmnopqrstuvwxyz;"
+                                           "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
+                                           ":;<=>?@[\\]^_`{|}~ /",
+                        .validate_required = 3,
+                        .palindorme_num = 4,
+                        .word_check = 1,
+                        .monotone_same_character_num = 3,
+                        .consecutive_same_character_num = 3,
+                        .first_letter_uppercase = 0,
+                },
+        [OS_EULER] =
+                {
+                        .min_length = 8,
+                        .max_length = 510,
+                        .validate_policy = "1234567890;abcdefghijklmnopqrstuvwxyz;"
+                                           "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
+                                           ":;<=>?@[\\]^_`{|}~ /",
+                        .validate_required = 3,
+                        .palindorme_num = 4,
+                        .word_check = 1,
+                        .monotone_same_character_num = 3,
+                        .consecutive_same_character_num = 3,
+                        .first_letter_uppercase = 0,
+                },
+};
 
 OS_TYPE get_current_os_type() {
     dictionary *dic;
@@ -40,17 +106,28 @@ OS_TYPE get_current_os_type() {
         return OS_UNEXPECTED_ERR;
     }
 
-    const char *os_type = iniparser_getstring(dic, "Release:Type", "Professional");
+    const char *os_type = iniparser_getstring(dic, "Version:OsBuild", "11018.100");
 
-    DEBUG("os is %s", os_type);
+    char c_tmp[1];
+    c_tmp[0] = os_type[1];
+    int b = atoi(c_tmp);
+    c_tmp[0] = os_type[3];
+    int d = atoi(c_tmp);
 
-    if (strcmp(os_type, PROFESSIONAL_OS_TYPE_STRING) == 0) {
+    if (b == 1) {
         ret = OS_PROFESSIONAL;
-    } else if (strcmp(os_type, SERVER_OS_TYPE_STRING) == 0) {
+    } else if (b == 2) {
+        ret = OS_SERVER;
+        if (d == 3) {
+            ret = OS_EULER;
+        }
+    } else if (b == 3) {
         ret = OS_SERVER;
     } else {
         ret = OS_UNKNOWN_TYPE;
     }
+
+    DEBUG("os is %s", os_type_string[ret]);
 
     iniparser_freedict(dic);
     return ret;
@@ -134,17 +211,22 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sPASSWORD_MIN_LENGTH = %d\n",
                 append_string,
-                os_type == OS_PROFESSIONAL ? 1 : 8);
+                default_conf[os_type].min_length);
         DEBUG("set PASSWORD_MIN_LENGTH");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sPASSWORD_MIN_LENGTH = %d\n", append_string, 8);
+            sprintf(append_string,
+                    "%sPASSWORD_MIN_LENGTH = %d\n",
+                    append_string,
+                    default_conf[os_type].min_length);
             DEBUG("restore PASSWORD_MIN_LENGTH");
         } else {
             sprintf(append_string,
                     "%sPASSWORD_MIN_LENGTH = %d\n",
                     append_string,
-                    iniparser_getint(dic, "Password:PASSWORD_MIN_LENGTH", 1));
+                    iniparser_getint(dic,
+                                     "Password:PASSWORD_MIN_LENGTH",
+                                     default_conf[os_type].min_length));
         }
     }
 
@@ -152,17 +234,22 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sPASSWORD_MAX_LENGTH = %d\n",
                 append_string,
-                os_type == OS_PROFESSIONAL ? 511 : 511);
+                default_conf[os_type].max_length);
         DEBUG("set PASSWORD_MAX_LENGTH");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sPASSWORD_MAX_LENGTH = %d\n", append_string, 511);
+            sprintf(append_string,
+                    "%sPASSWORD_MAX_LENGTH = %d\n",
+                    append_string,
+                    default_conf[os_type].max_length);
             DEBUG("restore PASSWORD_MAX_LENGTH");
         } else {
             sprintf(append_string,
                     "%sPASSWORD_MAX_LENGTH = %d\n",
                     append_string,
-                    iniparser_getint(dic, "Password:PASSWORD_MAX_LENGTH", 511));
+                    iniparser_getint(dic,
+                                     "Password:PASSWORD_MAX_LENGTH",
+                                     default_conf[os_type].max_length));
         }
     }
 
@@ -170,8 +257,7 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sVALIDATE_POLICY = \"%s\"\n",
                 append_string,
-                "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
-                ":;<=>?@[\\]^_`{|}~ /");
+                default_conf[os_type].validate_policy);
         DEBUG("set VALIDATE_POLICY");
     } else {
         char cmd[512];
@@ -180,8 +266,7 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sVALIDATE_POLICY = \"%s\"\n",
                 append_string,
-                "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
-                ":;<=>?@[\\]^_`{|}~ /");
+                default_conf[os_type].validate_policy);
         DEBUG("set VALIDATE_POLICY after delete");
     }
 
@@ -189,17 +274,22 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sVALIDATE_REQUIRED = %d\n",
                 append_string,
-                os_type == OS_PROFESSIONAL ? 1 : 3);
+                default_conf[os_type].validate_required);
         DEBUG("set VALIDATE_REQUIRED");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sVALIDATE_REQUIRED = %d\n", append_string, 3);
+            sprintf(append_string,
+                    "%sVALIDATE_REQUIRED = %d\n",
+                    append_string,
+                    default_conf[os_type].validate_required);
             DEBUG("restore VALIDATE_REQUIRED");
         } else {
             sprintf(append_string,
                     "%sVALIDATE_REQUIRED = %d\n",
                     append_string,
-                    iniparser_getint(dic, "Password:VALIDATE_REQUIRED", 1));
+                    iniparser_getint(dic,
+                                     "Password:VALIDATE_REQUIRED",
+                                     default_conf[os_type].validate_required));
         }
     }
 
@@ -207,17 +297,22 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sPALINDROME_NUM = %d\n",
                 append_string,
-                os_type == OS_PROFESSIONAL ? 0 : 4);
+                default_conf[os_type].palindorme_num);
         DEBUG("set PALINDROME_NUM");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sPALINDROME_NUM = %d\n", append_string, 4);
+            sprintf(append_string,
+                    "%sPALINDROME_NUM = %d\n",
+                    append_string,
+                    default_conf[os_type].palindorme_num);
             DEBUG("restore PALINDROME_NUM");
         } else {
             sprintf(append_string,
                     "%sPALINDROME_NUM = %d\n",
                     append_string,
-                    iniparser_getint(dic, "Password:PALINDROME_NUM", 0));
+                    iniparser_getint(dic,
+                                     "Password:PALINDROME_NUM",
+                                     default_conf[os_type].palindorme_num));
         }
     }
 
@@ -225,17 +320,20 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sWORD_CHECK = %d\n",
                 append_string,
-                os_type == OS_PROFESSIONAL ? 0 : 1);
+                default_conf[os_type].word_check);
         DEBUG("set WORD_CHECK");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sWORD_CHECK = %d\n", append_string, 1);
+            sprintf(append_string,
+                    "%sWORD_CHECK = %d\n",
+                    append_string,
+                    default_conf[os_type].word_check);
             DEBUG("restore WORD_CHECK");
         } else {
             sprintf(append_string,
                     "%sWORD_CHECK = %d\n",
                     append_string,
-                    iniparser_getint(dic, "Password:WORD_CHECK", 0));
+                    iniparser_getint(dic, "Password:WORD_CHECK", default_conf[os_type].word_check));
         }
     }
 
@@ -243,17 +341,22 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sMONOTONE_CHARACTER_NUM = %d\n",
                 append_string,
-                os_type == OS_PROFESSIONAL ? 0 : 3);
+                default_conf[os_type].monotone_same_character_num);
         DEBUG("set MONOTONE_CHARACTER_NUM");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sMONOTONE_CHARACTER_NUM = %d\n", append_string, 3);
+            sprintf(append_string,
+                    "%sMONOTONE_CHARACTER_NUM = %d\n",
+                    append_string,
+                    default_conf[os_type].monotone_same_character_num);
             DEBUG("restore MONOTONE_CHARACTER_NUM");
         } else {
             sprintf(append_string,
                     "%sMONOTONE_CHARACTER_NUM = %d\n",
                     append_string,
-                    iniparser_getint(dic, "Password:MONOTONE_CHARACTER_NUM", 0));
+                    iniparser_getint(dic,
+                                     "Password:MONOTONE_CHARACTER_NUM",
+                                     default_conf[os_type].monotone_same_character_num));
         }
     }
 
@@ -261,17 +364,22 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string,
                 "%sCONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
                 append_string,
-                os_type == OS_PROFESSIONAL ? 0 : 3);
+                default_conf[os_type].consecutive_same_character_num);
         DEBUG("set CONSECUTIVE_SAME_CHARACTER_NUM");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sCONSECUTIVE_SAME_CHARACTER_NUM = %d\n", append_string, 3);
+            sprintf(append_string,
+                    "%sCONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
+                    append_string,
+                    default_conf[os_type].consecutive_same_character_num);
             DEBUG("restore CONSECUTIVE_SAME_CHARACTER_NUM");
         } else {
             sprintf(append_string,
                     "%sCONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
                     append_string,
-                    iniparser_getint(dic, "Password:CONSECUTIVE_SAME_CHARACTER_NUM", 0));
+                    iniparser_getint(dic,
+                                     "Password:CONSECUTIVE_SAME_CHARACTER_NUM",
+                                     default_conf[os_type].consecutive_same_character_num));
         }
     }
 
