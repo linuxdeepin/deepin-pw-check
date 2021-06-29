@@ -59,6 +59,7 @@ if [ "$1" = "0" ] ; then
 fi
 
 %install
+mkdir -p %{buildroot}/%{_sysconfdir}/deepin
 export GOPATH=%{_datadir}/gocode
 export PKG_FILE_DIR=%{_libdir}/pkgconfig
 %make_install PKG_FILE_DIR=%{_libdir}/pkgconfig LIBDIR=lib64 PAM_MODULE_DIR=%{_libdir}/security GOBUILD="go build -compiler gc -ldflags \"-B $BUILDID\""
@@ -68,6 +69,7 @@ export PKG_FILE_DIR=%{_libdir}/pkgconfig
 %files -f deepin-pw-check.lang
 %doc README.md
 %license
+%dir %{_sysconfdir}/deepin
 %{_bindir}/pwd-conf-update
 %{_prefix}/lib/deepin-pw-check/deepin-pw-check
 %{_libdir}/libdeepin_pw_check.so.*
