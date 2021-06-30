@@ -60,7 +60,7 @@ const _default_conf default_conf[] = {
                         .max_length = 511,
                         .validate_policy = "1234567890;abcdefghijklmnopqrstuvwxyz;"
                                            "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
-                                           ":;<=>?@[\\]^_`{|}~ /",
+                                           ":;<=>?@[\\]^_`{|}~/",
                         .validate_required = 1,
                         .palindorme_num = 0,
                         .word_check = 0,
@@ -74,7 +74,7 @@ const _default_conf default_conf[] = {
                         .max_length = 511,
                         .validate_policy = "1234567890;abcdefghijklmnopqrstuvwxyz;"
                                            "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
-                                           ":;<=>?@[\\]^_`{|}~ /",
+                                           ":;<=>?@[\\]^_`{|}~/",
                         .validate_required = 3,
                         .palindorme_num = 4,
                         .word_check = 1,
@@ -88,7 +88,7 @@ const _default_conf default_conf[] = {
                         .max_length = 510,
                         .validate_policy = "1234567890;abcdefghijklmnopqrstuvwxyz;"
                                            "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
-                                           ":;<=>?@[\\]^_`{|}~ /",
+                                           ":;<=>?@[\\]^_`{|}~/",
                         .validate_required = 3,
                         .palindorme_num = 4,
                         .word_check = 1,

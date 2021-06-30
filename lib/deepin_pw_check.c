@@ -109,8 +109,8 @@ retry:
     options->max_len = iniparser_getint(dic, "Password:PASSWORD_MAX_LENGTH", 512);
     if (iniparser_find_entry(dic, "Password:VALIDATE_POLICY") == 0) {
         strcpy(read_buff,
-               "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~`"
-               "!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/");
+               "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
+               ":;<=>?@[\\]^_`{|}~/");
     } else {
         DEBUG("get_validate_policy");
         get_validate_policy(read_buff);
