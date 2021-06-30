@@ -25,6 +25,8 @@ BuildRequires:  go-lib-devel
 BuildRequires:  go-gir-generator
 
 Requires:		polkit
+Requires:		license-config
+
 %description
 In order to unify the authentication interface,
 this interface is designed to adapt to fingerprint, face and other authentication methods.
