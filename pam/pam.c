@@ -11,6 +11,7 @@
 #include <string.h>
 #include <syslog.h>
 #include <unistd.h>
+#include <locale.h>
 
 #undef DEBUG
 #define DEBUG(format, ...)                                                                         \
@@ -104,9 +105,17 @@ int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
             DEBUG("check ret: %d", ret);
 
             if (ret != PW_NO_ERR) {
+                setlocale(LC_ALL, "");
+                char *current_domain = textdomain(NULL);
+                textdomain("deepin-pw-check");
+
                 sprintf(outbuf, gettext("Bad password: %s"), err_to_string((PW_ERROR_TYPE)ret));
                 printf("%s\n", outbuf);
                 pam_set_item(pamh, PAM_AUTHTOK, NULL);
+
+                setlocale(LC_ALL, "");
+                textdomain(current_domain);
+
                 continue;
             }
 
