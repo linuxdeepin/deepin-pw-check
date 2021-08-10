@@ -189,232 +189,215 @@ int update_conf(OS_TYPE os_type) {
     }
 
     char append_string[2048] = {0};
-    sprintf(append_string, "[Password]\n");
+    int offset = 0;
+    sprintf(append_string + offset, "[Password]\n");
+    offset = strlen(append_string);
 
     // 如果找不到该字段，则写默认的
     if (iniparser_find_entry(dic, "Password:STRONG_PASSWORD") == 0) {
-        sprintf(append_string, "%sSTRONG_PASSWORD = %s\n", append_string, "true");
+        sprintf(append_string + offset, "STRONG_PASSWORD = %s\n", "true");
         DEBUG("set STRONG_PASSWORD");
     } else {
         // 如果找到了该字段
         // 如果是服务器版，强制覆盖配置
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sSTRONG_PASSWORD = %s\n", append_string, "true");
+            sprintf(append_string + offset, "STRONG_PASSWORD = %s\n", "true");
             DEBUG("restore STRONG_PASSWORD");
         } else {
             // 如果不是服务器版，则维持原配置
-            sprintf(append_string, "%sSTRONG_PASSWORD = %s\n", append_string, "true");
+            sprintf(append_string + offset, "STRONG_PASSWORD = %s\n", "true");
         }
     }
+    offset = strlen(append_string);
 
     if (iniparser_find_entry(dic, "Password:PASSWORD_MIN_LENGTH") == 0) {
-        sprintf(append_string,
-                "%sPASSWORD_MIN_LENGTH = %d\n",
-                append_string,
+        sprintf(append_string + offset,
+                "PASSWORD_MIN_LENGTH = %d\n",
                 default_conf[os_type].min_length);
         DEBUG("set PASSWORD_MIN_LENGTH");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string,
-                    "%sPASSWORD_MIN_LENGTH = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "PASSWORD_MIN_LENGTH = %d\n",
                     default_conf[os_type].min_length);
             DEBUG("restore PASSWORD_MIN_LENGTH");
         } else {
-            sprintf(append_string,
-                    "%sPASSWORD_MIN_LENGTH = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "PASSWORD_MIN_LENGTH = %d\n",
                     iniparser_getint(dic,
                                      "Password:PASSWORD_MIN_LENGTH",
                                      default_conf[os_type].min_length));
         }
     }
+    offset = strlen(append_string);
 
     if (iniparser_find_entry(dic, "Password:PASSWORD_MAX_LENGTH") == 0) {
-        sprintf(append_string,
-                "%sPASSWORD_MAX_LENGTH = %d\n",
-                append_string,
+        sprintf(append_string + offset,
+                "PASSWORD_MAX_LENGTH = %d\n",
                 default_conf[os_type].max_length);
         DEBUG("set PASSWORD_MAX_LENGTH");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string,
-                    "%sPASSWORD_MAX_LENGTH = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "PASSWORD_MAX_LENGTH = %d\n",
                     default_conf[os_type].max_length);
             DEBUG("restore PASSWORD_MAX_LENGTH");
         } else {
-            sprintf(append_string,
-                    "%sPASSWORD_MAX_LENGTH = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "PASSWORD_MAX_LENGTH = %d\n",
                     iniparser_getint(dic,
                                      "Password:PASSWORD_MAX_LENGTH",
                                      default_conf[os_type].max_length));
         }
     }
+    offset = strlen(append_string);
 
     if (iniparser_find_entry(dic, "Password:VALIDATE_POLICY") == 0) {
-        sprintf(append_string,
-                "%sVALIDATE_POLICY = \"%s\"\n",
-                append_string,
+        sprintf(append_string + offset,
+                "VALIDATE_POLICY = \"%s\"\n",
                 default_conf[os_type].validate_policy);
         DEBUG("set VALIDATE_POLICY");
     } else {
         char cmd[512];
         sprintf(cmd, "sed \"/^VALIDATE_POLICY.*/\"d -i %s", PASSWD_CONF_FILE_PATH);
         system(cmd);
-        sprintf(append_string,
-                "%sVALIDATE_POLICY = \"%s\"\n",
-                append_string,
+        sprintf(append_string + offset,
+                "VALIDATE_POLICY = \"%s\"\n",
                 default_conf[os_type].validate_policy);
         DEBUG("set VALIDATE_POLICY after delete");
     }
+    offset = strlen(append_string);
 
     if (iniparser_find_entry(dic, "Password:VALIDATE_REQUIRED") == 0) {
-        sprintf(append_string,
-                "%sVALIDATE_REQUIRED = %d\n",
-                append_string,
+        sprintf(append_string + offset,
+                "VALIDATE_REQUIRED = %d\n",
                 default_conf[os_type].validate_required);
         DEBUG("set VALIDATE_REQUIRED");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string,
-                    "%sVALIDATE_REQUIRED = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "VALIDATE_REQUIRED = %d\n",
                     default_conf[os_type].validate_required);
             DEBUG("restore VALIDATE_REQUIRED");
         } else {
-            sprintf(append_string,
-                    "%sVALIDATE_REQUIRED = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "VALIDATE_REQUIRED = %d\n",
                     iniparser_getint(dic,
                                      "Password:VALIDATE_REQUIRED",
                                      default_conf[os_type].validate_required));
         }
     }
+    offset = strlen(append_string);
 
     if (iniparser_find_entry(dic, "Password:PALINDROME_NUM") == 0) {
-        sprintf(append_string,
-                "%sPALINDROME_NUM = %d\n",
-                append_string,
+        sprintf(append_string + offset,
+                "PALINDROME_NUM = %d\n",
                 default_conf[os_type].palindorme_num);
         DEBUG("set PALINDROME_NUM");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string,
-                    "%sPALINDROME_NUM = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "PALINDROME_NUM = %d\n",
                     default_conf[os_type].palindorme_num);
             DEBUG("restore PALINDROME_NUM");
         } else {
-            sprintf(append_string,
-                    "%sPALINDROME_NUM = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "PALINDROME_NUM = %d\n",
                     iniparser_getint(dic,
                                      "Password:PALINDROME_NUM",
                                      default_conf[os_type].palindorme_num));
         }
     }
+    offset = strlen(append_string);
 
     if (iniparser_find_entry(dic, "Password:WORD_CHECK") == 0) {
-        sprintf(append_string,
-                "%sWORD_CHECK = %d\n",
-                append_string,
-                default_conf[os_type].word_check);
+        sprintf(append_string + offset, "WORD_CHECK = %d\n", default_conf[os_type].word_check);
         DEBUG("set WORD_CHECK");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string,
-                    "%sWORD_CHECK = %d\n",
-                    append_string,
-                    default_conf[os_type].word_check);
+            sprintf(append_string + offset, "WORD_CHECK = %d\n", default_conf[os_type].word_check);
             DEBUG("restore WORD_CHECK");
         } else {
-            sprintf(append_string,
-                    "%sWORD_CHECK = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "WORD_CHECK = %d\n",
                     iniparser_getint(dic, "Password:WORD_CHECK", default_conf[os_type].word_check));
         }
     }
+    offset = strlen(append_string);
 
     if (iniparser_find_entry(dic, "Password:MONOTONE_CHARACTER_NUM") == 0) {
-        sprintf(append_string,
-                "%sMONOTONE_CHARACTER_NUM = %d\n",
-                append_string,
+        sprintf(append_string + offset,
+                "MONOTONE_CHARACTER_NUM = %d\n",
                 default_conf[os_type].monotone_same_character_num);
         DEBUG("set MONOTONE_CHARACTER_NUM");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string,
-                    "%sMONOTONE_CHARACTER_NUM = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "MONOTONE_CHARACTER_NUM = %d\n",
                     default_conf[os_type].monotone_same_character_num);
             DEBUG("restore MONOTONE_CHARACTER_NUM");
         } else {
-            sprintf(append_string,
-                    "%sMONOTONE_CHARACTER_NUM = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "MONOTONE_CHARACTER_NUM = %d\n",
                     iniparser_getint(dic,
                                      "Password:MONOTONE_CHARACTER_NUM",
                                      default_conf[os_type].monotone_same_character_num));
         }
     }
+    offset = strlen(append_string);
 
     if (iniparser_find_entry(dic, "Password:CONSECUTIVE_SAME_CHARACTER_NUM") == 0) {
-        sprintf(append_string,
-                "%sCONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
-                append_string,
+        sprintf(append_string + offset,
+                "CONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
                 default_conf[os_type].consecutive_same_character_num);
         DEBUG("set CONSECUTIVE_SAME_CHARACTER_NUM");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string,
-                    "%sCONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "CONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
                     default_conf[os_type].consecutive_same_character_num);
             DEBUG("restore CONSECUTIVE_SAME_CHARACTER_NUM");
         } else {
-            sprintf(append_string,
-                    "%sCONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "CONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
                     iniparser_getint(dic,
                                      "Password:CONSECUTIVE_SAME_CHARACTER_NUM",
                                      default_conf[os_type].consecutive_same_character_num));
         }
     }
+    offset = strlen(append_string);
 
     if (iniparser_find_entry(dic, "Password:DICT_PATH") == 0) {
-        sprintf(append_string, "%sDICT_PATH = %s\n", append_string, "");
-        DEBUG("set WORD_CHECK");
+        sprintf(append_string + offset, "DICT_PATH = %s\n", "");
+        DEBUG("set DICT_PATH");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sDICT_PATH = %s\n", append_string, "");
+            sprintf(append_string + offset, "DICT_PATH = %s\n", "");
             DEBUG("restore DICT_PATH");
         } else {
-            sprintf(append_string,
-                    "%sDICT_PATH = %s\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "DICT_PATH = %s\n",
                     iniparser_getstring(dic, "Password:DICT_PATH", ""));
         }
     }
+    offset = strlen(append_string);
 
     if (iniparser_find_entry(dic, "Password:FIRST_LETTER_UPPERCASE") == 0) {
-        sprintf(append_string, "%sFIRST_LETTER_UPPERCASE = %s\n", append_string, "false");
+        sprintf(append_string + offset, "FIRST_LETTER_UPPERCASE = %s\n", "false");
         DEBUG("set FIRST_LETTER_UPPERCASE");
     } else {
         if (OS_SERVER == os_type) {
-            sprintf(append_string, "%sFIRST_LETTER_UPPERCASE = %s\n", append_string, "false");
+            sprintf(append_string + offset, "FIRST_LETTER_UPPERCASE = %s\n", "false");
             DEBUG("restore FIRST_LETTER_UPPERCASE");
         } else {
-            sprintf(append_string,
-                    "%sFIRST_LETTER_UPPERCASE = %s\n",
-                    append_string,
+            sprintf(append_string + offset,
+                    "FIRST_LETTER_UPPERCASE = %s\n",
                     iniparser_getboolean(dic, "Password:FIRST_LETTER_UPPERCASE", false) ? "true"
                                                                                         : "false");
         }
     }
 
-    DEBUG("append string is %s", append_string);
+    DEBUG("append string :%s", append_string);
 
     if (strlen(append_string) == 0) {
         return 0;
