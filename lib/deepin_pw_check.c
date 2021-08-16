@@ -255,7 +255,9 @@ bool is_type_valid(const char *pw, char *character_type, int character_num_requi
 
     p = strtok(character_type_tmp, ";");
     int length = strlen(pw);
-    char all_character[512] = "\0";
+    char all_character[512];
+    memset(all_character, 0, sizeof(all_character));
+    int offset = 0;
 
     while (p != NULL) {
         char *next_data_addr = NULL;
@@ -286,8 +288,8 @@ bool is_type_valid(const char *pw, char *character_type, int character_num_requi
                 }
             }
         }
-
-        sprintf(all_character, "%s%s", all_character, p);
+        offset = strlen(all_character);
+        sprintf(all_character + offset, "%s", p);
         DEBUG("p is %s, all_character is %s", p, all_character);
         int ok = 0;
         for (int i = 0; i < length; i++) {
