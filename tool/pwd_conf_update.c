@@ -164,6 +164,53 @@ int parse_args(int argc, char **argv) {
     return 0;
 }
 
+void get_validate_policy(char *data) {
+    FILE *f = fopen(PASSWD_CONF_FILE_PATH, "r");
+    char buff[512];
+
+    if (f == NULL) {
+        return;
+    }
+
+    while (!feof(f)) {
+        fgets(buff, 512, f);
+        if (!strncmp(buff, "VALIDATE_POLICY", strlen("VALIDATA_POLICY"))) {
+            char *p = strchr(buff, '=');
+            char *end = strchr(buff, '\n');
+
+            if (p != NULL) {
+                int space_cnt = 1;
+                int find_quot = 0;
+                while (p[space_cnt] == ' ') {
+                    space_cnt++;
+                }
+                while (p[space_cnt] == '\"') {
+                    space_cnt++;
+                    find_quot = 1;
+                }
+                p = &p[space_cnt];
+                if (end != NULL) {
+                    int sub = 0;
+                    if (find_quot && (p[end - p - 1] == '\"')) {
+                        sub = 1;
+                    }
+                    strncpy(data, p, end - p - sub);
+                    data[end - p - sub] = '\0';
+                } else {
+                    int sub = 0;
+                    if (find_quot && (p[strlen(p) - 1] == '\"')) {
+                        sub = 1;
+                    }
+                    strncpy(data, p, strlen(p) - sub);
+                    data[strlen(p) - sub] = '\0';
+                }
+            }
+            break;
+        }
+    }
+    fclose(f);
+}
+
 int update_conf(OS_TYPE os_type) {
     dictionary *dic;
 
@@ -200,13 +247,15 @@ int update_conf(OS_TYPE os_type) {
     } else {
         // 如果找到了该字段
         // 如果是服务器版，强制覆盖配置
-        if (OS_SERVER == os_type) {
-            sprintf(append_string + offset, "STRONG_PASSWORD = %s\n", "true");
-            DEBUG("restore STRONG_PASSWORD");
-        } else {
-            // 如果不是服务器版，则维持原配置
-            sprintf(append_string + offset, "STRONG_PASSWORD = %s\n", "true");
-        }
+        // if (OS_SERVER == os_type) {
+        //     sprintf(append_string + offset, "STRONG_PASSWORD = %s\n", "true");
+        //     DEBUG("restore STRONG_PASSWORD");
+        // } else {
+        // 如果不是服务器版，则维持原配置
+        sprintf(append_string + offset,
+                "STRONG_PASSWORD = %s\n",
+                iniparser_getboolean(dic, "Password:STRONG_PASSWORD", false) ? "true" : "false");
+        // }
     }
     offset = strlen(append_string);
 
@@ -216,18 +265,18 @@ int update_conf(OS_TYPE os_type) {
                 default_conf[os_type].min_length);
         DEBUG("set PASSWORD_MIN_LENGTH");
     } else {
-        if (OS_SERVER == os_type) {
-            sprintf(append_string + offset,
-                    "PASSWORD_MIN_LENGTH = %d\n",
-                    default_conf[os_type].min_length);
-            DEBUG("restore PASSWORD_MIN_LENGTH");
-        } else {
-            sprintf(append_string + offset,
-                    "PASSWORD_MIN_LENGTH = %d\n",
-                    iniparser_getint(dic,
-                                     "Password:PASSWORD_MIN_LENGTH",
-                                     default_conf[os_type].min_length));
-        }
+        // if (OS_SERVER == os_type) {
+        //     sprintf(append_string + offset,
+        //             "PASSWORD_MIN_LENGTH = %d\n",
+        //             default_conf[os_type].min_length);
+        //     DEBUG("restore PASSWORD_MIN_LENGTH");
+        // } else {
+        sprintf(append_string + offset,
+                "PASSWORD_MIN_LENGTH = %d\n",
+                iniparser_getint(dic,
+                                 "Password:PASSWORD_MIN_LENGTH",
+                                 default_conf[os_type].min_length));
+        // }
     }
     offset = strlen(append_string);
 
@@ -237,18 +286,18 @@ int update_conf(OS_TYPE os_type) {
                 default_conf[os_type].max_length);
         DEBUG("set PASSWORD_MAX_LENGTH");
     } else {
-        if (OS_SERVER == os_type) {
-            sprintf(append_string + offset,
-                    "PASSWORD_MAX_LENGTH = %d\n",
-                    default_conf[os_type].max_length);
-            DEBUG("restore PASSWORD_MAX_LENGTH");
-        } else {
-            sprintf(append_string + offset,
-                    "PASSWORD_MAX_LENGTH = %d\n",
-                    iniparser_getint(dic,
-                                     "Password:PASSWORD_MAX_LENGTH",
-                                     default_conf[os_type].max_length));
-        }
+        // if (OS_SERVER == os_type) {
+        //     sprintf(append_string + offset,
+        //             "PASSWORD_MAX_LENGTH = %d\n",
+        //             default_conf[os_type].max_length);
+        //     DEBUG("restore PASSWORD_MAX_LENGTH");
+        // } else {
+        sprintf(append_string + offset,
+                "PASSWORD_MAX_LENGTH = %d\n",
+                iniparser_getint(dic,
+                                 "Password:PASSWORD_MAX_LENGTH",
+                                 default_conf[os_type].max_length));
+        // }
     }
     offset = strlen(append_string);
 
@@ -258,13 +307,17 @@ int update_conf(OS_TYPE os_type) {
                 default_conf[os_type].validate_policy);
         DEBUG("set VALIDATE_POLICY");
     } else {
-        char cmd[512];
-        sprintf(cmd, "sed \"/^VALIDATE_POLICY.*/\"d -i %s", PASSWD_CONF_FILE_PATH);
-        system(cmd);
-        sprintf(append_string + offset,
-                "VALIDATE_POLICY = \"%s\"\n",
-                default_conf[os_type].validate_policy);
-        DEBUG("set VALIDATE_POLICY after delete");
+        // char cmd[512];
+        // sprintf(cmd, "sed \"/^VALIDATE_POLICY.*/\"d -i %s", PASSWD_CONF_FILE_PATH);
+        // system(cmd);
+        // sprintf(append_string + offset,
+        //         "VALIDATE_POLICY = \"%s\"\n",
+        //         default_conf[os_type].validate_policy);
+        // DEBUG("set VALIDATE_POLICY after delete");
+
+        char buff[512];
+        get_validate_policy(buff);
+        sprintf(append_string + offset, "VALIDATE_POLICY = %s\n", buff);
     }
     offset = strlen(append_string);
 
@@ -274,18 +327,18 @@ int update_conf(OS_TYPE os_type) {
                 default_conf[os_type].validate_required);
         DEBUG("set VALIDATE_REQUIRED");
     } else {
-        if (OS_SERVER == os_type) {
-            sprintf(append_string + offset,
-                    "VALIDATE_REQUIRED = %d\n",
-                    default_conf[os_type].validate_required);
-            DEBUG("restore VALIDATE_REQUIRED");
-        } else {
-            sprintf(append_string + offset,
-                    "VALIDATE_REQUIRED = %d\n",
-                    iniparser_getint(dic,
-                                     "Password:VALIDATE_REQUIRED",
-                                     default_conf[os_type].validate_required));
-        }
+        // if (OS_SERVER == os_type) {
+        //     sprintf(append_string + offset,
+        //             "VALIDATE_REQUIRED = %d\n",
+        //             default_conf[os_type].validate_required);
+        //     DEBUG("restore VALIDATE_REQUIRED");
+        // } else {
+        sprintf(append_string + offset,
+                "VALIDATE_REQUIRED = %d\n",
+                iniparser_getint(dic,
+                                 "Password:VALIDATE_REQUIRED",
+                                 default_conf[os_type].validate_required));
+        // }
     }
     offset = strlen(append_string);
 
@@ -295,18 +348,18 @@ int update_conf(OS_TYPE os_type) {
                 default_conf[os_type].palindorme_num);
         DEBUG("set PALINDROME_NUM");
     } else {
-        if (OS_SERVER == os_type) {
-            sprintf(append_string + offset,
-                    "PALINDROME_NUM = %d\n",
-                    default_conf[os_type].palindorme_num);
-            DEBUG("restore PALINDROME_NUM");
-        } else {
-            sprintf(append_string + offset,
-                    "PALINDROME_NUM = %d\n",
-                    iniparser_getint(dic,
-                                     "Password:PALINDROME_NUM",
-                                     default_conf[os_type].palindorme_num));
-        }
+        // if (OS_SERVER == os_type) {
+        //     sprintf(append_string + offset,
+        //             "PALINDROME_NUM = %d\n",
+        //             default_conf[os_type].palindorme_num);
+        //     DEBUG("restore PALINDROME_NUM");
+        // } else {
+        sprintf(append_string + offset,
+                "PALINDROME_NUM = %d\n",
+                iniparser_getint(dic,
+                                 "Password:PALINDROME_NUM",
+                                 default_conf[os_type].palindorme_num));
+        // }
     }
     offset = strlen(append_string);
 
@@ -314,14 +367,14 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string + offset, "WORD_CHECK = %d\n", default_conf[os_type].word_check);
         DEBUG("set WORD_CHECK");
     } else {
-        if (OS_SERVER == os_type) {
-            sprintf(append_string + offset, "WORD_CHECK = %d\n", default_conf[os_type].word_check);
-            DEBUG("restore WORD_CHECK");
-        } else {
-            sprintf(append_string + offset,
-                    "WORD_CHECK = %d\n",
-                    iniparser_getint(dic, "Password:WORD_CHECK", default_conf[os_type].word_check));
-        }
+        // if (OS_SERVER == os_type) {
+        //     sprintf(append_string + offset, "WORD_CHECK = %d\n",
+        //     default_conf[os_type].word_check); DEBUG("restore WORD_CHECK");
+        // } else {
+        sprintf(append_string + offset,
+                "WORD_CHECK = %d\n",
+                iniparser_getint(dic, "Password:WORD_CHECK", default_conf[os_type].word_check));
+        // }
     }
     offset = strlen(append_string);
 
@@ -331,18 +384,18 @@ int update_conf(OS_TYPE os_type) {
                 default_conf[os_type].monotone_same_character_num);
         DEBUG("set MONOTONE_CHARACTER_NUM");
     } else {
-        if (OS_SERVER == os_type) {
-            sprintf(append_string + offset,
-                    "MONOTONE_CHARACTER_NUM = %d\n",
-                    default_conf[os_type].monotone_same_character_num);
-            DEBUG("restore MONOTONE_CHARACTER_NUM");
-        } else {
-            sprintf(append_string + offset,
-                    "MONOTONE_CHARACTER_NUM = %d\n",
-                    iniparser_getint(dic,
-                                     "Password:MONOTONE_CHARACTER_NUM",
-                                     default_conf[os_type].monotone_same_character_num));
-        }
+        // if (OS_SERVER == os_type) {
+        //     sprintf(append_string + offset,
+        //             "MONOTONE_CHARACTER_NUM = %d\n",
+        //             default_conf[os_type].monotone_same_character_num);
+        //     DEBUG("restore MONOTONE_CHARACTER_NUM");
+        // } else {
+        sprintf(append_string + offset,
+                "MONOTONE_CHARACTER_NUM = %d\n",
+                iniparser_getint(dic,
+                                 "Password:MONOTONE_CHARACTER_NUM",
+                                 default_conf[os_type].monotone_same_character_num));
+        // }
     }
     offset = strlen(append_string);
 
@@ -352,18 +405,18 @@ int update_conf(OS_TYPE os_type) {
                 default_conf[os_type].consecutive_same_character_num);
         DEBUG("set CONSECUTIVE_SAME_CHARACTER_NUM");
     } else {
-        if (OS_SERVER == os_type) {
-            sprintf(append_string + offset,
-                    "CONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
-                    default_conf[os_type].consecutive_same_character_num);
-            DEBUG("restore CONSECUTIVE_SAME_CHARACTER_NUM");
-        } else {
-            sprintf(append_string + offset,
-                    "CONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
-                    iniparser_getint(dic,
-                                     "Password:CONSECUTIVE_SAME_CHARACTER_NUM",
-                                     default_conf[os_type].consecutive_same_character_num));
-        }
+        // if (OS_SERVER == os_type) {
+        //     sprintf(append_string + offset,
+        //             "CONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
+        //             default_conf[os_type].consecutive_same_character_num);
+        //     DEBUG("restore CONSECUTIVE_SAME_CHARACTER_NUM");
+        // } else {
+        sprintf(append_string + offset,
+                "CONSECUTIVE_SAME_CHARACTER_NUM = %d\n",
+                iniparser_getint(dic,
+                                 "Password:CONSECUTIVE_SAME_CHARACTER_NUM",
+                                 default_conf[os_type].consecutive_same_character_num));
+        // }
     }
     offset = strlen(append_string);
 
@@ -371,14 +424,14 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string + offset, "DICT_PATH = %s\n", "");
         DEBUG("set DICT_PATH");
     } else {
-        if (OS_SERVER == os_type) {
-            sprintf(append_string + offset, "DICT_PATH = %s\n", "");
-            DEBUG("restore DICT_PATH");
-        } else {
-            sprintf(append_string + offset,
-                    "DICT_PATH = %s\n",
-                    iniparser_getstring(dic, "Password:DICT_PATH", ""));
-        }
+        // if (OS_SERVER == os_type) {
+        //     sprintf(append_string + offset, "DICT_PATH = %s\n", "");
+        //     DEBUG("restore DICT_PATH");
+        // } else {
+        sprintf(append_string + offset,
+                "DICT_PATH = %s\n",
+                iniparser_getstring(dic, "Password:DICT_PATH", ""));
+        // }
     }
     offset = strlen(append_string);
 
@@ -386,15 +439,15 @@ int update_conf(OS_TYPE os_type) {
         sprintf(append_string + offset, "FIRST_LETTER_UPPERCASE = %s\n", "false");
         DEBUG("set FIRST_LETTER_UPPERCASE");
     } else {
-        if (OS_SERVER == os_type) {
-            sprintf(append_string + offset, "FIRST_LETTER_UPPERCASE = %s\n", "false");
-            DEBUG("restore FIRST_LETTER_UPPERCASE");
-        } else {
-            sprintf(append_string + offset,
-                    "FIRST_LETTER_UPPERCASE = %s\n",
-                    iniparser_getboolean(dic, "Password:FIRST_LETTER_UPPERCASE", false) ? "true"
-                                                                                        : "false");
-        }
+        // if (OS_SERVER == os_type) {
+        //     sprintf(append_string + offset, "FIRST_LETTER_UPPERCASE = %s\n", "false");
+        //     DEBUG("restore FIRST_LETTER_UPPERCASE");
+        // } else {
+        sprintf(append_string + offset,
+                "FIRST_LETTER_UPPERCASE = %s\n",
+                iniparser_getboolean(dic, "Password:FIRST_LETTER_UPPERCASE", false) ? "true"
+                                                                                    : "false");
+        // }
     }
 
     DEBUG("append string :%s", append_string);
