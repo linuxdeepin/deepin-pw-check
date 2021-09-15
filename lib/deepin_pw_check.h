@@ -41,8 +41,19 @@ typedef enum {
 */
 #define LEVEL_STRICT_CHECK    (2)
 
+/*
+    password strength value
+*/
+typedef enum {
+    PASSWORD_STRENGTH_LEVEL_ERROR = 0,
+    PASSWORD_STRENGTH_LEVEL_LOW,
+    PASSWORD_STRENGTH_LEVEL_MIDDLE,
+    PASSWORD_STRENGTH_LEVEL_HIGH,
+}PASSWORD_LEVEL_TYPE;
 // parameter @level is Deprecated.
 PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const char* dict_path);
+
+PASSWORD_LEVEL_TYPE  get_new_passwd_strength_level(const char *newPasswd);
 
 const char* err_to_string(PW_ERROR_TYPE err);
 

@@ -38,6 +38,10 @@ struct Options {
     bool first_letter_uppercase;
     int monotone_character_num;         // 单调字符个数
     int consecutive_same_character_num; // 连续相似字符个数
+    int password_lenth_standard_high;
+    int password_lenth_standard_middle;
+    int password_character_type_num_high;
+    int password_character_type_num_middle;
 };
 
 void get_validate_policy(char *data) {
@@ -128,7 +132,10 @@ retry:
             iniparser_getint(dic, "Password:CONSECUTIVE_SAME_CHARACTER_NUM", 0);
     options->first_letter_uppercase =
             iniparser_getboolean(dic, "Password:FIRST_LETTER_UPPERCASE", 0);
-
+    options->password_lenth_standard_high = iniparser_getint(dic, "Password:PASSWORD_LENTH_STANDARD_HIGH", 8);
+    options->password_lenth_standard_middle = iniparser_getint(dic, "Password:PASSWORD_LENTH_STANDARD_MIDDLE", 6);
+    options->password_character_type_num_high = iniparser_getint(dic, "Password:PASSWORD_CHARACTER_TYPE_NUM_HIGH", 3);
+    options->password_character_type_num_middle = iniparser_getint(dic, "Password:PASSWORD_CHARACTER_TYPE_NUM_MIDDLE", 2);
     iniparser_freedict(dic);
     return 0;
 }
@@ -440,6 +447,45 @@ bool is_first_letter_uppercase(const char *pw) {
         return false;
     }
     return false;
+}
+
+PASSWORD_LEVEL_TYPE get_new_passwd_strength_level(const char *newPasswd) {
+    int upper_count = 0;
+    int lower_count = 0;
+    int number_count = 0;
+    int character_count = 0;
+    int lenth;
+    int type;
+    char character;
+    PASSWORD_LEVEL_TYPE level;
+    struct Options *options = (struct Options *)malloc(sizeof(struct Options));
+    if (newPasswd == NULL || load_pwd_conf(options) == -1 ) {
+        free(options);
+        return PASSWORD_STRENGTH_LEVEL_ERROR;
+    }
+    lenth=strlen(newPasswd);
+    for(int i = 0; i < lenth; i++) {
+        character=newPasswd[i];
+        if(character >= 'a' && character <= 'z') {
+            lower_count++;
+        } else if (character >= 'A' && character <= 'Z') {
+            upper_count++;
+        } else if (character >= '0' && character <= '9') {
+            number_count++;
+        } else {
+            character_count++;
+        }
+    }
+    type = (upper_count > 0 ? 1:0) + (lower_count > 0 ? 1:0) + ( number_count > 0 ? 1:0) + (character_count > 0 ? 1:0);
+    if(lenth >= options->password_lenth_standard_high && type >= options->password_character_type_num_high) {
+        level = PASSWORD_STRENGTH_LEVEL_HIGH;
+    } else if (lenth >= options->password_lenth_standard_middle && type >= options->password_character_type_num_middle) {
+        level =  PASSWORD_STRENGTH_LEVEL_MIDDLE;
+    } else {
+        level = PASSWORD_STRENGTH_LEVEL_LOW;
+    }
+    free(options);
+    return level;
 }
 
 PW_ERROR_TYPE deepin_pw_check(const char *user, const char *pw, int level, const char *dict_path) {
