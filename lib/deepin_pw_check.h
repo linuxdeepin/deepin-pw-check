@@ -84,6 +84,40 @@ extern char* get_pw_validate_policy(int level);
 */
 extern int get_pw_palimdrome_num(int level);
 
+// for grub2
+
+// parameter @level is Deprecated.
+PW_ERROR_TYPE deepin_pw_check_grub2(const char* user,const char* pw, int level, const char* dict_path);
+
+PASSWORD_LEVEL_TYPE  get_new_passwd_strength_level_grub2(const char *newPasswd);
+
+const char* err_to_string_grub2(PW_ERROR_TYPE err);
+
+/*
+    if error, return -1
+*/
+extern int get_pw_min_length_grub2(int level);
+
+/*
+    if error, return -1
+*/
+extern int get_pw_max_length_grub2(int level);
+
+/*
+    if error, return -1
+*/
+extern int get_pw_min_character_type_grub2(int level);
+
+/*
+    get the validate charater policy type. is specified by /etc/deepin/grub2_edit_auth.conf "Password:VALIDATE_POLICY"
+*/
+extern char* get_pw_validate_policy_grub2(int level);
+
+/*
+    if error, return -1
+*/
+extern int get_pw_palimdrome_num_grub2(int level);
+
 #ifdef __cplusplus
 }
 #endif

@@ -22,6 +22,9 @@
 #define MAX_LEN_OF_STRICT_CHECK (512)
 
 #define PASSWD_CONF_FILE "/etc/deepin/dde.conf"
+#ifndef PASSWD_CONF_FILE_GRUB2
+#define PASSWD_CONF_FILE_GRUB2 "/etc/deepin/grub2_edit_auth.conf"
+#endif
 
 #define BUFF_SIZE (512)
 static char out_buff[BUFF_SIZE];
@@ -44,8 +47,8 @@ struct Options {
     int password_character_type_num_middle;
 };
 
-void get_validate_policy(char *data) {
-    FILE *f = fopen(PASSWD_CONF_FILE, "r");
+static void get_validate_policy(char *data, const char *conf_file) {
+    FILE *f = fopen(conf_file, "r");
     char buff[512];
 
     if (f == NULL) {
@@ -91,16 +94,16 @@ void get_validate_policy(char *data) {
     fclose(f);
 }
 
-static int load_pwd_conf(struct Options *options) {
+static int load_pwd_conf(struct Options *options, const char *conf_file) {
     dictionary *dic;
     const char *dict_buff;
     char read_buff[512];
     int retry_cnt = 0;
 retry:
-    if (NULL == (dic = iniparser_load(PASSWD_CONF_FILE))) {
-        DEBUG("ERROR: open file %s failed!", PASSWD_CONF_FILE);
+    if (NULL == (dic = iniparser_load(conf_file))) {
+        DEBUG("ERROR: open file %s failed!", conf_file);
         if (retry_cnt < 1) {
-            DEBUG("exec pwd-conf-update to create <%s>", PASSWD_CONF_FILE);
+            DEBUG("exec pwd-conf-update to create <%s>", conf_file);
             system("pwd-conf-update");
             retry_cnt++;
             goto retry;
@@ -117,7 +120,7 @@ retry:
                ":;<=>?@[\\]^_`{|}~/");
     } else {
         DEBUG("get_validate_policy");
-        get_validate_policy(read_buff);
+        get_validate_policy(read_buff, conf_file);
     }
     // buff = (char*)iniparser_getstring(dic, "Password:VALIDATE_POLICY",
     // "1234567890;abcdefghijklmnopqrstuvwxyz;ABCDEFGHIJKLMNOPQRSTUVWXYZ;~!@#$\%^&*()[]{}\\|/?,.<>");
@@ -140,11 +143,11 @@ retry:
     return 0;
 }
 
-struct Options *get_default_options(int level, const char *dict_path) {
+static struct Options *get_default_options(int level, const char *dict_path, const char *conf_file) {
 
     struct Options *options = (struct Options *)malloc(sizeof(struct Options));
 
-    if (load_pwd_conf(options) == -1) {
+    if (load_pwd_conf(options, conf_file) == -1) {
         free(options);
         return NULL;
     }
@@ -449,7 +452,7 @@ bool is_first_letter_uppercase(const char *pw) {
     return false;
 }
 
-PASSWORD_LEVEL_TYPE get_new_passwd_strength_level(const char *newPasswd) {
+static PASSWORD_LEVEL_TYPE get_new_passwd_strength_level_by_conf(const char *newPasswd, const char *conf_file) {
     int upper_count = 0;
     int lower_count = 0;
     int number_count = 0;
@@ -459,7 +462,7 @@ PASSWORD_LEVEL_TYPE get_new_passwd_strength_level(const char *newPasswd) {
     char character;
     PASSWORD_LEVEL_TYPE level;
     struct Options *options = (struct Options *)malloc(sizeof(struct Options));
-    if (newPasswd == NULL || load_pwd_conf(options) == -1 ) {
+    if (newPasswd == NULL || load_pwd_conf(options, conf_file) == -1 ) {
         free(options);
         return PASSWORD_STRENGTH_LEVEL_ERROR;
     }
@@ -488,8 +491,8 @@ PASSWORD_LEVEL_TYPE get_new_passwd_strength_level(const char *newPasswd) {
     return level;
 }
 
-PW_ERROR_TYPE deepin_pw_check(const char *user, const char *pw, int level, const char *dict_path) {
-    struct Options *options = get_default_options(level, dict_path);
+static PW_ERROR_TYPE deepin_pw_check_by_conf(const char *user, const char *pw, int level, const char *dict_path, const char *conf_file) {
+    struct Options *options = get_default_options(level, dict_path, conf_file);
     if (options == NULL) {
         return PW_ERR_PARA;
     }
@@ -585,13 +588,13 @@ PW_ERROR_TYPE deepin_pw_check(const char *user, const char *pw, int level, const
     return ret;
 }
 
-int get_pw_min_length(int level) {
+static int get_pw_min_length_by_conf(int level, const char *conf_file) {
     UNUSED(level);
 
     dictionary *dic;
 
-    if (NULL == (dic = iniparser_load(PASSWD_CONF_FILE))) {
-        DEBUG("ERROR: open file %s failed!", PASSWD_CONF_FILE);
+    if (NULL == (dic = iniparser_load(conf_file))) {
+        DEBUG("ERROR: open file %s failed!", conf_file);
         return -1;
     }
 
@@ -602,13 +605,13 @@ int get_pw_min_length(int level) {
     return min_len;
 }
 
-int get_pw_max_length(int level) {
+static int get_pw_max_length_by_conf(int level, const char *conf_file) {
     UNUSED(level);
 
     dictionary *dic;
 
-    if (NULL == (dic = iniparser_load(PASSWD_CONF_FILE))) {
-        DEBUG("ERROR: open file %s failed!", PASSWD_CONF_FILE);
+    if (NULL == (dic = iniparser_load(conf_file))) {
+        DEBUG("ERROR: open file %s failed!", conf_file);
         return -1;
     }
 
@@ -619,13 +622,13 @@ int get_pw_max_length(int level) {
     return max_len;
 }
 
-int get_pw_min_character_type(int level) {
+static int get_pw_min_character_type_by_conf(int level, const char *conf_file) {
     UNUSED(level);
 
     dictionary *dic;
 
-    if (NULL == (dic = iniparser_load(PASSWD_CONF_FILE))) {
-        DEBUG("ERROR: open file %s failed!", PASSWD_CONF_FILE);
+    if (NULL == (dic = iniparser_load(conf_file))) {
+        DEBUG("ERROR: open file %s failed!", conf_file);
         return -1;
     }
 
@@ -636,13 +639,13 @@ int get_pw_min_character_type(int level) {
     return validate_required;
 }
 
-char *get_pw_validate_policy(int level) {
+static char *get_pw_validate_policy_by_conf(int level, const char *conf_file) {
     UNUSED(level);
 
     dictionary *dic;
 
-    if (NULL == (dic = iniparser_load(PASSWD_CONF_FILE))) {
-        DEBUG("ERROR: open file %s failed!", PASSWD_CONF_FILE);
+    if (NULL == (dic = iniparser_load(conf_file))) {
+        DEBUG("ERROR: open file %s failed!", conf_file);
         return "";
     }
 
@@ -653,13 +656,13 @@ char *get_pw_validate_policy(int level) {
     return out_buff;
 }
 
-int get_pw_palimdrome_num(int level) {
+static int get_pw_palimdrome_num_by_conf(int level, const char *conf_file) {
     UNUSED(level);
 
     dictionary *dic;
 
-    if (NULL == (dic = iniparser_load(PASSWD_CONF_FILE))) {
-        DEBUG("ERROR: open file %s failed!", PASSWD_CONF_FILE);
+    if (NULL == (dic = iniparser_load(conf_file))) {
+        DEBUG("ERROR: open file %s failed!", conf_file);
         return -1;
     }
 
@@ -670,7 +673,7 @@ int get_pw_palimdrome_num(int level) {
     return num;
 }
 
-const char *err_to_string(PW_ERROR_TYPE err) {
+static const char *err_to_string_by_conf(PW_ERROR_TYPE err, const char *conf_file) {
     if (err >= PW_ERR_MAX) {
         return gettext("Invalid error type");
     }
@@ -686,19 +689,19 @@ const char *err_to_string(PW_ERROR_TYPE err) {
     case PW_ERR_PASSWORD_EMPTY:
         return gettext("The password cannot be empty");
     case PW_ERR_LENGTH_SHORT:
-        len = get_pw_min_length(0);
+        len = get_pw_min_length_by_conf(0, conf_file);
         snprintf(out_buff, BUFF_SIZE, gettext("Password must have at least %d characters"), len);
         return out_buff;
     case PW_ERR_LENGTH_LONG:
-        len = get_pw_max_length(0);
+        len = get_pw_max_length_by_conf(0, conf_file);
         snprintf(out_buff, BUFF_SIZE, gettext("Password must be no more than %d characters"), len);
         return out_buff;
     case PW_ERR_CHARACTER_INVALID:
-        get_validate_policy(tmp_buff);
+        get_validate_policy(tmp_buff, conf_file);
         snprintf(out_buff, BUFF_SIZE, gettext("Password can only contain %s"), tmp_buff);
         return out_buff;
     case PW_ERR_PALINDROME:
-        num = get_pw_palimdrome_num(0);
+        num = get_pw_palimdrome_num_by_conf(0, conf_file);
         snprintf(out_buff,
                  BUFF_SIZE,
                  gettext("Password must not contain more than %d palindrome characters"),
@@ -723,4 +726,68 @@ const char *err_to_string(PW_ERROR_TYPE err) {
     }
 
     return "";
+}
+
+PASSWORD_LEVEL_TYPE get_new_passwd_strength_level(const char *newPasswd) {
+    return get_new_passwd_strength_level_by_conf(newPasswd, PASSWD_CONF_FILE);
+}
+
+PW_ERROR_TYPE deepin_pw_check(const char *user, const char *pw, int level, const char *dict_path) {
+    return deepin_pw_check_by_conf(user, pw, level, dict_path, PASSWD_CONF_FILE);
+}
+
+int get_pw_min_length(int level) {
+    return get_pw_min_length_by_conf(level, PASSWD_CONF_FILE);
+}
+
+int get_pw_max_length(int level) {
+    return get_pw_max_length_by_conf(level, PASSWD_CONF_FILE);
+}
+
+int get_pw_min_character_type(int level) {
+    return get_pw_min_character_type_by_conf(level, PASSWD_CONF_FILE);
+}
+
+char *get_pw_validate_policy(int level) {
+    return get_pw_validate_policy_by_conf(level, PASSWD_CONF_FILE);
+}
+
+int get_pw_palimdrome_num(int level) {
+    return get_pw_palimdrome_num_by_conf(level, PASSWD_CONF_FILE);
+}
+
+const char *err_to_string(PW_ERROR_TYPE err) {
+    return err_to_string_by_conf(err, PASSWD_CONF_FILE);
+}
+
+PASSWORD_LEVEL_TYPE get_new_passwd_strength_level_grub2(const char *newPasswd) {
+    return get_new_passwd_strength_level_by_conf(newPasswd, PASSWD_CONF_FILE_GRUB2);
+}
+
+PW_ERROR_TYPE deepin_pw_check_grub2(const char *user, const char *pw, int level, const char *dict_path) {
+    return deepin_pw_check_by_conf(user, pw, level, dict_path, PASSWD_CONF_FILE_GRUB2);
+}
+
+int get_pw_min_length_grub2(int level) {
+    return get_pw_min_length_by_conf(level, PASSWD_CONF_FILE_GRUB2);
+}
+
+int get_pw_max_length_grub2(int level) {
+    return get_pw_max_length_by_conf(level, PASSWD_CONF_FILE_GRUB2);
+}
+
+int get_pw_min_character_type_grub2(int level) {
+    return get_pw_min_character_type_by_conf(level, PASSWD_CONF_FILE_GRUB2);
+}
+
+char *get_pw_validate_policy_grub2(int level) {
+    return get_pw_validate_policy_by_conf(level, PASSWD_CONF_FILE_GRUB2);
+}
+
+int get_pw_palimdrome_num_grub2(int level) {
+    return get_pw_palimdrome_num_by_conf(level, PASSWD_CONF_FILE_GRUB2);
+}
+
+const char *err_to_string_grub2(PW_ERROR_TYPE err) {
+    return err_to_string_by_conf(err, PASSWD_CONF_FILE_GRUB2);
 }

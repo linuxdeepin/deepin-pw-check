@@ -73,7 +73,7 @@ install: translate
 test: $(addprefix unit_test/, $(SRCS_C)) clean_test
 
 unit_test/%:
-	gcc $(addsuffix .c, $@) ./lib/*.c -lcrypt -lcrack -liniparser -DIN_CRACKLIB -z noexecstack -o $@
+	gcc $(addsuffix .c, $@) ./lib/*.c -lcrypt -lcrack -liniparser -DIN_CRACKLIB -DPASSWD_CONF_FILE_GRUB2=\"unit_test/testdata/grub2_edit_auth.conf\" -z noexecstack -o $@
 	@chmod +x $@
 	@./$@
 
