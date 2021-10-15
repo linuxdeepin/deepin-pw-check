@@ -5,6 +5,7 @@
 #include <iniparser/iniparser.h>
 #include <iniparser/dictionary.h>
 #include <errno.h>
+#include <sys/stat.h>
 
 #define PASSWD_CONF_FILE_PATH "/etc/deepin/dde.conf"
 #define OS_VERSION_FILE_PATH "/etc/os-version"
@@ -470,6 +471,11 @@ int update_conf(OS_TYPE os_type) {
         return -1;
     }
     fclose(fd);
+
+    if (-1 == chmod(PASSWD_CONF_FILE_PATH, 0644)) {
+        printf("chmod for %s fail: %s", PASSWD_CONF_FILE_PATH, strerror(errno));
+        return -1;
+    }
 
     return 0;
 }
