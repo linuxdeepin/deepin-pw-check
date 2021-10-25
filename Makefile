@@ -17,6 +17,8 @@ SRCS_C = $(basename $(shell cd unit_test; ls *.c))
 LIBSRCS_C = $(basename $(shell cd lib; ls *.c))
 TOOL_BINARAY = pwd-conf-update
 
+SECURITY_BUILD_OPTIONS = -fstack-protector-strong -D_FORTITY_SOURCE=1 -z noexecstack -pie -fPIC -z lazy
+
 all: build
 
 prepare:
@@ -26,11 +28,11 @@ out/bin/%: prepare
 	env GOPATH="${GOPATH}" ${GOBUILD} -o $@  ${GOPKG_PREFIX}/*.go
 
 out/${LIBRARIES}:
-	gcc lib/*.c -fPIC -shared -lcrypt -lcrack -liniparser -DIN_CRACKLIB -z noexecstack -Wl,-soname,libdeepin_pw_check.so.1 -o $@ $^
+	gcc lib/*.c ${SECURITY_BUILD_OPTIONS} -shared -DIN_CRACKLIB -Wl,-soname,libdeepin_pw_check.so.1 -o $@ $^ -lcrypt -lcrack -liniparser
 	cd out; ln -s ${LIBRARIES} ${LINK_LIBRARIES}
 
 lib/%:
-	gcc $(addsuffix .c, $@) -c -DIN_CRACKLIB -z noexecstack -o $(addsuffix .o, $@)
+	gcc $(addsuffix .c, $@) -c ${SECURITY_BUILD_OPTIONS} -DIN_CRACKLIB -o $(addsuffix .o, $@)
 
 link: $(addprefix lib/, ${LIBSRCS_C})
 	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libiniparser.a
