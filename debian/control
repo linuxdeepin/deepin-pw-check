@@ -8,7 +8,7 @@ Build-Depends:
  libpam-dev,
  libiniparser-dev,
  golang-go,
- golang-dlib-dev (>> 1.8.0+),
+ golang-github-linuxdeepin-go-lib-dev,
  golang-dbus-dev,
  golang-github-linuxdeepin-go-dbus-factory-dev,
  cracklib-runtime,

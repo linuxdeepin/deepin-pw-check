@@ -3,7 +3,7 @@ package main
 import (
 	"time"
 
-	"pkg.deepin.io/lib/log"
+	"github.com/linuxdeepin/go-lib/log"
 )
 
 var logger = log.NewLogger("deepin_pw_check")

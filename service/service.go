@@ -6,10 +6,10 @@ import (
 
 	polkit "github.com/linuxdeepin/go-dbus-factory/org.freedesktop.policykit1"
 
-	"pkg.deepin.io/lib/keyfile"
+	"github.com/linuxdeepin/go-lib/keyfile"
 
 	"github.com/godbus/dbus"
-	"pkg.deepin.io/lib/dbusutil"
+	"github.com/linuxdeepin/go-lib/dbusutil"
 )
 
 const (
