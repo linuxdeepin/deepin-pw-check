@@ -28,11 +28,11 @@ out/bin/%: prepare
 	env GOPATH="${GOPATH}" ${GOBUILD} -o $@  ${GOPKG_PREFIX}/*.go
 
 out/${LIBRARIES}:
-	gcc lib/*.c ${SECURITY_BUILD_OPTIONS} -shared -DIN_CRACKLIB -Wl,-soname,libdeepin_pw_check.so.1 -o $@ $^ -lcrypt -lcrack -liniparser
+	gcc lib/*.c ${SECURITY_BUILD_OPTIONS} -shared -DIN_CRACKLIB -W -Wall -Wl,-soname,libdeepin_pw_check.so.1 -o $@ $^ -lcrypt -lcrack -liniparser
 	cd out; ln -s ${LIBRARIES} ${LINK_LIBRARIES}
 
 lib/%:
-	gcc $(addsuffix .c, $@) -c ${SECURITY_BUILD_OPTIONS} -DIN_CRACKLIB -o $(addsuffix .o, $@)
+	gcc $(addsuffix .c, $@) -c ${SECURITY_BUILD_OPTIONS} -DIN_CRACKLIB -W -Wall -o $(addsuffix .o, $@)
 
 link: $(addprefix lib/, ${LIBSRCS_C})
 	# cd lib ;ar x /usr/lib/$(DEB_HOST_MULTIARCH)/libiniparser.a
@@ -43,10 +43,10 @@ link: $(addprefix lib/, ${LIBSRCS_C})
 static_lib: link
 
 out/${PAM_MODULE}: out/${LIBRARIES}
-	gcc pam/*.c -fPIC -shared -lpam -L./out/ -ldeepin_pw_check -o $@ $^
+	gcc pam/*.c -fPIC -W -Wall -shared -lpam -L./out/ -ldeepin_pw_check -o $@ $^
 
 build_tool: prepare
-	gcc tool/*.c -liniparser -o out/${TOOL_BINARAY}
+	gcc tool/*.c -liniparser -W -Wall -o out/${TOOL_BINARAY}
 
 build: prepare $(addprefix out/bin/, ${BINARIES}) out/${LIBRARIES} static_lib out/${PAM_MODULE} build_tool ts_to_policy
 
@@ -75,7 +75,7 @@ install: translate
 test: $(addprefix unit_test/, $(SRCS_C)) clean_test
 
 unit_test/%:
-	gcc $(addsuffix .c, $@) ./lib/*.c -lcrypt -lcrack -liniparser -DIN_CRACKLIB -DPASSWD_CONF_FILE_GRUB2=\"unit_test/testdata/grub2_edit_auth.conf\" -z noexecstack -o $@
+	gcc $(addsuffix .c, $@) ./lib/*.c -lcrypt -lcrack -liniparser -DIN_CRACKLIB -W -Wall -DPASSWD_CONF_FILE_GRUB2=\"unit_test/testdata/grub2_edit_auth.conf\" -z noexecstack -o $@
 	@chmod +x $@
 	@./$@
 
