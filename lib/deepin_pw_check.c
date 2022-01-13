@@ -673,6 +673,40 @@ static int get_pw_palimdrome_num_by_conf(int level, const char *conf_file) {
     return num;
 }
 
+static int get_pw_monotone_character_num_by_conf(int level, const char *conf_file) {
+    UNUSED(level);
+
+    dictionary *dic;
+
+    if (NULL == (dic = iniparser_load(conf_file))) {
+        DEBUG("ERROR: open file %s failed!", conf_file);
+        return -1;
+    }
+
+    int num = iniparser_getint(dic, "Password:MONOTONE_CHARACTER_NUM", 0);
+
+    iniparser_freedict(dic);
+
+    return num;
+}
+ 
+static int get_pw_consecutive_same_character_num_by_conf(int level, const char *conf_file) {
+    UNUSED(level);
+
+    dictionary *dic;
+
+    if (NULL == (dic = iniparser_load(conf_file))) {
+        DEBUG("ERROR: open file %s failed!", conf_file);
+        return -1;
+    }
+
+    int num = iniparser_getint(dic, "Password:CONSECUTIVE_SAME_CHARACTER_NUM", 0);
+
+    iniparser_freedict(dic);
+
+    return num;
+}
+
 static const char *err_to_string_by_conf(PW_ERROR_TYPE err, const char *conf_file) {
     if (err >= PW_ERR_MAX) {
         return gettext("Invalid error type");
@@ -756,6 +790,14 @@ int get_pw_palimdrome_num(int level) {
     return get_pw_palimdrome_num_by_conf(level, PASSWD_CONF_FILE);
 }
 
+int get_pw_monotone_character_num(int level) {
+    return get_pw_monotone_character_num_by_conf(level, PASSWD_CONF_FILE);
+}
+
+int get_pw_consecutive_same_character_num(int level) {
+    return get_pw_consecutive_same_character_num_by_conf(level, PASSWD_CONF_FILE);
+}
+
 const char *err_to_string(PW_ERROR_TYPE err) {
     return err_to_string_by_conf(err, PASSWD_CONF_FILE);
 }
@@ -786,6 +828,14 @@ char *get_pw_validate_policy_grub2(int level) {
 
 int get_pw_palimdrome_num_grub2(int level) {
     return get_pw_palimdrome_num_by_conf(level, PASSWD_CONF_FILE_GRUB2);
+}
+
+int get_pw_monotone_character_num_grub2(int level) {
+    return get_pw_monotone_character_num_by_conf(level, PASSWD_CONF_FILE_GRUB2);
+}
+
+int get_pw_consecutive_same_character_num_grub2(int level) {
+    return get_pw_consecutive_same_character_num_by_conf(level, PASSWD_CONF_FILE_GRUB2);
 }
 
 const char *err_to_string_grub2(PW_ERROR_TYPE err) {

@@ -84,6 +84,16 @@ extern char* get_pw_validate_policy(int level);
 */
 extern int get_pw_palimdrome_num(int level);
 
+/*
+    if error, return -1
+*/
+extern int get_pw_monotone_character_num(int level);
+
+/*
+    if error, return -1
+*/
+extern int get_pw_consecutive_same_character_num(int level);
+
 // for grub2
 
 // parameter @level is Deprecated.
@@ -117,6 +127,16 @@ extern char* get_pw_validate_policy_grub2(int level);
     if error, return -1
 */
 extern int get_pw_palimdrome_num_grub2(int level);
+
+/*
+    if error, return -1
+*/
+extern int get_pw_monotone_character_num_grub2(int level);
+
+/*
+    if error, return -1
+*/
+extern int get_pw_consecutive_same_character_num_grub2(int level);
 
 #ifdef __cplusplus
 }
