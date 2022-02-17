@@ -304,7 +304,7 @@ int update_conf(OS_TYPE os_type) {
 
     if (iniparser_find_entry(dic, "Password:VALIDATE_POLICY") == 0) {
         sprintf(append_string + offset,
-                "VALIDATE_POLICY = \"%s\"\n",
+                "VALIDATE_POLICY = %s\n",
                 default_conf[os_type].validate_policy);
         DEBUG("set VALIDATE_POLICY");
     } else {
