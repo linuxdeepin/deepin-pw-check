@@ -245,7 +245,7 @@ bool include_chinese(const char *data) {
     return false;
 }
 
-bool is_type_valid(const char *pw, char *character_type, int character_num_required) {
+PW_ERROR_TYPE is_type_valid(const char *pw, char *character_type, int character_num_required) {
 
     DEBUG("called,pw is %s,character policy is %s,required is %d",
           pw,
@@ -257,7 +257,7 @@ bool is_type_valid(const char *pw, char *character_type, int character_num_requi
 
     DEBUG("check include_chinese");
     if (include_chinese(pw)) {
-        return false;
+        return PW_ERR_CHARACTER_INVALID;
     }
 
     char *character_type_tmp = (char *)malloc(strlen(character_type) + 1);
@@ -332,15 +332,15 @@ bool is_type_valid(const char *pw, char *character_type, int character_num_requi
             }
         }
         if (find == 0) {
-            return false;
+            return PW_ERR_CHARACTER_INVALID;
         }
     }
 
     if (pass < character_num_required) {
-        return false;
+        return PW_ERR_CHARACTER_TYPE_TOO_FEW;
     }
 
-    return true;
+    return PW_NO_ERR;
 }
 
 bool is_word(const char *pw, const char *dict_path) {
@@ -544,8 +544,8 @@ static PW_ERROR_TYPE deepin_pw_check_by_conf(const char *user, const char *pw, i
         }
 
         DEBUG("check is_type_valid");
-        if (!is_type_valid(pw, options->character_type, options->character_num_required)) {
-            ret = PW_ERR_CHARACTER_INVALID;
+        ret = is_type_valid(pw, options->character_type, options->character_num_required);
+        if (PW_NO_ERR != ret) {
             break;
         }
 
@@ -708,15 +708,12 @@ static int get_pw_consecutive_same_character_num_by_conf(int level, const char *
 }
 
 static const char *err_to_string_by_conf(PW_ERROR_TYPE err, const char *conf_file) {
-    if (err >= PW_ERR_MAX) {
-        return gettext("Invalid error type");
-    }
-
     setlocale(LC_ALL, "");
     textdomain("deepin-pw-check");
     char tmp_buff[BUFF_SIZE];
     int len = 0;
     int num = 0;
+    int character_num = 0;
     switch (err) {
     case PW_NO_ERR:
         return gettext("Checking successful");
@@ -732,7 +729,7 @@ static const char *err_to_string_by_conf(PW_ERROR_TYPE err, const char *conf_fil
         return out_buff;
     case PW_ERR_CHARACTER_INVALID:
         get_validate_policy(tmp_buff, conf_file);
-        snprintf(out_buff, BUFF_SIZE, gettext("Password can only contain %s"), tmp_buff);
+        snprintf(out_buff, BUFF_SIZE, gettext("Password can only contain English letters (case-sensitive), numbers or special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"), tmp_buff);
         return out_buff;
     case PW_ERR_PALINDROME:
         num = get_pw_palimdrome_num_by_conf(0, conf_file);
@@ -755,8 +752,18 @@ static const char *err_to_string_by_conf(PW_ERROR_TYPE err, const char *conf_fil
         return gettext("Internal error");
     case PW_ERR_USER:
         return gettext("Invalid user");
-    default:
+    case PW_ERR_CHARACTER_TYPE_TOO_FEW:
+        num = get_pw_min_character_type_by_conf(0, conf_file);
+        character_num = get_pw_min_length_by_conf(0, conf_file);
+        snprintf(out_buff,
+                 BUFF_SIZE,
+                 gettext("The password must have at least %d characters, and contain at least %d of the four character types: lowercase letters, uppercase letters, numbers, and symbols"),
+                 character_num, num);
+        return out_buff;
+    case PW_ERR_PW_REPEAT:
         return gettext("It does not meet password rules");
+    default:
+        return gettext("Invalid error type");
     }
 
     return "";
