@@ -17,7 +17,7 @@ SRCS_C = $(basename $(shell cd unit_test; ls *.c))
 LIBSRCS_C = $(basename $(shell cd lib; ls *.c))
 TOOL_BINARAY = pwd-conf-update
 
-SECURITY_BUILD_OPTIONS = -fstack-protector-strong -D_FORTITY_SOURCE=1 -z noexecstack -pie -fPIC -z lazy
+SECURITY_BUILD_OPTIONS = -fPIC -fstack-protector-all -z relro -z noexecstack -z now -pie
 
 all: build
 
@@ -25,7 +25,7 @@ prepare:
 	@mkdir -p out/bin
 
 out/bin/%: prepare
-	env GOPATH="${GOPATH}" ${GOBUILD} -o $@  ${GOPKG_PREFIX}/*.go
+	env GOPATH="${GOPATH}" ${GOBUILD} -o $@ ${GOBUILD_OPTIONS} ${GOPKG_PREFIX}/*.go
 
 out/${LIBRARIES}:
 	gcc lib/*.c ${SECURITY_BUILD_OPTIONS} -shared -DIN_CRACKLIB -W -Wall -Wl,-soname,libdeepin_pw_check.so.1 -o $@ $^ -lcrypt -lcrack -liniparser
