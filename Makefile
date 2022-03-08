@@ -46,7 +46,7 @@ out/${PAM_MODULE}: out/${LIBRARIES}
 	gcc pam/*.c -fPIC -W -Wall -shared -lpam -L./out/ -ldeepin_pw_check -o $@ $^
 
 build_tool: prepare
-	gcc tool/*.c -liniparser -W -Wall -o out/${TOOL_BINARAY}
+	gcc tool/*.c -liniparser -W -Wall ${SECURITY_BUILD_OPTIONS} -o out/${TOOL_BINARAY}
 
 build: prepare $(addprefix out/bin/, ${BINARIES}) out/${LIBRARIES} static_lib out/${PAM_MODULE} build_tool ts_to_policy
 
