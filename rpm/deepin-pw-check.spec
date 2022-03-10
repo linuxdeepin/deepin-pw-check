@@ -48,8 +48,8 @@ this interface is designed to adapt to fingerprint, face and other authenticatio
 
 %prep
 %setup -q
-%patch1000  -p1
-%patch1001  -p1
+patch -p1 < rpm/0001-fix-for-UonioTech.patch
+patch -p1 < rpm/0001-Mangle-Suit-Cracklib2.9.6.patch
 
 %build
 BUILDID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
