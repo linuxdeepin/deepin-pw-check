@@ -47,7 +47,7 @@ In order to unify the authentication interface,
 this interface is designed to adapt to fingerprint, face and other authentication methods.
 
 %prep
-%setup -q
+%autosetup
 patch -p1 < rpm/0001-fix-for-UonioTech.patch
 patch -p1 < rpm/0001-Mangle-Suit-Cracklib2.9.6.patch
 
