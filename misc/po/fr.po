@@ -6,15 +6,16 @@
 # Translators:
 # steph gamersys <s.gamersys@gmail.com>, 2021
 # roxfr <roxfr@outlook.fr>, 2021
+# n1coc4cola <n1coc4cola@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"POT-Creation-Date: 2022-03-10 13:44+0800\n"
 "PO-Revision-Date: 2021-03-03 05:18+0000\n"
-"Last-Translator: roxfr <roxfr@outlook.fr>, 2021\n"
+"Last-Translator: n1coc4cola <n1coc4cola@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/linuxdeepin/teams/3617/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,64 +23,68 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: lib/deepin_pw_check.c:545
-msgid "Invalid error type"
-msgstr "Type invalide"
-
-#: lib/deepin_pw_check.c:555
+#: lib/deepin_pw_check.c:719
 msgid "Checking successful"
 msgstr "Vérification réussie"
 
-#: lib/deepin_pw_check.c:557
+#: lib/deepin_pw_check.c:721
 msgid "The password cannot be empty"
 msgstr "Le mot de passe ne peut pas être vide"
 
-#: lib/deepin_pw_check.c:561
+#: lib/deepin_pw_check.c:724
 #, c-format
 msgid "Password must have at least %d characters"
 msgstr "Le mot de passe doit comporter au moins %d caractères"
 
-#: lib/deepin_pw_check.c:566
+#: lib/deepin_pw_check.c:728
 #, c-format
 msgid "Password must be no more than %d characters"
 msgstr "Le mot de passe ne doit pas comporter plus de %dcaractères"
 
-#: lib/deepin_pw_check.c:570
-#, c-format
-msgid "Password can only contain %s"
-msgstr "Le mot de passe peut seulement contenir %s "
+#: lib/deepin_pw_check.c:732
+msgid ""
+"Password can only contain English letters (case-sensitive), numbers or "
+"special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
+msgstr ""
 
-#: lib/deepin_pw_check.c:577
+#: lib/deepin_pw_check.c:738
 #, c-format
 msgid "Password must not contain more than %d palindrome characters"
 msgstr "Le mot de passe ne doit pas contenir plus de %dcaractères spéciaux "
 
-#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
-#: lib/deepin_pw_check.c:585
+#: lib/deepin_pw_check.c:742 lib/deepin_pw_check.c:744
+#: lib/deepin_pw_check.c:746
 msgid "Create a strong password please"
 msgstr "Veuillez créer un mot de passe fort, s'il vous plaît"
 
-#: lib/deepin_pw_check.c:587
+#: lib/deepin_pw_check.c:748
 msgid "Do not use common words and combinations as password"
-msgstr "N'utiliser pas de mots et de combinaisons courants comme mot de passe"
+msgstr "N'utilisez pas de mots et de combinaisons courants comme mot de passe"
 
-#: lib/deepin_pw_check.c:589
+#: lib/deepin_pw_check.c:750
 msgid "Parameter options are invalid"
 msgstr "Options paramètres invalide"
 
-#: lib/deepin_pw_check.c:591
+#: lib/deepin_pw_check.c:752
 msgid "Internal error"
 msgstr "Erreur Interne"
 
-#: lib/deepin_pw_check.c:593
+#: lib/deepin_pw_check.c:754
 msgid "Invalid user"
 msgstr "Utilisateur Invalide"
 
-#: lib/deepin_pw_check.c:595
+#: lib/deepin_pw_check.c:760
+#, c-format
+msgid ""
+"The password must have at least %d characters, and contain at least %d of "
+"the four character types: lowercase letters, uppercase letters, numbers, and"
+" symbols"
+msgstr ""
+
+#: lib/deepin_pw_check.c:764
 msgid "It does not meet password rules"
 msgstr "Le mot de passe ne répond pas aux règles "
 
-#: pam/pam.c:107
-#, c-format
-msgid "Bad password: %s"
-msgstr ""
+#: lib/deepin_pw_check.c:766
+msgid "Invalid error type"
+msgstr "Type invalide"

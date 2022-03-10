@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
 # Pavel Borecki <pavel.borecki@gmail.com>, 2021
+# fri, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 10:54+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-03-10 13:44+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
+"Last-Translator: fri, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/linuxdeepin/teams/3617/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,79 +22,70 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: misc/pam-module/pam_auth.c:283
-#, c-format
-msgid "Verification error"
-msgstr "Chyba ověření"
+#: lib/deepin_pw_check.c:719
+msgid "Checking successful"
+msgstr "Úspěšně zkontrolováno"
 
-#: misc/pam-module/pam_auth.c:287
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr "Ověřování otiskem prstu není k dispozici – zadejte namísto toho heslo"
+#: lib/deepin_pw_check.c:721
+msgid "The password cannot be empty"
+msgstr "Heslo nemůže být prázdné"
 
-#: misc/pam-module/pam_auth.c:307 misc/pam-module/pam_auth.c:315
+#: lib/deepin_pw_check.c:724
 #, c-format
-msgid "Clean your finger and try again"
-msgstr "Prst očistěte a zkuste to znovu"
+msgid "Password must have at least %d characters"
+msgstr "Je třeba, aby heslo mělo délku alespoň %d znaků"
 
-#: misc/pam-module/pam_auth.c:311
+#: lib/deepin_pw_check.c:728
 #, c-format
-msgid "Finger not centered"
-msgstr "Prst je posunutý na stranu"
+msgid "Password must be no more than %d characters"
+msgstr "Heslo může mít délku nejvýše %d znaků"
 
-#: misc/pam-module/pam_auth.c:319
-#, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr "Nezřetelný otisk – prosím očistěte prst a zkuste to znovu"
-
-#: misc/pam-module/pam_auth.c:323
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr ""
-"Prstem bylo pohybováno příliš rychle. Nezvedejte prst dokud k tomu nebudete "
-"vyzváni"
-
-#: misc/pam-module/pam_auth.c:335 misc/pam-module/pam_auth.c:638
-#, c-format
-msgid "Password"
-msgstr "Heslo"
-
-#: misc/pam-module/pam_auth.c:440
-#, c-format
-msgid "Verification successful"
-msgstr "Úspěšně ověřeno"
-
-#: misc/pam-module/pam_auth.c:457
-#, c-format
-msgid "Fingerprint locked, use password please"
-msgstr "Možnost použití otisku zamčena – napište namísto něj heslo"
-
-#: misc/pam-module/pam_auth.c:461
-#, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Ověření se nezdařilo – zbývá %d pokusů"
-
-#: misc/pam-module/pam_auth.c:463
-#, c-format
-msgid "Verification failed, only one chance left"
-msgstr "Ověření se nezdařilo – zbývá pouze jeden pokus"
-
-#: misc/pam-module/pam_auth.c:589
-#, c-format
-msgid "Please retry after %d minutes"
+#: lib/deepin_pw_check.c:732
+msgid ""
+"Password can only contain English letters (case-sensitive), numbers or "
+"special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
 msgstr ""
 
-#: misc/pam-module/pam_auth.c:591
+#: lib/deepin_pw_check.c:738
 #, c-format
-msgid "Please retry after one minute"
+msgid "Password must not contain more than %d palindrome characters"
+msgstr ""
+"Heslo nemůže obsahovat posloupnost více než %d znaků, která se čte stejně "
+"oběma směry (palindrom)"
+
+#: lib/deepin_pw_check.c:742 lib/deepin_pw_check.c:744
+#: lib/deepin_pw_check.c:746
+msgid "Create a strong password please"
+msgstr "Vytvořte si odolné heslo, prosím"
+
+#: lib/deepin_pw_check.c:748
+msgid "Do not use common words and combinations as password"
+msgstr "Jako heslo nepoužívejte běžná slova a jejich kombinace"
+
+#: lib/deepin_pw_check.c:750
+msgid "Parameter options are invalid"
+msgstr "Volby parametru nejsou platné"
+
+#: lib/deepin_pw_check.c:752
+msgid "Internal error"
+msgstr "Vnitřní chyba"
+
+#: lib/deepin_pw_check.c:754
+msgid "Invalid user"
+msgstr "Neplatný uživatel"
+
+#: lib/deepin_pw_check.c:760
+#, c-format
+msgid ""
+"The password must have at least %d characters, and contain at least %d of "
+"the four character types: lowercase letters, uppercase letters, numbers, and"
+" symbols"
 msgstr ""
 
-#: misc/pam-module/pam_auth.c:600
-#, c-format
-msgid "Chances left: %d"
-msgstr "Zbývá pokusů: %d"
+#: lib/deepin_pw_check.c:764
+msgid "It does not meet password rules"
+msgstr "Nesplňuje pravidla pro hesla"
 
-#: misc/pam-module/pam_auth.c:635
-#, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Ověřit otisk prstu nebo heslo"
+#: lib/deepin_pw_check.c:766
+msgid "Invalid error type"
+msgstr "Neplatný typ chyby"

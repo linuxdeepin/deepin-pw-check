@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"POT-Creation-Date: 2022-03-10 13:44+0800\n"
 "PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2021\n"
 "Language-Team: Portuguese (https://www.transifex.com/linuxdeepin/teams/3617/pt/)\n"
@@ -21,64 +21,68 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: lib/deepin_pw_check.c:545
-msgid "Invalid error type"
-msgstr "Tipo de erro inválido"
-
-#: lib/deepin_pw_check.c:555
+#: lib/deepin_pw_check.c:719
 msgid "Checking successful"
 msgstr "Verificação bem sucedida"
 
-#: lib/deepin_pw_check.c:557
+#: lib/deepin_pw_check.c:721
 msgid "The password cannot be empty"
 msgstr "A palavra-passe não pode estar em branco"
 
-#: lib/deepin_pw_check.c:561
+#: lib/deepin_pw_check.c:724
 #, c-format
 msgid "Password must have at least %d characters"
 msgstr "A palavra-passe deve ter pelo menos %d caracteres"
 
-#: lib/deepin_pw_check.c:566
+#: lib/deepin_pw_check.c:728
 #, c-format
 msgid "Password must be no more than %d characters"
 msgstr "A palavra-passe não deve ter mais do que %d caracteres"
 
-#: lib/deepin_pw_check.c:570
-#, c-format
-msgid "Password can only contain %s"
-msgstr "A palavra-passe apenas pode conter %s"
+#: lib/deepin_pw_check.c:732
+msgid ""
+"Password can only contain English letters (case-sensitive), numbers or "
+"special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
+msgstr ""
 
-#: lib/deepin_pw_check.c:577
+#: lib/deepin_pw_check.c:738
 #, c-format
 msgid "Password must not contain more than %d palindrome characters"
 msgstr "A palavra-passe não deve conter mais de %d caracteres palíndromo"
 
-#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
-#: lib/deepin_pw_check.c:585
+#: lib/deepin_pw_check.c:742 lib/deepin_pw_check.c:744
+#: lib/deepin_pw_check.c:746
 msgid "Create a strong password please"
-msgstr "Crie uma palavra-passe forte, por favor"
+msgstr "Criar uma palavra-passe forte"
 
-#: lib/deepin_pw_check.c:587
+#: lib/deepin_pw_check.c:748
 msgid "Do not use common words and combinations as password"
 msgstr "Não utilizar palavras e combinações comuns como palavra-passe"
 
-#: lib/deepin_pw_check.c:589
+#: lib/deepin_pw_check.c:750
 msgid "Parameter options are invalid"
 msgstr "As opções de parâmetros são inválidas"
 
-#: lib/deepin_pw_check.c:591
+#: lib/deepin_pw_check.c:752
 msgid "Internal error"
 msgstr "Erro interno"
 
-#: lib/deepin_pw_check.c:593
+#: lib/deepin_pw_check.c:754
 msgid "Invalid user"
 msgstr "Utilizador inválido"
 
-#: lib/deepin_pw_check.c:595
+#: lib/deepin_pw_check.c:760
+#, c-format
+msgid ""
+"The password must have at least %d characters, and contain at least %d of "
+"the four character types: lowercase letters, uppercase letters, numbers, and"
+" symbols"
+msgstr ""
+
+#: lib/deepin_pw_check.c:764
 msgid "It does not meet password rules"
 msgstr "Não cumpre as regras de palavra-passe"
 
-#: pam/pam.c:107
-#, c-format
-msgid "Bad password: %s"
-msgstr ""
+#: lib/deepin_pw_check.c:766
+msgid "Invalid error type"
+msgstr "Tipo de erro inválido"

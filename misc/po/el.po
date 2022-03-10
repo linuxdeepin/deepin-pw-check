@@ -4,18 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cindy0514, 2020
-# Jim Gios <jgpers@gmail.com>, 2020
-# 457d8bb295cd215bf4b5d4421a7e6f2f_dbd70dd <547531d7e05a062719580f89832ccbd9_785821>, 2020
+# Rosserex <superiorgravelgr@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-02 17:59+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
-"Last-Translator: 457d8bb295cd215bf4b5d4421a7e6f2f_dbd70dd <547531d7e05a062719580f89832ccbd9_785821>, 2020\n"
+"POT-Creation-Date: 2022-03-10 13:44+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
+"Last-Translator: Rosserex <superiorgravelgr@gmail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/linuxdeepin/teams/3617/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,66 +21,71 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: misc/pam-module/pam_auth.c:222
-#, c-format
-msgid "Verification error"
-msgstr "Σφάλμα επαλήθευσης"
+#: lib/deepin_pw_check.c:719
+msgid "Checking successful"
+msgstr "Έλεγχος επιτυχής"
 
-#: misc/pam-module/pam_auth.c:226
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr ""
-"Η επαλήθευση αποτυπωμάτων δεν είναι διαθέσιμη, εισαγάγετε τον κωδικό "
-"πρόσβασης"
+#: lib/deepin_pw_check.c:721
+msgid "The password cannot be empty"
+msgstr "Ο κωδικός πρόσβασης δεν μπορεί να είναι κενός"
 
-#: misc/pam-module/pam_auth.c:246 misc/pam-module/pam_auth.c:254
+#: lib/deepin_pw_check.c:724
 #, c-format
-msgid "Clean your finger and try again"
-msgstr "Καθαρίστε το δάχτυλό σας και ξαναπροσπαθήστε"
+msgid "Password must have at least %d characters"
+msgstr "Ο κωδικός πρόσβασης πρέπει να έχει τουλάχιστον %d χαρακτήρες"
 
-#: misc/pam-module/pam_auth.c:250
+#: lib/deepin_pw_check.c:728
 #, c-format
-msgid "Finger not centered"
-msgstr "Το δάχτυλο δεν είναι κεντραρισμένο"
+msgid "Password must be no more than %d characters"
+msgstr "Ο κωδικός πρόσβασης δεν πρέπει να είναι περισσότερο από %d χαρακτήρες"
 
-#: misc/pam-module/pam_auth.c:258
-#, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr ""
-"Βρώμικο δακτυλικό αποτύπωμα, καθαρίστε το δάχτυλό σας και ξαναπροσπαθήστε"
-
-#: misc/pam-module/pam_auth.c:262
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr ""
-"Το δάχτυλο κινήθηκε πολύ γρήγορα, παρακαλώ μην σηκώνετε μέχρι να σας ζητηθεί"
-
-#: misc/pam-module/pam_auth.c:274 misc/pam-module/pam_auth.c:532
-#, c-format
-msgid "Password"
-msgstr "Κωδικός πρόσβασης"
-
-#: misc/pam-module/pam_auth.c:380
-#, c-format
-msgid "Verification successful"
-msgstr "Επιτυχής επαλήθευση"
-
-#: misc/pam-module/pam_auth.c:397
-#, c-format
-msgid "Fingerprint locked, use password please"
+#: lib/deepin_pw_check.c:732
+msgid ""
+"Password can only contain English letters (case-sensitive), numbers or "
+"special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
 msgstr ""
 
-#: misc/pam-module/pam_auth.c:401
+#: lib/deepin_pw_check.c:738
 #, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Εσφαλμένη επαλήθευση, %d προσπάθειες ακόμα"
+msgid "Password must not contain more than %d palindrome characters"
+msgstr ""
+"Ο κωδικός πρόσβασης δεν πρέπει να περιέχει περισσότερους από %d "
+"παλινδρομικούς χαρακτήρες"
 
-#: misc/pam-module/pam_auth.c:403
-#, c-format
-msgid "Verification failed, 1 chance left"
-msgstr "Εσφαλμένη επαλήθευση, 1 προσπάθεια ακόμα"
+#: lib/deepin_pw_check.c:742 lib/deepin_pw_check.c:744
+#: lib/deepin_pw_check.c:746
+msgid "Create a strong password please"
+msgstr "Παρακαλώ δημιουργήστε έναν ισχυρό κωδικό πρόσβασης"
 
-#: misc/pam-module/pam_auth.c:529
+#: lib/deepin_pw_check.c:748
+msgid "Do not use common words and combinations as password"
+msgstr ""
+"Μην χρησημοποιήτε συνηθείς λέξεις και συνδυασμούς αυτών ως κωδικό πρόσβασης "
+
+#: lib/deepin_pw_check.c:750
+msgid "Parameter options are invalid"
+msgstr "Μη έγκυρες επιλογές παραμέτρων"
+
+#: lib/deepin_pw_check.c:752
+msgid "Internal error"
+msgstr "Εσωτερικό σφάλμα"
+
+#: lib/deepin_pw_check.c:754
+msgid "Invalid user"
+msgstr "Μη έγκυρος χρήστης"
+
+#: lib/deepin_pw_check.c:760
 #, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Επαλήθευση του δακτυλικού σας αποτυπώματος ή κωδικού πρόσβασης"
+msgid ""
+"The password must have at least %d characters, and contain at least %d of "
+"the four character types: lowercase letters, uppercase letters, numbers, and"
+" symbols"
+msgstr ""
+
+#: lib/deepin_pw_check.c:764
+msgid "It does not meet password rules"
+msgstr "Δεν πληρεί τις προϋποθέσεις κωδικού πρόσβασης"
+
+#: lib/deepin_pw_check.c:766
+msgid "Invalid error type"
+msgstr "Μη έγκυρος τύπος σφάλματος"

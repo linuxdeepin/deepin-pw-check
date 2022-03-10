@@ -4,17 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# abuyop <abuyop@gmail.com>, 2020
-# Cindy0514, 2020
+# abuyop <abuyop@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-02 17:59+0800\n"
-"PO-Revision-Date: 2020-06-11 09:00+0000\n"
-"Last-Translator: Cindy0514, 2020\n"
+"POT-Creation-Date: 2022-03-10 13:44+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
+"Last-Translator: abuyop <abuyop@gmail.com>, 2021\n"
 "Language-Team: Malay (https://www.transifex.com/linuxdeepin/teams/3617/ms/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,63 +21,69 @@ msgstr ""
 "Language: ms\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: misc/pam-module/pam_auth.c:222
-#, c-format
-msgid "Verification error"
-msgstr "Ralat pengesahan"
+#: lib/deepin_pw_check.c:719
+msgid "Checking successful"
+msgstr "Pemeriksaan berjaya"
 
-#: misc/pam-module/pam_auth.c:226
-#, c-format
-msgid "Fingerprint verification unavailable, please input password"
-msgstr "Pengesahan cap jari tidak tersedia, sila masukkan kata laluan"
+#: lib/deepin_pw_check.c:721
+msgid "The password cannot be empty"
+msgstr "Kata laluan tidak boleh kosong"
 
-#: misc/pam-module/pam_auth.c:246 misc/pam-module/pam_auth.c:254
+#: lib/deepin_pw_check.c:724
 #, c-format
-msgid "Clean your finger and try again"
-msgstr "Bersih dahulu jari anda dan cuba sekali lagi"
+msgid "Password must have at least %d characters"
+msgstr "Kata laluan mesti sekurang-kurangnya %d aksara"
 
-#: misc/pam-module/pam_auth.c:250
+#: lib/deepin_pw_check.c:728
 #, c-format
-msgid "Finger not centered"
-msgstr "Jari tidak berada ditengah-tengah"
+msgid "Password must be no more than %d characters"
+msgstr "Kata laluan mestilah tidak lebih daripada %d aksara"
 
-#: misc/pam-module/pam_auth.c:258
-#, c-format
-msgid "Unclear fingerprint, please clean your finger and try again"
-msgstr ""
-"Cap jari tidak jelas, sila bersih dahulu jari anda dan cuba sekali lagi"
-
-#: misc/pam-module/pam_auth.c:262
-#, c-format
-msgid "Finger moved too fast, please do not lift until prompted"
-msgstr "Jari digerak terlalu pantas. Jangan angkat sehingga diberitahu"
-
-#: misc/pam-module/pam_auth.c:274 misc/pam-module/pam_auth.c:532
-#, c-format
-msgid "Password"
-msgstr "Kata Laluan"
-
-#: misc/pam-module/pam_auth.c:380
-#, c-format
-msgid "Verification successful"
-msgstr "Pengesahan berjaya"
-
-#: misc/pam-module/pam_auth.c:397
-#, c-format
-msgid "Fingerprint locked, use password please"
+#: lib/deepin_pw_check.c:732
+msgid ""
+"Password can only contain English letters (case-sensitive), numbers or "
+"special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
 msgstr ""
 
-#: misc/pam-module/pam_auth.c:401
+#: lib/deepin_pw_check.c:738
 #, c-format
-msgid "Verification failed, %d chances left"
-msgstr "Pengesahan gagal, berbaki %d peluang lagi"
+msgid "Password must not contain more than %d palindrome characters"
+msgstr ""
+"Kata laluan mesti tidak mengandungi lebih daripada %d aksara palindrome"
 
-#: misc/pam-module/pam_auth.c:403
-#, c-format
-msgid "Verification failed, 1 chance left"
-msgstr "Pengesahan gagal, 1 peluang berbaki"
+#: lib/deepin_pw_check.c:742 lib/deepin_pw_check.c:744
+#: lib/deepin_pw_check.c:746
+msgid "Create a strong password please"
+msgstr "Sila cipta satu kata laluan yang kuat"
 
-#: misc/pam-module/pam_auth.c:529
+#: lib/deepin_pw_check.c:748
+msgid "Do not use common words and combinations as password"
+msgstr "Jangan guna perkataan dan gabungan umum sebagai kata laluan"
+
+#: lib/deepin_pw_check.c:750
+msgid "Parameter options are invalid"
+msgstr "Pilihan parameter tidak sah"
+
+#: lib/deepin_pw_check.c:752
+msgid "Internal error"
+msgstr "Ralat dalaman"
+
+#: lib/deepin_pw_check.c:754
+msgid "Invalid user"
+msgstr "Pengguna tidak sah"
+
+#: lib/deepin_pw_check.c:760
 #, c-format
-msgid "Verify your fingerprint or password"
-msgstr "Sahkan cap jari atau kata laluan anda"
+msgid ""
+"The password must have at least %d characters, and contain at least %d of "
+"the four character types: lowercase letters, uppercase letters, numbers, and"
+" symbols"
+msgstr ""
+
+#: lib/deepin_pw_check.c:764
+msgid "It does not meet password rules"
+msgstr "Ia tidak menepati peraturan kata laluan"
+
+#: lib/deepin_pw_check.c:766
+msgid "Invalid error type"
+msgstr "Jenis ralat tidak sah"

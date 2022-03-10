@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 15:30+0800\n"
+"POT-Creation-Date: 2022-03-10 13:44+0800\n"
 "PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: yeshe lhamo <981611630@qq.com>, 2021\n"
 "Language-Team: Tibetan (https://www.transifex.com/linuxdeepin/teams/3617/bo/)\n"
@@ -21,64 +21,68 @@ msgstr ""
 "Language: bo\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: lib/deepin_pw_check.c:545
-msgid "Invalid error type"
-msgstr "གོ་མི་ཆོད་པའི་ནོར་འཁྲུལ་རིགས།"
-
-#: lib/deepin_pw_check.c:555
+#: lib/deepin_pw_check.c:719
 msgid "Checking successful"
 msgstr "ཞུ་དག་ལེགས་གྲུབ།"
 
-#: lib/deepin_pw_check.c:557
+#: lib/deepin_pw_check.c:721
 msgid "The password cannot be empty"
 msgstr "གསང་ཨང་སྟོང་པ་ཡིན་མི་རུང་། "
 
-#: lib/deepin_pw_check.c:561
+#: lib/deepin_pw_check.c:724
 #, c-format
 msgid "Password must have at least %d characters"
 msgstr "གསང་ཨང་རིང་ཚད་ཡིག་རྟགས་%dལས་ཉུང་མི་རུང་།"
 
-#: lib/deepin_pw_check.c:566
+#: lib/deepin_pw_check.c:728
 #, c-format
 msgid "Password must be no more than %d characters"
 msgstr "གསང་ཨང་རིང་ཚད་ཡིག་རྟགས་%dལས་བརྒལ་མི་རུང་།"
 
-#: lib/deepin_pw_check.c:570
-#, c-format
-msgid "Password can only contain %s"
-msgstr "གསང་ཨང་ནི་%sཁོ་ནས་གྲུབ་དགོས།"
+#: lib/deepin_pw_check.c:732
+msgid ""
+"Password can only contain English letters (case-sensitive), numbers or "
+"special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
+msgstr ""
 
-#: lib/deepin_pw_check.c:577
+#: lib/deepin_pw_check.c:738
 #, c-format
 msgid "Password must not contain more than %d palindrome characters"
 msgstr "གསང་ཨང་ནང་བསྟུད་མར་ཟུང་ལྡན་གྱི་ཡིག་རྟགས་%dཡན་ཡོད་མི་ཆོག "
 
-#: lib/deepin_pw_check.c:581 lib/deepin_pw_check.c:583
-#: lib/deepin_pw_check.c:585
+#: lib/deepin_pw_check.c:742 lib/deepin_pw_check.c:744
+#: lib/deepin_pw_check.c:746
 msgid "Create a strong password please"
 msgstr "གསང་ཨང་སྟབས་བདེ་དྲགས་པས། གསང་ཨང་རྙོག་འཛིང་ཆེ་རུ་གཏོང་།"
 
-#: lib/deepin_pw_check.c:587
+#: lib/deepin_pw_check.c:748
 msgid "Do not use common words and combinations as password"
 msgstr "གསང་ཨང་ནི་རྒྱུན་མཐོང་གི་མིང་དང་ཚིག་གྲུབ་ཡིན་མི་ཆོག "
 
-#: lib/deepin_pw_check.c:589
+#: lib/deepin_pw_check.c:750
 msgid "Parameter options are invalid"
 msgstr "གོ་མི་ཆོད་པའི་ཞུགས་གྲངས་གདེམ་གསེས།"
 
-#: lib/deepin_pw_check.c:591
+#: lib/deepin_pw_check.c:752
 msgid "Internal error"
 msgstr "ནང་ཁུལ་ནོར་འཁྲུལ།"
 
-#: lib/deepin_pw_check.c:593
+#: lib/deepin_pw_check.c:754
 msgid "Invalid user"
 msgstr "ཕན་མེད་སྤྱོད་མཁན།"
 
-#: lib/deepin_pw_check.c:595
+#: lib/deepin_pw_check.c:760
+#, c-format
+msgid ""
+"The password must have at least %d characters, and contain at least %d of "
+"the four character types: lowercase letters, uppercase letters, numbers, and"
+" symbols"
+msgstr ""
+
+#: lib/deepin_pw_check.c:764
 msgid "It does not meet password rules"
 msgstr "གསང་ཨང་བདེ་འཇགས་ཀྱི་བླང་བྱ་དང་མི་འཚམ་པ།"
 
-#: pam/pam.c:107
-#, c-format
-msgid "Bad password: %s"
-msgstr ""
+#: lib/deepin_pw_check.c:766
+msgid "Invalid error type"
+msgstr "གོ་མི་ཆོད་པའི་ནོར་འཁྲུལ་རིགས།"
