@@ -3,7 +3,7 @@
 
 int main()
 {
-    extern bool is_type_valid(const char *pw, char *character_type, int character_num_required);
+    extern PW_ERROR_TYPE is_type_valid(const char *pw, char *character_type, int character_num_required);
     if (is_type_valid("123456", "12345", 1) != PW_ERR_CHARACTER_INVALID)
     {
         return -1;
