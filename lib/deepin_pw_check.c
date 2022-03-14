@@ -689,7 +689,7 @@ static int get_pw_monotone_character_num_by_conf(int level, const char *conf_fil
 
     return num;
 }
- 
+
 static int get_pw_consecutive_same_character_num_by_conf(int level, const char *conf_file) {
     UNUSED(level);
 
@@ -720,8 +720,12 @@ static const char *err_to_string_by_conf(PW_ERROR_TYPE err, const char *conf_fil
     case PW_ERR_PASSWORD_EMPTY:
         return gettext("The password cannot be empty");
     case PW_ERR_LENGTH_SHORT:
-        len = get_pw_min_length_by_conf(0, conf_file);
-        snprintf(out_buff, BUFF_SIZE, gettext("Password must have at least %d characters"), len);
+        num = get_pw_min_character_type_by_conf(0, conf_file);
+        character_num = get_pw_min_length_by_conf(0, conf_file);
+        snprintf(out_buff,
+                 BUFF_SIZE,
+                 gettext("The password must have at least %d characters, and contain at least %d of the four character types: lowercase letters, uppercase letters, numbers, and symbols"),
+                 character_num, num);
         return out_buff;
     case PW_ERR_LENGTH_LONG:
         len = get_pw_max_length_by_conf(0, conf_file);
