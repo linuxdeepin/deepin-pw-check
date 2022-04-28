@@ -1,6 +1,22 @@
 # deepin-pw-check
 deepin-pw-check is a tool to verify the validity of the password
 
+# dependencies
+
+## build dependencies
+
+_The **master** branch is current development branch, build dependencies may changes without update README.md, refer to `./debian/control` for a working build depends list_
+
+* cracklib-runtime
+* deepin-gettext-tools
+* golang-dbus-dev
+* golang-github-linuxdeepin-go-dbus-factory-dev
+* golang-github-linuxdeepin-go-lib-dev
+* golang-go
+* libcrack2-dev
+* libiniparser-dev
+* libpam-dev
+
 # interface
 ```c
 1. PW_ERROR_TYPE deepin_pw_check(const char* user,const char* pw, int level, const char* dict_path);  // 密码校验
