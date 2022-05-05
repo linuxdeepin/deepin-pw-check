@@ -58,7 +58,7 @@ const _default_conf default_conf[] = {
         [OS_PROFESSIONAL] =
                 {
                         .min_length = 1,
-                        .max_length = 511,
+                        .max_length = 510,
                         .validate_policy = "1234567890;abcdefghijklmnopqrstuvwxyz;"
                                            "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
                                            ":;<=>?@[\\]^_`{|}~/",
@@ -72,7 +72,7 @@ const _default_conf default_conf[] = {
         [OS_SERVER] =
                 {
                         .min_length = 8,
-                        .max_length = 511,
+                        .max_length = 510,
                         .validate_policy = "1234567890;abcdefghijklmnopqrstuvwxyz;"
                                            "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
                                            ":;<=>?@[\\]^_`{|}~/",
