@@ -23,7 +23,8 @@ typedef enum {
     PW_ERR_PARA,
     PW_ERR_INTERNAL,
     PW_ERR_USER,                // user name is error
-    PW_ERR_CHARACTER_TYPE_TOO_FEW        // too few password character types
+    PW_ERR_CHARACTER_TYPE_TOO_FEW,        // too few password character types
+    PW_ERR_SAME_AS_USERNAME     // password same as password
 }PW_ERROR_TYPE;
 
 /*
