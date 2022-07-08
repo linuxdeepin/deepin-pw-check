@@ -531,11 +531,6 @@ static PW_ERROR_TYPE deepin_pw_check_by_conf(const char *user, const char *pw, i
         if (!options->enabled) {
             return ret;
         }
-        DEBUG("check user name equal password");
-        if (options->min_len >= 8 && options->character_num_required >= 3 && strcmp(user,pw) == 0) {
-            ret = PW_ERR_SAME_AS_USERNAME;
-            break;
-        }
         DEBUG("check is_length_valid");
         if (PW_NO_ERR != (ret = is_length_valid(pw, options->min_len, options->max_len))) {
             break;
@@ -547,7 +542,11 @@ static PW_ERROR_TYPE deepin_pw_check_by_conf(const char *user, const char *pw, i
                 break;
             }
         }
-
+        DEBUG("check user name equal password");
+        if (options->min_len >= 8 && options->character_num_required >= 3 && strcmp(user,pw) == 0) {
+            ret = PW_ERR_SAME_AS_USERNAME;
+            break;
+        }
         DEBUG("check is_type_valid");
         ret = is_type_valid(pw, options->character_type, options->character_num_required);
         if (PW_NO_ERR != ret) {
