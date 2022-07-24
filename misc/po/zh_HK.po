@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 13:44+0800\n"
+"POT-Creation-Date: 2022-07-24 17:12+0800\n"
 "PO-Revision-Date: 2021-03-03 05:18+0000\n"
 "Last-Translator: Cindy0514, 2022\n"
 "Language-Team: Chinese (Hong Kong) (https://www.transifex.com/linuxdeepin/teams/3617/zh_HK/)\n"
@@ -21,68 +21,62 @@ msgstr ""
 "Language: zh_HK\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: lib/deepin_pw_check.c:719
+#: lib/deepin_pw_check.c:723
 msgid "Checking successful"
 msgstr "校驗成功"
 
-#: lib/deepin_pw_check.c:721
+#: lib/deepin_pw_check.c:725
 msgid "The password cannot be empty"
 msgstr "密碼不能為空"
 
-#: lib/deepin_pw_check.c:724
+#: lib/deepin_pw_check.c:731 lib/deepin_pw_check.c:767
 #, c-format
-msgid "Password must have at least %d characters"
-msgstr "密碼長度不能少於%d個字符"
+msgid ""
+"Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. "
+"Different from the username."
+msgstr "密碼最少%d位，至少同時包含小寫字母、大寫字母、數字、符號中的%d種，且密碼不能與用戶名一致"
 
-#: lib/deepin_pw_check.c:728
+#: lib/deepin_pw_check.c:735
 #, c-format
 msgid "Password must be no more than %d characters"
 msgstr "密碼長度不能超過%d個字符"
 
-#: lib/deepin_pw_check.c:732
+#: lib/deepin_pw_check.c:739
 msgid ""
 "Password can only contain English letters (case-sensitive), numbers or "
 "special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
 msgstr "密碼只能由英文（區分大小寫）、數字或特殊符號（~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/）組成"
 
-#: lib/deepin_pw_check.c:738
+#: lib/deepin_pw_check.c:745
 #, c-format
 msgid "Password must not contain more than %d palindrome characters"
 msgstr "密碼不得含有連續%d個以上的回文字符"
 
-#: lib/deepin_pw_check.c:742 lib/deepin_pw_check.c:744
-#: lib/deepin_pw_check.c:746
+#: lib/deepin_pw_check.c:749 lib/deepin_pw_check.c:751
+#: lib/deepin_pw_check.c:753
 msgid "Create a strong password please"
 msgstr "密碼過於簡單，請增加密碼複雜度"
 
-#: lib/deepin_pw_check.c:748
+#: lib/deepin_pw_check.c:755
 msgid "Do not use common words and combinations as password"
 msgstr "密碼不能是常見單詞及組合"
 
-#: lib/deepin_pw_check.c:750
+#: lib/deepin_pw_check.c:757
 msgid "Parameter options are invalid"
 msgstr "無效參數選項"
 
-#: lib/deepin_pw_check.c:752
+#: lib/deepin_pw_check.c:759
 msgid "Internal error"
 msgstr "內部錯誤"
 
-#: lib/deepin_pw_check.c:754
+#: lib/deepin_pw_check.c:761
 msgid "Invalid user"
 msgstr "無效用戶"
 
-#: lib/deepin_pw_check.c:760
-#, c-format
-msgid ""
-"The password must have at least %d characters, and contain at least %d of "
-"the four character types: lowercase letters, uppercase letters, numbers, and"
-" symbols"
-msgstr "密碼最少%d位，至少同時包含小寫字母、大寫字母、數字、符號中的%d種"
-
-#: lib/deepin_pw_check.c:764
+#: lib/deepin_pw_check.c:770
 msgid "It does not meet password rules"
 msgstr "密碼不符合安全要求"
 
-#: lib/deepin_pw_check.c:766
+#: lib/deepin_pw_check.c:772
 msgid "Invalid error type"
 msgstr "無效錯誤類型"

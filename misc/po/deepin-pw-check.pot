@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 13:44+0800\n"
+"POT-Creation-Date: 2022-07-24 17:12+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 
-#: lib/deepin_pw_check.c:719
+#: lib/deepin_pw_check.c:723
 msgid "Checking successful"
 msgstr "Checking successful"
 
-#: lib/deepin_pw_check.c:721
+#: lib/deepin_pw_check.c:725
 msgid "The password cannot be empty"
 msgstr "The password cannot be empty"
 
-#: lib/deepin_pw_check.c:724
+#: lib/deepin_pw_check.c:731 lib/deepin_pw_check.c:767
 #, c-format
-msgid "Password must have at least %d characters"
-msgstr "Password must have at least %d characters"
+msgid ""
+"Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. "
+"Different from the username."
+msgstr ""
+"Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. "
+"Different from the username."
 
-#: lib/deepin_pw_check.c:728
+#: lib/deepin_pw_check.c:735
 #, c-format
 msgid "Password must be no more than %d characters"
 msgstr "Password must be no more than %d characters"
 
-#: lib/deepin_pw_check.c:732
+#: lib/deepin_pw_check.c:739
 msgid ""
 "Password can only contain English letters (case-sensitive), numbers or "
 "special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
@@ -43,47 +47,36 @@ msgstr ""
 "Password can only contain English letters (case-sensitive), numbers or "
 "special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
 
-#: lib/deepin_pw_check.c:738
+#: lib/deepin_pw_check.c:745
 #, c-format
 msgid "Password must not contain more than %d palindrome characters"
 msgstr "Password must not contain more than %d palindrome characters"
 
-#: lib/deepin_pw_check.c:742 lib/deepin_pw_check.c:744
-#: lib/deepin_pw_check.c:746
+#: lib/deepin_pw_check.c:749 lib/deepin_pw_check.c:751
+#: lib/deepin_pw_check.c:753
 msgid "Create a strong password please"
 msgstr "Create a strong password please"
 
-#: lib/deepin_pw_check.c:748
+#: lib/deepin_pw_check.c:755
 msgid "Do not use common words and combinations as password"
 msgstr "Do not use common words and combinations as password"
 
-#: lib/deepin_pw_check.c:750
+#: lib/deepin_pw_check.c:757
 msgid "Parameter options are invalid"
 msgstr "Parameter options are invalid"
 
-#: lib/deepin_pw_check.c:752
+#: lib/deepin_pw_check.c:759
 msgid "Internal error"
 msgstr "Internal error"
 
-#: lib/deepin_pw_check.c:754
+#: lib/deepin_pw_check.c:761
 msgid "Invalid user"
 msgstr "Invalid user"
 
-#: lib/deepin_pw_check.c:760
-#, c-format
-msgid ""
-"The password must have at least %d characters, and contain at least %d of "
-"the four character types: lowercase letters, uppercase letters, numbers, and"
-" symbols"
-msgstr ""
-"The password must have at least %d characters, and contain at least %d of "
-"the four character types: lowercase letters, uppercase letters, numbers, and"
-" symbols"
-
-#: lib/deepin_pw_check.c:764
+#: lib/deepin_pw_check.c:770
 msgid "It does not meet password rules"
 msgstr "It does not meet password rules"
 
-#: lib/deepin_pw_check.c:766
+#: lib/deepin_pw_check.c:772
 msgid "Invalid error type"
 msgstr "Invalid error type"
