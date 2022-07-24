@@ -728,8 +728,7 @@ static const char *err_to_string_by_conf(PW_ERROR_TYPE err, const char *conf_fil
         character_num = get_pw_min_length_by_conf(0, conf_file);
         snprintf(out_buff,
                  BUFF_SIZE,
-                 gettext("The password must have at least %d characters, and contain at least %d of the four character types: lowercase letters, uppercase letters, numbers, and symbols"),
-                 character_num, num);
+                 gettext("Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. Different from the username."), character_num, num);
         return out_buff;
     case PW_ERR_LENGTH_LONG:
         len = get_pw_max_length_by_conf(0, conf_file);
@@ -765,8 +764,7 @@ static const char *err_to_string_by_conf(PW_ERROR_TYPE err, const char *conf_fil
         character_num = get_pw_min_length_by_conf(0, conf_file);
         snprintf(out_buff,
                  BUFF_SIZE,
-                 gettext("The password must have at least %d characters, and contain at least %d of the four character types: lowercase letters, uppercase letters, numbers, and symbols"),
-                 character_num, num);
+                 gettext("Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. Different from the username."), character_num, num);
         return out_buff;
     case PW_ERR_PW_REPEAT:
         return gettext("It does not meet password rules");
