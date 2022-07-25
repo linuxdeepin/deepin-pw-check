@@ -724,6 +724,8 @@ static const char *err_to_string_by_conf(PW_ERROR_TYPE err, const char *conf_fil
     case PW_ERR_PASSWORD_EMPTY:
         return gettext("The password cannot be empty");
     case PW_ERR_LENGTH_SHORT:
+    case PW_ERR_CHARACTER_TYPE_TOO_FEW:
+    case PW_ERR_SAME_AS_USERNAME:
         num = get_pw_min_character_type_by_conf(0, conf_file);
         character_num = get_pw_min_length_by_conf(0, conf_file);
         snprintf(out_buff,
@@ -759,13 +761,6 @@ static const char *err_to_string_by_conf(PW_ERROR_TYPE err, const char *conf_fil
         return gettext("Internal error");
     case PW_ERR_USER:
         return gettext("Invalid user");
-    case PW_ERR_CHARACTER_TYPE_TOO_FEW:
-        num = get_pw_min_character_type_by_conf(0, conf_file);
-        character_num = get_pw_min_length_by_conf(0, conf_file);
-        snprintf(out_buff,
-                 BUFF_SIZE,
-                 gettext("Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. Different from the username."), character_num, num);
-        return out_buff;
     case PW_ERR_PW_REPEAT:
         return gettext("It does not meet password rules");
     default:
