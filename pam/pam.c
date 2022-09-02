@@ -113,7 +113,7 @@ int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
                 char *current_domain = textdomain(NULL);
                 textdomain("deepin-pw-check");
 
-                sprintf(outbuf, err_to_string((PW_ERROR_TYPE)ret));
+                sprintf(outbuf, "%s", err_to_string((PW_ERROR_TYPE)ret));
                 pam_error(pamh, "%s", outbuf);
                 pam_set_item(pamh, PAM_AUTHTOK, NULL);
 
