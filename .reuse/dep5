@@ -1,0 +1,39 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: deepin-pw-check
+Upstream-Contact: UnionTech Software Technology Co., Ltd. <>
+Source: https://github.com/linuxdeepin/deepin-pw-check
+
+# README & DOC
+Files: *.md README.md README.zh_CN.md CHANGELOG.md docs/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC-BY-4.0
+
+# ci
+Files: .github/* .gitlab-ci.yml
+Copyright: None
+License: CC0-1.0
+
+# gitignore
+Files: .gitignore
+Copyright: None
+License: CC0-1.0
+
+# xml toml json conf yaml
+Files: src/*.xml .clog.toml configs/*.json src/*conf src/*.yaml .tx/config
+Copyright: None
+License: CC0-1.0
+
+# Packaging configuration
+Files: rpm/* debian/* archlinux/* misc/*
+Copyright: None
+License: CC0-1.0
+
+# test file
+Files: unit_test/*.conf
+Copyright: UnionTech Software Technology Co., Ltd.
+License: GPL-3.0-or-later
+
+# makefile
+Files: Makefile
+Copyright: UnionTech Software Technology Co., Ltd.
+License: GPL-3.0-or-later

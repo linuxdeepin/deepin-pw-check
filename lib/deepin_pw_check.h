@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #ifndef _DEEPIN_PW_CHECK_H_
 #define _DEEPIN_PW_CHECK_H_
