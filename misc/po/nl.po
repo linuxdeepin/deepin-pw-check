@@ -35,6 +35,9 @@ msgid ""
 "Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. "
 "Different from the username."
 msgstr ""
+"Het wachtwoord dient minimaal %d tekens te bevatten, waarvan minimaal %d van"
+" de volgende tekens: 0-9, a-z en speciale tekens. Ook moet het wachtwoord "
+"verschillen van de gebruikersnaam."
 
 #: lib/deepin_pw_check.c:735
 #, c-format
