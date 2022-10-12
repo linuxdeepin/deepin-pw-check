@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #include "../lib/debug.h"
 #include "../lib/deepin_pw_check.h"
 #include <libintl.h>

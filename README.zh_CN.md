@@ -1,32 +1,32 @@
 # deepin-pw-check
-deepin-pw-check is a tool to verify the validity of the password.
+deepin-pw-check 是一个密码规则校验工具。
 
-# dependencies
-You can also check the "Depends" provided in the debian/control file.
+# 依赖
+请查看“debian/control”文件中提供的“Depends”。
 
-## build dependencies
-You can also check the "Build-Depends" provided in the debian/control file.
+## 编译依赖
+请查看“debian/control”文件中提供的“Build-Depends”。
 
-## Installation
+## 安装
 
-### Build from source code
+### 构建过程
 
-1. Make sure you have installed all dependencies.
+1. 确保已经安装了所有的编译依赖。
 
-2. Build:
+2. 构建:
 ```
 $ cd deepin-pw-check
 $ make
 ```
 
-3. Install:
+3. 安装:
 ```
 $ sudo make install
 ```
 
-The executable binary file could be found at `/usr/lib/deepin-pw-check` after the installation is finished.
+安装完成后可执行二进制文件在`/usr/lib/deepin-pw-check`。
 
-# Usage
+# 用法
 ```c
 #include <deepin_pw_check.h>
 #include <stdio.h>
@@ -39,8 +39,8 @@ int main() {
 }
 ```
 
-## Getting help
-You may find these channels useful if you encounter any other issues:
+## 获得帮助
+如果您遇到任何其他问题，您可能会发现这些渠道很有用：
 
 * [Gitter](https://gitter.im/orgs/linuxdeepin/rooms)
 * [IRC Channel](https://webchat.freenode.net/?channels=deepin)
@@ -48,7 +48,7 @@ You may find these channels useful if you encounter any other issues:
 * [Wiki](https://wiki.deepin.org/)
 * [Developer Center](https://github.com/linuxdeepin/deepin-pw-check)
 
-## Getting involved
+## 贡献指南
 
 We encourage you to report issues and contribute changes
 
@@ -57,4 +57,4 @@ We encourage you to report issues and contribute changes
 
 ## License
 
-deepin-pw-check is licensed under [GPL-3.0-or-later](LICENSE).
+deepin-pw-check在[GPL-3.0-or-later](LICENSE)下发布。
