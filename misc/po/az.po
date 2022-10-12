@@ -35,6 +35,8 @@ msgid ""
 "Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. "
 "Different from the username."
 msgstr ""
+"Ən az %d simvol. Ən az %d növ: 0-9, a-z, A-Z və simvollar. İstifadəçi "
+"adından fərqli."
 
 #: lib/deepin_pw_check.c:735
 #, c-format

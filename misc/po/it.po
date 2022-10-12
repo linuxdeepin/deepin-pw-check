@@ -35,6 +35,8 @@ msgid ""
 "Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. "
 "Different from the username."
 msgstr ""
+"Un minimo di %d caratteri. Di cui %d tipologie: 0-9, a-z, A-Z e simboli, "
+"comunque differente dal Nome Utente."
 
 #: lib/deepin_pw_check.c:735
 #, c-format

@@ -25,7 +25,7 @@ msgstr ""
 
 #: lib/deepin_pw_check.c:723
 msgid "Checking successful"
-msgstr "Sprawdzanie powiodło się"
+msgstr "Sprawdzono pomyślnie"
 
 #: lib/deepin_pw_check.c:725
 msgid "The password cannot be empty"
@@ -37,6 +37,8 @@ msgid ""
 "Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. "
 "Different from the username."
 msgstr ""
+"Wymagane jest %d znaków. Co najmniej %d typy: 0-9, a-z, A-Z i symbole. Inne "
+"od nazwy użytkownika."
 
 #: lib/deepin_pw_check.c:735
 #, c-format
@@ -63,7 +65,7 @@ msgstr "Utwórz silne hasło"
 
 #: lib/deepin_pw_check.c:755
 msgid "Do not use common words and combinations as password"
-msgstr "Nie używaj popularnych słów i kombinacji jako hasło"
+msgstr "Nie używaj popularnych słów i kombinacji jako hasła"
 
 #: lib/deepin_pw_check.c:757
 msgid "Parameter options are invalid"
