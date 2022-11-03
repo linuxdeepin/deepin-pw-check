@@ -106,6 +106,15 @@ const _default_conf default_conf[] = {
 OS_TYPE get_current_os_type() {
     dictionary *dic;
     OS_TYPE ret;
+    FILE *f = fopen(OS_VERSION_FILE_PATH, "r");
+
+    if (f == NULL) {
+        /* 其他发行版的可能不存在 os-version 文件，这里默认走专业版配置 */
+        return OS_PROFESSIONAL;
+    }
+
+    fclose(f);
+
     if (NULL == (dic = iniparser_load(OS_VERSION_FILE_PATH))) {
         DEBUG("ERROR: open file failed!");
         return OS_UNEXPECTED_ERR;
