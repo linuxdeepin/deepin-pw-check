@@ -20,7 +20,7 @@
     密码强度策略：`VALIDATE_REQUIRED=3`
 
 # DBus 服务
-提供 system bus上的服务 `com.deepin.daemon.PasswdConf`,路径名为 `/com/deepin/daemon/PasswdConf`, 接口名为 `com.deepin.daemon.PasswdConf`。
+提供 system bus上的服务 `org.deepin.dde.PasswdConf1`,路径名为 `/org/deepin/dde/PasswdConf`, 接口名为 `org.deepin.dde.PasswdConf1`。
 
 # 接口说明
 

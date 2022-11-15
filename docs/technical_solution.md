@@ -48,7 +48,7 @@
       
 2. 提供一个动态库`pam_deepin_pw_check.so`，实现`pam`的`pam_sm_chauthtok`接口，该接口中调用上述1中的密码校验接口，并根据接口返回给`pam`校验结果。该动态库将会写入`/etc/pam.d/common-passwd`配置文件中，当使用`passwd`修改密码时，将走此校验。
 
-3. 提供一个 dbus 服务 deepin_pw_check，该服务用来操作 `/etc/deepin/dde.conf` 配置文件，可以通过该接口获取当前配置，也可通过该接口修改配置，修改配置需要鉴权。服务名为 `com.deepin.daemon.PasswdConf`,路径名为 `/com/deepin/daemon/PasswdConf`, 接口名为 `com.deepin.daemon.PasswdConf`。
+3. 提供一个 dbus 服务 deepin_pw_check，该服务用来操作 `/etc/deepin/dde.conf` 配置文件，可以通过该接口获取当前配置，也可通过该接口修改配置，修改配置需要鉴权。服务名为 `org.deepin.dde.PasswdConf1`,路径名为 `/org/deepin/dde/PasswdConf1`, 接口名为 `org.deepin.dde.PasswdConf1`。
 
 4. 提供一个工具 pwd_conf_update，该工具可以用于手动更新 `/etc/deepin/dde.conf` 配置。一般在安装时调用，用于更新配置文件字段。
 ## 实验验证

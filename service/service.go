@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	polkit "github.com/linuxdeepin/go-dbus-factory/org.freedesktop.policykit1"
+	polkit "github.com/linuxdeepin/go-dbus-factory/system/org.freedesktop.policykit1"
 
 	"github.com/linuxdeepin/go-lib/keyfile"
 
@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	dBusServiceName   = "com.deepin.daemon.PasswdConf"
-	dBusServicePath   = "/com/deepin/daemon/PasswdConf"
+	dBusServiceName   = "org.deepin.dde.PasswdConf1"
+	dBusServicePath   = "/org/deepin/dde/PasswdConf1"
 	dBusInterfaceName = dBusServiceName
 )
 
@@ -31,7 +31,7 @@ const (
 )
 
 const (
-	modifyPwdConfActionId = "com.deepin.daemon.passwdconf.modify-config"
+	modifyPwdConfActionId = "org.deepin.dde.passwdconf.modify-config"
 )
 
 type manager struct {

@@ -89,7 +89,7 @@ clean_test: $(addprefix unit_test/, $(SRCS_C))
 pot:
 	xgettext --from-code utf-8 lib/*.c pam/*.c -o misc/po/deepin-pw-check.pot
 
-POLICY_NAME = com.deepin.daemon.passwdconf
+POLICY_NAME = org.deepin.dde.passwdconf
 
 ts:
 	deepin-policy-ts-convert policy2ts misc/polkit-action/$(POLICY_NAME).policy.in misc/ts/$(POLICY_NAME).policy

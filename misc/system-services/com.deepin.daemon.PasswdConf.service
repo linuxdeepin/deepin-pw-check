@@ -1,4 +1,0 @@
-[D-BUS Service]
-Name=com.deepin.daemon.PasswdConf
-Exec=/usr/lib/deepin-pw-check/deepin-pw-check
-User=root
