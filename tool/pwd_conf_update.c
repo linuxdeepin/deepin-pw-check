@@ -18,6 +18,9 @@
 #define SERVER_OS_TYPE_STRING "Server"
 #define EULER_OS_TYPE_STRING "Euler"
 
+#define E_OS_TYPE_STRING "E"
+#define HOME_OS_TYPE_STRING "Home"
+
 static bool debug_flag = 0;
 
 #define DEBUG(format, ...)                                                                         \
@@ -36,6 +39,8 @@ typedef enum {
     OS_PROFESSIONAL = 0,
     OS_SERVER,
     OS_EULER,
+    OS_E,
+    OS_HOME,
     OS_UNKNOWN_TYPE,
 } OS_TYPE;
 
@@ -43,6 +48,8 @@ const char *os_type_string[] = {
         [OS_PROFESSIONAL] = PROFESSIONAL_OS_TYPE,
         [OS_SERVER] = SERVER_OS_TYPE_STRING,
         [OS_EULER] = EULER_OS_TYPE_STRING,
+        [OS_E] = E_OS_TYPE_STRING,
+        [OS_HOME] = HOME_OS_TYPE_STRING,
         [OS_UNKNOWN_TYPE] = "UNKNOWN",
 };
 
@@ -101,6 +108,34 @@ const _default_conf default_conf[] = {
                         .consecutive_same_character_num = 3,
                         .first_letter_uppercase = 0,
                 },
+        [OS_E] =
+                {
+                        .min_length = 1,
+                        .max_length = 510,
+                        .validate_policy = "1234567890;abcdefghijklmnopqrstuvwxyz;"
+                                           "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
+                                           ":;<=>?@[\\]^_`{|}~/",
+                        .validate_required = 1,
+                        .palindorme_num = 0,
+                        .word_check = 0,
+                        .monotone_same_character_num = 0,
+                        .consecutive_same_character_num = 0,
+                        .first_letter_uppercase = 0,
+                },
+        [OS_HOME] =
+                {
+                        .min_length = 1,
+                        .max_length = 510,
+                        .validate_policy = "1234567890;abcdefghijklmnopqrstuvwxyz;"
+                                           "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!\"#$%&'()*+,-./"
+                                           ":;<=>?@[\\]^_`{|}~/",
+                        .validate_required = 1,
+                        .palindorme_num = 0,
+                        .word_check = 0,
+                        .monotone_same_character_num = 0,
+                        .consecutive_same_character_num = 0,
+                        .first_letter_uppercase = 0,
+                },
 };
 
 OS_TYPE get_current_os_type() {
@@ -129,7 +164,13 @@ OS_TYPE get_current_os_type() {
     int d = atoi(c_tmp);
 
     if (b == 1) {
-        ret = OS_PROFESSIONAL;
+        if (d == 6) {
+           ret = OS_E;
+        } else if (d == 7) {
+           ret = OS_HOME;
+        } else {
+           ret = OS_PROFESSIONAL;
+        }
     } else if (b == 2) {
         ret = OS_SERVER;
         if (d == 3) {
