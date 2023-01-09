@@ -1,3 +1,9 @@
+deepin-pw-check (5.1.18) unstable; urgency=low
+
+  * bump version to 5.1.18
+
+ -- lichangze <lichangze@uniontech.com>  Mon, 9 Jan 2023 16:20:17 +0000
+
 deepin-pw-check (1.0.0.1) unstable; urgency=medium
 
   * Initial release.
