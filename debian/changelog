@@ -1,8 +1,21 @@
-deepin-pw-check (5.1.18) unstable; urgency=low
+deepin-pw-check (6.0.1) unstable; urgency=medium
 
-  * bump version to 5.1.18
+  [ TagBuilder ]
+  * feat: 接口更变，增加V23接口(Task: 207483)(Influence: 接口更变)
 
- -- lichangze <lichangze@uniontech.com>  Mon, 9 Jan 2023 16:20:17 +0000
+ -- zhaoyingzhen <zhaoyingzhen@uniontech.com>  Tue, 13 Dec 2022 19:30:08 +0800
+
+deepin-pw-check (6.0.0.0) unstable; urgency=medium
+
+  * release 6.0.0.0
+
+ --  <fanpengcheng@uniontech.com>  Tue, 14 June 2022 17:06:13 +0800
+
+deepin-pw-check (5.1.9) unstable; urgency=medium
+
+  * fix mirror install error.
+
+ -- echengqi <echengqi@uniontech.com>  Fri, 10 jun 2022 13:48:35 +0800
 
 deepin-pw-check (1.0.0.1) unstable; urgency=medium
 

@@ -156,27 +156,26 @@ OS_TYPE get_current_os_type() {
     }
 
     const char *os_type = iniparser_getstring(dic, "Version:OsBuild", "11018.100");
+    if(os_type == NULL){
+        printf("os_type is null");
+        return OS_UNKNOWN_TYPE;
+    }
 
-    char c_tmp[1];
-    c_tmp[0] = os_type[1];
-    int b = atoi(c_tmp);
-    c_tmp[0] = os_type[3];
-    int d = atoi(c_tmp);
+    printf("os_type : %s\n",os_type);
 
-    if (b == 1) {
-        if (d == 6) {
-           ret = OS_E;
-        } else if (d == 7) {
-           ret = OS_HOME;
-        } else {
-           ret = OS_PROFESSIONAL;
-        }
-    } else if (b == 2) {
+    if(strlen(os_type) < 4){
+        printf("os_type length err: %lu\n",strlen(os_type));
+        return OS_UNKNOWN_TYPE;
+    }
+
+    if (os_type[1] == '1') {
+        ret = OS_PROFESSIONAL;
+    } else if (os_type[1] == '2') {
         ret = OS_SERVER;
-        if (d == 3) {
+        if (os_type[3] == '3') {
             ret = OS_EULER;
         }
-    } else if (b == 3) {
+    } else if (os_type[1] == '3') {
         ret = OS_SERVER;
     } else {
         ret = OS_UNKNOWN_TYPE;
