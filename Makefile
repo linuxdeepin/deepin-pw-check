@@ -1,7 +1,7 @@
-
 PREFIX=/usr
-GOPKG_PREFIX = service
+GOPKG_PREFIX = github.com/linuxdeepin/deepin-pw-check
 GOBUILD = go build $(GO_BUILD_FLAGS)
+GOBUILD_DIR = gobuild
 ifeq (${PAM_MODULE_DIR},)
 PAM_MODULE_DIR := /etc/pam.d
 endif
@@ -18,14 +18,17 @@ LIBSRCS_C = $(basename $(shell cd lib; ls *.c))
 TOOL_BINARAY = pwd-conf-update
 
 SECURITY_BUILD_OPTIONS = -fPIC -fstack-protector-all -z relro -z noexecstack -z now -pie
+export GOPATH = /usr/share/gocode
 
 all: build
 
 prepare:
+	@mkdir -p ${GOBUILD_DIR}/src/$(dir ${GOPKG_PREFIX})
+	@ln -snf ../../../.. ${GOBUILD_DIR}/src/${GOPKG_PREFIX}
 	@mkdir -p out/bin
 
 out/bin/%: prepare
-	env GOPATH="${GOPATH}" ${GOBUILD} -o $@ ${GOBUILD_OPTIONS} ${GOPKG_PREFIX}/*.go
+	env GOPATH="${GOPATH}:${CURDIR}/${GOBUILD_DIR}" ${GOBUILD} -o $@ ${GOBUILD_OPTIONS} ${GOPKG_PREFIX}/service
 
 out/${LIBRARIES}:
 	gcc lib/*.c ${SECURITY_BUILD_OPTIONS} -shared -DIN_CRACKLIB -W -Wall -Wl,-soname,libdeepin_pw_check.so.1 -o $@ $^ -lcrypt -lcrack -liniparser
