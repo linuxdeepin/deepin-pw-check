@@ -19,7 +19,7 @@ Copyright: None
 License: CC0-1.0
 
 # xml toml json conf yaml
-Files: src/*.xml .clog.toml configs/*.json src/*conf src/*.yaml .tx/config
+Files: src/*.xml .clog.toml configs/*.json src/*conf src/*.yaml .tx/config .tx/deepin.conf
 Copyright: None
 License: CC0-1.0
 
@@ -37,3 +37,8 @@ License: GPL-3.0-or-later
 Files: Makefile
 Copyright: UnionTech Software Technology Co., Ltd.
 License: GPL-3.0-or-later
+
+# gomod files
+Files: go.mod go.sum
+Copyright: None
+License: CC0-1.0
