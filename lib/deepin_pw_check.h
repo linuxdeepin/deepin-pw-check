@@ -79,7 +79,7 @@ extern int get_pw_max_length(int level);
 extern int get_pw_min_character_type(int level);
 
 /*
-    get the validate charater policy type. is specified by /etc/deepin/dde.conf. "Password:VALIDATE_POLICY"
+    get the validate character policy type. is specified by /etc/deepin/dde.conf. "Password:VALIDATE_POLICY"
 */
 extern char* get_pw_validate_policy(int level);
 
@@ -123,7 +123,7 @@ extern int get_pw_max_length_grub2(int level);
 extern int get_pw_min_character_type_grub2(int level);
 
 /*
-    get the validate charater policy type. is specified by /etc/deepin/grub2_edit_auth.conf "Password:VALIDATE_POLICY"
+    get the validate character policy type. is specified by /etc/deepin/grub2_edit_auth.conf "Password:VALIDATE_POLICY"
 */
 extern char* get_pw_validate_policy_grub2(int level);
 
