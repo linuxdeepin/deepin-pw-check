@@ -658,7 +658,8 @@ static char *get_pw_validate_policy_by_conf(int level, const char *conf_file) {
 
     const char *read_type = iniparser_getstring(dic, "Password:VALIDATE_POLICY", "");
 
-    strcpy(out_buff, read_type);
+    strncpy(out_buff, read_type, BUFF_SIZE - 1);
+    out_buff[BUFF_SIZE - 1]='\0';
     iniparser_freedict(dic);
     return out_buff;
 }
