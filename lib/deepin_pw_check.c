@@ -132,7 +132,8 @@ retry:
     options->palindrome_min_num = iniparser_getint(dic, "Password:PALINDROME_NUM", 0);
     options->check_word = iniparser_getint(dic, "Password:WORD_CHECK", 0);
     dict_buff = iniparser_getstring(dic, "Password:DICT_PATH", "");
-    strcpy(options->dict_path, dict_buff);
+    strncpy(options->dict_path, dict_buff, sizeof(options->dict_path));
+    options->dict_path[sizeof(options->dict_path) - 1] = '\0';
     options->monotone_character_num = iniparser_getint(dic, "Password:MONOTONE_CHARACTER_NUM", 0);
     options->consecutive_same_character_num =
             iniparser_getint(dic, "Password:CONSECUTIVE_SAME_CHARACTER_NUM", 0);
@@ -159,7 +160,8 @@ static struct Options *get_default_options(int level, const char *dict_path, con
         if (strcmp(options->dict_path, "") == 0) {
             options->dict_path[0] = '\0';
         } else {
-            strcpy(options->dict_path, dict_path);
+            strncpy(options->dict_path, dict_path, sizeof(options->dict_path));
+            options->dict_path[sizeof(options->dict_path) - 1] = '\0';
         }
     }
 
