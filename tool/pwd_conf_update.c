@@ -10,6 +10,7 @@
 #include <iniparser/dictionary.h>
 #include <errno.h>
 #include <sys/stat.h>
+#include <stdlib.h>
 
 #define PASSWD_CONF_FILE_PATH "/etc/deepin/dde.conf"
 #define OS_VERSION_FILE_PATH "/etc/os-version"
