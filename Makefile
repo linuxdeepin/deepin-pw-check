@@ -74,6 +74,8 @@ install: translate
 	cp out/bin/deepin-pw-check ${DESTDIR}${PREFIX}/lib/deepin-pw-check/
 	mkdir -p ${DESTDIR}${PREFIX}/share/polkit-1/actions
 	cp -r misc/polkit-action/*.policy ${DESTDIR}${PREFIX}/share/polkit-1/actions
+	mkdir -p ${DESTDIR}/lib/systemd/system
+	cp  misc/systemd-service/deepin-passwd-conf.service ${DESTDIR}/lib/systemd/system/
 
 test: $(addprefix unit_test/, $(SRCS_C)) clean_test
 

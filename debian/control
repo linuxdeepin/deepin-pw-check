@@ -3,7 +3,7 @@ Section: devel
 Priority: optional
 Maintainer: Deepin Packages Builder <packages@deepin.com>
 Build-Depends:
- debhelper (>= 9),
+ debhelper-compat (= 11),
  libcrack2-dev,
  libpam-dev,
  libiniparser-dev,
