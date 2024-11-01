@@ -1,3 +1,9 @@
+deepin-pw-check (6.0.4) UNRELEASED; urgency=medium
+
+  * fix: 解决启动失败问题
+
+ -- echengqi <echengqi@uniontech.com>  Fri, 1 Nov 2024 10:16:01 +0800
+
 deepin-pw-check (6.0.3) UNRELEASED; urgency=medium
 
   * feat: 对org.deepin.dde.PasswdConf1服务进行安全加固 (#39)
