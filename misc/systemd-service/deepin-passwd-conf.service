@@ -3,7 +3,7 @@ Description=Deepin password check config service
 
 [Service]
 Type=dbus
-BusName=com.deepin.daemon.PasswdConf
+BusName=org.deepin.dde.PasswdConf1
 # TODO /etc/deepin/dde.conf使用方确认后修改为deepin-daemon
 User=root
 ExecStart=/usr/lib/deepin-pw-check/deepin-pw-check
