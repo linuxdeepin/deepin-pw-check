@@ -381,6 +381,7 @@ int word_check(const char* pw,const char* dict_path) {
     PWDICT *pwp;
     unsigned int notfound;
     int ret = 0;
+    char area[STRINGSIZE];
 
     if (dict_path == NULL || (strcmp(dict_path, "") == 0)){
         dict_path = GetDefaultCracklibDict();
@@ -398,7 +399,7 @@ int word_check(const char* pw,const char* dict_path) {
     {
         char *a;
 
-        if (!(a = Mangle((char*)pw, r_destructors[i])))
+        if (!(a = Mangle((char*)pw, r_destructors[i], area)))
         {
             continue;
         }
