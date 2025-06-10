@@ -1,8 +1,9 @@
-deepin-pw-check (6.0.4) UNRELEASED; urgency=medium
+deepin-pw-check (6.0.4) unstable; urgency=medium
 
+  [ echengqi ]
   * fix: 解决启动失败问题
 
- -- echengqi <echengqi@uniontech.com>  Fri, 1 Nov 2024 10:16:01 +0800
+ -- fuleyi <fuleyi@uniontech.com>  Tue, 10 Jun 2025 11:03:09 +0800
 
 deepin-pw-check (6.0.3) UNRELEASED; urgency=medium
 
