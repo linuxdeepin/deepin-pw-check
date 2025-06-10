@@ -1,10 +1,16 @@
-deepin-pw-check (6.0.4) UNRELEASED; urgency=medium
+deepin-pw-check (6.0.5) unstable; urgency=medium
+
+  * update version to 6.0.5
+
+ -- fuleyi <fuleyi@uniontech.com>  Tue, 10 Jun 2025 11:08:05 +0800
+
+deepin-pw-check (6.0.4) unstable; urgency=medium
 
   * fix: 解决启动失败问题
 
- -- echengqi <echengqi@uniontech.com>  Fri, 1 Nov 2024 10:16:01 +0800
+ -- fuleyi <fuleyi@uniontech.com>  Tue, 10 Jun 2025 11:07:22 +0800
 
-deepin-pw-check (6.0.3) UNRELEASED; urgency=medium
+deepin-pw-check (6.0.3) unstable; urgency=medium
 
   * feat: 对org.deepin.dde.PasswdConf1服务进行安全加固 (#39)
 
