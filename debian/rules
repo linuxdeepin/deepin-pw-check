@@ -8,6 +8,7 @@ export PAM_MODULE_DIR = usr/lib/$(DEB_HOST_MULTIARCH)/security
 export PKG_FILE_DIR = usr/lib/pkgconfig
 export GO111MODULE = off
 export GOCACHE=/tmp/
+export CFLAGS = -fstack-protector-strong -z relro -z noexecstack -z now -pie -D_FORTIFY_SOURCE=2
 
 ifneq ($(DEB_BUILD_ARCH), mips64el)
 	export GOBUILD_OPTIONS=-ldflags '-linkmode=external -extldflags "-pie"'
