@@ -1,3 +1,9 @@
+deepin-pw-check (6.0.6) unstable; urgency=medium
+
+  * Release 6.0.6
+
+ -- zhangkun <zhangkun2@uniontech.com>  Wed, 09 Jul 2025 16:47:51 +0800
+
 deepin-pw-check (6.0.5) unstable; urgency=medium
 
   * update version to 6.0.5
