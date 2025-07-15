@@ -24,7 +24,7 @@ $ make
 $ sudo make install
 ```
 
-The executable binary file could be found at `/usr/lib/deepin-pw-check` after the installation is finished.
+The executable binary file could be found at `/usr/libexec/deepin-pw-check` after the installation is finished.
 
 # Usage
 ```c

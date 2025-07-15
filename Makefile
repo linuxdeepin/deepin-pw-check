@@ -1,4 +1,6 @@
 PREFIX=/usr
+exec_prefix = $(PREFIX)
+libexecdir = $(exec_prefix)/libexec
 GOPKG_PREFIX = github.com/linuxdeepin/deepin-pw-check
 GOBUILD = go build $(GO_BUILD_FLAGS)
 GOBUILD_DIR = gobuild
@@ -75,8 +77,8 @@ install: translate
 	cp misc/conf/*.conf ${DESTDIR}${PREFIX}/share/dbus-1/system.d/
 	mkdir -pv ${DESTDIR}${PREFIX}/share/dbus-1
 	cp -r misc/system-services ${DESTDIR}${PREFIX}/share/dbus-1/
-	mkdir -p ${DESTDIR}${PREFIX}/lib/deepin-pw-check/
-	cp out/bin/deepin-pw-check ${DESTDIR}${PREFIX}/lib/deepin-pw-check/
+	mkdir -p ${DESTDIR}${libexecdir}/deepin-pw-check/
+	cp out/bin/deepin-pw-check ${DESTDIR}${libexecdir}/deepin-pw-check/
 	mkdir -p ${DESTDIR}${PREFIX}/share/polkit-1/actions
 	cp -r misc/polkit-action/*.policy ${DESTDIR}${PREFIX}/share/polkit-1/actions
 	mkdir -p ${DESTDIR}${PREFIX}/lib/systemd/system

@@ -6,7 +6,7 @@ Type=dbus
 BusName=org.deepin.dde.PasswdConf1
 # TODO /etc/deepin/dde.conf使用方确认后修改为deepin-daemon
 User=root
-ExecStart=/usr/lib/deepin-pw-check/deepin-pw-check
+ExecStart=/usr/libexec/deepin-pw-check/deepin-pw-check
 StandardOutput=null
 StandardError=journal
 
