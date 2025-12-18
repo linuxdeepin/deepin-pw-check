@@ -11,7 +11,7 @@ export GOCACHE=/tmp/
 export CFLAGS = -fstack-protector-strong -z relro -z noexecstack -z now -pie -D_FORTIFY_SOURCE=2
 
 ifneq ($(DEB_BUILD_ARCH), mips64el)
-	export GOBUILD_OPTIONS=-ldflags '-linkmode=external -extldflags "-pie"'
+	export GOBUILD_OPTIONS=-ldflags '-linkmode=external -extldflags "-Wl,-z,relro,-z,now,-pie"'
 endif
 
 %:
