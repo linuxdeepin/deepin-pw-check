@@ -1,3 +1,11 @@
+deepin-pw-check (6.0.7) unstable; urgency=medium
+
+  * fix: update Go build linker flags for security hardening
+  * refactor: update installation paths to use libexecdir
+  * fix: install path for systemd-services
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 18 Dec 2025 19:48:03 +0800
+
 deepin-pw-check (6.0.6) unstable; urgency=medium
 
   * Release 6.0.6
