@@ -25,4 +25,3 @@ override_dh_link:
 
 override_dh_auto_install:
 	dh_auto_install
-	dh_installtmpfiles deepin-pw-check.tmpfiles
