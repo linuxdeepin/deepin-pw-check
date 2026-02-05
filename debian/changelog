@@ -1,3 +1,9 @@
+deepin-pw-check (6.0.8) unstable; urgency=medium
+
+  * fix: remove systemd-tmpfiles configuration for dde.conf (#54)
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 05 Feb 2026 19:52:00 +0800
+
 deepin-pw-check (6.0.7) unstable; urgency=medium
 
   * fix: update Go build linker flags for security hardening
