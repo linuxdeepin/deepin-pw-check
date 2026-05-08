@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -107,7 +107,7 @@ retry:
         DEBUG("ERROR: open file %s failed!", conf_file);
         if (retry_cnt < 1) {
             DEBUG("exec pwd-conf-update to create <%s>", conf_file);
-            system("pwd-conf-update");
+            system("/usr/bin/pwd-conf-update");
             retry_cnt++;
             goto retry;
         }
