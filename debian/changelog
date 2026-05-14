@@ -1,3 +1,9 @@
+deepin-pw-check (6.0.9) unstable; urgency=medium
+
+  * fix(pw-check): use absolute path for pwd-conf-update
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 14 May 2026 20:03:22 +0800
+
 deepin-pw-check (6.0.8) unstable; urgency=medium
 
   * fix: remove systemd-tmpfiles configuration for dde.conf (#54)
