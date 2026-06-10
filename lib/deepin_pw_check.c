@@ -4,6 +4,7 @@
 
 #include "deepin_pw_check.h"
 #include "debug.h"
+#include <errno.h>
 #include <iniparser/dictionary.h>
 #include <iniparser/iniparser.h>
 #include <libintl.h>
@@ -12,6 +13,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 #define UNUSED(x) (void)(x)
 
@@ -107,7 +110,24 @@ retry:
         DEBUG("ERROR: open file %s failed!", conf_file);
         if (retry_cnt < 1) {
             DEBUG("exec pwd-conf-update to create <%s>", conf_file);
-            system("/usr/bin/pwd-conf-update");
+            pid_t pid = fork();
+            if (pid == 0) {
+                char *const argv[] = {
+                    "/usr/bin/pwd-conf-update",
+                    NULL
+                };
+                execv(argv[0], argv);
+                _exit(127);
+            } else if (pid > 0) {
+                int status;
+                while (waitpid(pid, &status, 0) == -1) {
+                    if (errno != EINTR) {
+                        break;
+                    }
+                }
+            } else {
+                DEBUG("fork failed: %m");
+            }
             retry_cnt++;
             goto retry;
         }
