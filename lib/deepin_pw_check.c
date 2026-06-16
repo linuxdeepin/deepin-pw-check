@@ -296,6 +296,7 @@ PW_ERROR_TYPE is_type_valid(const char *pw, char *character_type, int character_
 
     while (p != NULL) {
         char *next_data_addr = NULL;
+        char p_tmp[BUFF_SIZE];
 
         // 如果当前字符是特殊字符，并且下个 ; 之后的内容也是特殊字符, 则他们作为一组判断
         if ((*p >= 33 && *p <= 47) || (*p >= 58 && *p <= 64) || (*p >= 91 && *p <= 96) ||
@@ -309,7 +310,6 @@ PW_ERROR_TYPE is_type_valid(const char *pw, char *character_type, int character_
                     (*next_data_addr >= 58 && *next_data_addr <= 64) ||
                     (*next_data_addr >= 91 && *next_data_addr <= 96) ||
                     (*next_data_addr >= 123 && *next_data_addr <= 126)) {
-                    char p_tmp[BUFF_SIZE];
                     memset(p_tmp, 0, BUFF_SIZE);
                     memcpy(p_tmp, p, strlen(p));
                     int offset = strlen(p);
