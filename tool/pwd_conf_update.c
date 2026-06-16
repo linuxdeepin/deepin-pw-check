@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -280,6 +280,7 @@ int update_conf(OS_TYPE os_type) {
         int num = fwrite("[Password]\n", 1, strlen("[Password]\n"), fd);
         if (num <= 0) {
             printf("write data to %s err: %s\n", PASSWD_CONF_FILE_PATH, strerror(errno));
+            fclose(fd);
             return -1;
         }
         fclose(fd);
