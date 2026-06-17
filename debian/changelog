@@ -1,3 +1,9 @@
+deepin-pw-check (6.0.11) unstable; urgency=medium
+
+  * fix: fix cppcheck-invalid-lifetime and resource-leak warnings
+
+ -- zhangkun <zhangkun2@uniontech.com>  Wed, 17 Jun 2026 16:17:46 +0800
+
 deepin-pw-check (6.0.10) unstable; urgency=medium
 
   * fix: replace system() with fork/exec for security compliance
