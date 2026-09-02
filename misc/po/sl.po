@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Arnold Marko <arnold.marko@gmail.com>, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-24 17:12+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
+"Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2022\n"
+"Language-Team: Slovenian (https://www.transifex.com/linuxdeepin/teams/3617/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#: lib/deepin_pw_check.c:723
+msgid "Checking successful"
+msgstr "Preverjanje je bilo uspešno"
+
+#: lib/deepin_pw_check.c:725
+msgid "The password cannot be empty"
+msgstr "Geslo ne more biti prazno"
+
+#: lib/deepin_pw_check.c:731 lib/deepin_pw_check.c:767
+#, c-format
+msgid ""
+"Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. "
+"Different from the username."
+msgstr ""
+
+#: lib/deepin_pw_check.c:735
+#, c-format
+msgid "Password must be no more than %d characters"
+msgstr "Geslo ne sme imeti več kot %d znakov"
+
+#: lib/deepin_pw_check.c:739
+msgid ""
+"Password can only contain English letters (case-sensitive), numbers or "
+"special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
+msgstr ""
+"Geslo lahko vsebuje le angleške črke (razlikuje velike in male), številke "
+"ali posebne simbole (~!@#$%^&*()[]{}\\|/?,.<>)"
+
+#: lib/deepin_pw_check.c:745
+#, c-format
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "Geslo ne sme vsebovati več kot %d palindromne znake"
+
+#: lib/deepin_pw_check.c:749 lib/deepin_pw_check.c:751
+#: lib/deepin_pw_check.c:753
+msgid "Create a strong password please"
+msgstr "Prosimo, da ustvarite močno geslo"
+
+#: lib/deepin_pw_check.c:755
+msgid "Do not use common words and combinations as password"
+msgstr "Za geslo ne uporabljajte pogostih besed in fraz"
+
+#: lib/deepin_pw_check.c:757
+msgid "Parameter options are invalid"
+msgstr "Neveljavne opcije parametra"
+
+#: lib/deepin_pw_check.c:759
+msgid "Internal error"
+msgstr "Notranja napaka"
+
+#: lib/deepin_pw_check.c:761
+msgid "Invalid user"
+msgstr "Napačen uporabnik"
+
+#: lib/deepin_pw_check.c:770
+msgid "It does not meet password rules"
+msgstr "Ne ustreza pravilom za geslo"
+
+#: lib/deepin_pw_check.c:772
+msgid "Invalid error type"
+msgstr "Neveljavna vrsta napake"

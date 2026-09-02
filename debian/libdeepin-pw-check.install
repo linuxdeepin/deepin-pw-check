@@ -1,0 +1,5 @@
+usr/lib/*.so.*
+usr/lib/*/security
+debian/pam-configs/* usr/share/pam-configs/
+usr/bin/pwd-conf-update
+usr/share/locale/

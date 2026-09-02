@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.deepin.dde.PasswdConf1
+Exec=/bin/false
+SystemdService=deepin-passwd-conf.service

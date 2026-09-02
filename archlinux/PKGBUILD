@@ -1,0 +1,48 @@
+# Maintainer: justforlxz <justforlxz@gmail.com>
+pkgname=deepin-pw-check-git
+pkgver=5.1.6.r5.g10c0e2f
+pkgrel=1
+sourcename=deepin-pw-check
+sourcetars=("$sourcename"_"$pkgver".tar.xz vendor.tar.gz)
+sourcedir="$sourcename"
+useforobs=1
+pkgdesc='deepin-pw-check is a tool to verify the validity of the password'
+arch=('x86_64' 'aarch64')
+url="https://github.com/linuxdeepin/deepin-pw-check"
+license=('GPL3')
+depends=('cracklib' 'iniparser' 'pam' 'gtk3')
+makedepends=('git' 'go' 'deepin-gettext-tools-git')
+groups=('deepin-git')
+provides=('deepin-pw-check')
+conflicts=('deepin-pw-check')
+source=("${sourcetars[@]}")
+sha512sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd "$sourcedir"
+  export GOPATH="$srcdir/build:/usr/share/gocode"
+  sed -i 's/<iniparser\//</g' lib/deepin_pw_check.c
+  sed -i 's/<iniparser\//</g' tool/pwd_conf_update.c
+  sed -i 's/local\///g' Makefile
+}
+
+build() {
+  cd $sourcedir
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  if [[ ! -n "$useforobs" ]];then
+    export GOFLAGS="-buildmode=pie -trimpath -modcacherw -mod=readonly"
+    go mod tidy
+  else
+    export GOFLAGS="-buildmode=pie -trimpath -modcacherw -mod=vendor"
+    mv "$srcdir"/vendor "$srcdir"/"$sourcedir"/vendor
+  fi
+  make
+}
+
+package() {
+  cd "$sourcedir"
+  make DESTDIR="$pkgdir" install
+}

@@ -1,0 +1,37 @@
+diff --git a/docs/technical_solution.md b/docs/technical_solution.md
+index 882b75a..246506f 100644
+--- a/docs/technical_solution.md
++++ b/docs/technical_solution.md
+@@ -212,8 +212,9 @@
+         for (int i = 0; r_destructors[i]; i++)
+         {
+             char *a;
++            char area[STRINGSIZE];
+ 
+-            if (!(a = Mangle((char*)pw, r_destructors[i])))
++            if (!(a = Mangle((char*)pw, r_destructors[i], area)))
+             {
+                 continue;
+             }
+@@ -336,4 +337,4 @@ int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
+ }
+ ```
+ ## 总结
+-使用以上方案，使用同一套代码校验规则，可以解决当前uos系统上遇到的密码校验规则不一致导致的一系列问题。
+\ No newline at end of file
++使用以上方案，使用同一套代码校验规则，可以解决当前uos系统上遇到的密码校验规则不一致导致的一系列问题。
+diff --git a/lib/word_check.c b/lib/word_check.c
+index fc32446..ab70346 100644
+--- a/lib/word_check.c
++++ b/lib/word_check.c
+@@ -394,8 +394,9 @@ int word_check(const char* pw,const char* dict_path) {
+     for (int i = 0; r_destructors[i]; i++)
+     {
+         char *a;
++	char area[STRINGSIZE];
+ 
+-        if (!(a = Mangle((char*)pw, r_destructors[i])))
++        if (!(a = Mangle((char*)pw, r_destructors[i], area)))
+         {
+             continue;
+         }

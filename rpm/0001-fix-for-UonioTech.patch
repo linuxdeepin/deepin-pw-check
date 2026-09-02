@@ -1,0 +1,24 @@
+diff --git a/Makefile b/Makefile
+index 35976a0..6fc6112 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,8 @@
+ 
+ PREFIX=/usr
++ifeq (${LIBDIR},)
++LIBDIR := lib
++endif
+ GOPKG_PREFIX = service
+ GOBUILD = go build $(GO_BUILD_FLAGS)
+ ifeq (${PAM_MODULE_DIR},)
+@@ -51,8 +54,8 @@ build: prepare $(addprefix out/bin/, ${BINARIES}) out/${LIBRARIES} static_lib ou
+ install: translate
+ 	mkdir -pv ${DESTDIR}${PREFIX}/share/locale
+ 	- cp -rf out/locale/* ${DESTDIR}${PREFIX}/share/locale
+-	mkdir -p ${DESTDIR}${PREFIX}/lib
+-	cp -f out/lib* ${DESTDIR}${PREFIX}/lib
++	mkdir -p ${DESTDIR}${PREFIX}/${LIBDIR}
++	cp -f out/lib* ${DESTDIR}${PREFIX}/${LIBDIR}
+ 	mkdir -p ${DESTDIR}${PREFIX}/include
+ 	cp lib/deepin_pw_check.h ${DESTDIR}${PREFIX}/include/
+ 	mkdir -pv ${DESTDIR}/${PKG_FILE_DIR}

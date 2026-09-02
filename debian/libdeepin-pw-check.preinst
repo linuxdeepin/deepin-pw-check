@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+# either 'install' or 'upgrade', is need to do this
+
+if [ ! -d /etc/deepin ];then
+    mkdir -p /etc/deepin
+fi

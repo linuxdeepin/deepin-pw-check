@@ -1,0 +1,7 @@
+Name: Deepin password checking
+Default: yes
+Priority: 1024
+Conflicts:
+Password-Type: Primary
+Password:
+        requisite                       pam_deepin_pw_check.so

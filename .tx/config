@@ -1,0 +1,16 @@
+[main]
+host = https://www.transifex.com
+minimum_perc = 80
+mode = developer
+
+[deepin-desktop-environment.deepin-pw-check-pam]
+file_filter = misc/po/<lang>.po
+source_file = misc/po/deepin-pw-check.pot
+source_lang = en
+type = PO
+
+[deepin-desktop-environment.deepin-pw-check-policyts]
+file_filter = misc/ts/org.deepin.dde.passwdconf.policy/policy_<lang>.ts
+source_file = misc/ts/org.deepin.dde.passwdconf.policy/policy.ts
+source_lang = en
+type = QT

@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Марко Пејовић <markopejovic@tutanota.com>, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-24 17:12+0800\n"
+"PO-Revision-Date: 2021-03-03 05:18+0000\n"
+"Last-Translator: Марко Пејовић <markopejovic@tutanota.com>, 2022\n"
+"Language-Team: Serbian (https://www.transifex.com/linuxdeepin/teams/3617/sr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: lib/deepin_pw_check.c:723
+msgid "Checking successful"
+msgstr "Успешно проверно"
+
+#: lib/deepin_pw_check.c:725
+msgid "The password cannot be empty"
+msgstr "Лозинка не може бити празна"
+
+#: lib/deepin_pw_check.c:731 lib/deepin_pw_check.c:767
+#, c-format
+msgid ""
+"Minimum of %d characters. At least %d types: 0-9, a-z, A-Z and symbols. "
+"Different from the username."
+msgstr ""
+
+#: lib/deepin_pw_check.c:735
+#, c-format
+msgid "Password must be no more than %d characters"
+msgstr "Лозинка не може бити дужа од %d карактера"
+
+#: lib/deepin_pw_check.c:739
+msgid ""
+"Password can only contain English letters (case-sensitive), numbers or "
+"special symbols (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
+msgstr ""
+"Лозинка може садржати само енглеска слова (осетљива на величину), бројеве и "
+"специјалне карактере (~`!@#$%^&*()-_+=|\\{}[]:\"'<>,.?/)"
+
+#: lib/deepin_pw_check.c:745
+#, c-format
+msgid "Password must not contain more than %d palindrome characters"
+msgstr "Лозинка не сме садржати више од  %d палиндромна карактера"
+
+#: lib/deepin_pw_check.c:749 lib/deepin_pw_check.c:751
+#: lib/deepin_pw_check.c:753
+msgid "Create a strong password please"
+msgstr "Молимо направите јаку лозинку"
+
+#: lib/deepin_pw_check.c:755
+msgid "Do not use common words and combinations as password"
+msgstr "Немојте користити уобичајене речи и комбинације као лозинку"
+
+#: lib/deepin_pw_check.c:757
+msgid "Parameter options are invalid"
+msgstr "Параметарске опције су неважеће"
+
+#: lib/deepin_pw_check.c:759
+msgid "Internal error"
+msgstr "Унутрашња грешка"
+
+#: lib/deepin_pw_check.c:761
+msgid "Invalid user"
+msgstr "Погрешан корисник"
+
+#: lib/deepin_pw_check.c:770
+msgid "It does not meet password rules"
+msgstr "Не задовољава правила за лозинке"
+
+#: lib/deepin_pw_check.c:772
+msgid "Invalid error type"
+msgstr "Врста неважеће грешке"

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+"http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+	<vendor>LinuxDeepin</vendor>
+	<vendor_url>https://www.deepin.com/</vendor_url>
+	<action id="org.deepin.dde.passwdconf.modify-config">
+		<description>Modify</description>
+		<message>Authentication is required to modify the configuration for password validation</message>
+		<defaults>
+			<allow_any>no</allow_any>
+			<allow_inactive>no</allow_inactive>
+			<allow_active>auth_self_keep</allow_active>
+		</defaults>
+		<description xml:lang="zh_CN">修改</description>
+		<message xml:lang="zh_CN">修改密码校验配置需要认证</message>
+		<description xml:lang="pt_BR">Alterar</description>
+		<message xml:lang="pt_BR">A autenticação é necessária para alterar a configuração para a validação de senha</message>
+		<description xml:lang="sq">Ndryshoje</description>
+		<message xml:lang="sq">Që të ndryshoni formësimin për vlerësim fjalëkalimesh, lypset mirëfilltësim</message>
+		<description xml:lang="fi">Muokkaa</description>
+		<message xml:lang="fi">Todennus vaaditaan salasanan asetusten muuttamiseksi</message>
+		<description xml:lang="tr">Değiştir</description>
+		<message xml:lang="tr">Parola doğrulaması için yapılandırmayı değiştirmek için kimlik doğrulama gerekli</message>
+		<description xml:lang="az">Dəyişdirin</description>
+		<message xml:lang="az">Şifrələrin təsdiq edilməsi üçün tənzimləmələrin dəyişdirilməsinə kimlik doğrulaması tələb olunur</message>
+		<description xml:lang="zh_TW">修改</description>
+		<message xml:lang="zh_TW">修改密碼校驗配置需要認證</message>
+		<description xml:lang="bo">བཟོ་བཅོས།</description>
+		<message xml:lang="bo">གསང་ཨང་བཟོ་བཅོས་ཀྱི་སྒྲིག་འགོད་ལ་ར་སྤྲོད་བྱེད་དགོས།</message>
+		<description xml:lang="de">Ändern</description>
+		<message xml:lang="de">Zum Ändern der Konfiguration für die Passwortvalidierung ist eine Authentifizierung erforderlich</message>
+		<description xml:lang="ca">Modifica</description>
+		<message xml:lang="ca">Cal autenticació per modificar la configuració per validar la contrasenya.</message>
+		<description xml:lang="it">Modifica</description>
+		<message xml:lang="it">Autenticazione richiesta per modificare la configurazione della validazione password</message>
+		<description xml:lang="pl">Modyfikuj</description>
+		<message xml:lang="pl">Uwierzytelnienie jest wymagane w celu zmodyfikowania konfiguracji w celu sprawdzenia poprawności hasła </message>
+		<description xml:lang="sr">Измени</description>
+		<message xml:lang="sr">Идентификација је неопходна да измените поставке за потврду лозинки</message>
+		<description xml:lang="es">Modificar</description>
+		<message xml:lang="es">Se requiere autenticación para modificar la configuración de validación por contraseña</message>
+		<description xml:lang="hu">Módosítás</description>
+		<message xml:lang="hu">Hitelesítés szükséges a jelszó érvényesítéséhez szükséges konfiguráció módosításához</message>
+		<description xml:lang="sl">Spremeni</description>
+		<message xml:lang="sl">Spreminjanje konfiguracije preverjanja gesla zahteva overitev</message>
+		<description xml:lang="fr">Modifier</description>
+		<message xml:lang="fr">Une authentification est requise pour modifier la configuration du mot de passe</message>
+		<description xml:lang="nl">Wijzigen</description>
+		<message xml:lang="nl">Voer je wachtwoord in om de wachtwoordinstellingen te wijzigen</message>
+		<description xml:lang="zh_HK">修改</description>
+		<message xml:lang="zh_HK">修改密碼校驗配置需要認證</message>
+		<description xml:lang="ru">Изменить</description>
+		<message xml:lang="ru">Аутентификация необходима для изменения конфигурации проверки пароля</message>
+		<description xml:lang="ug">ئۆزگەرتىش</description>
+		<message xml:lang="ug">پارول دەلىللەش سەپلىمىسىنى ئۆزگەرتىش دەلىللەشنى تەلەپ قىلىدۇ</message>
+		<description xml:lang="pt">Modificar</description>
+		<message xml:lang="pt">A autenticação é necessária para modificar a configuração para validação de palavra-passe</message>
+		<description xml:lang="uk">Зміна</description>
+		<message xml:lang="uk">Для внесення змін до налаштувань перевірки паролів слід пройти розпізнавання</message>
+	</action>
+</policyconfig>

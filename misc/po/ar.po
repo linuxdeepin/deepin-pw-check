@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# MUHAAB SHAAM <muhaab.org@gmail.com>, 2020
+# Cindy0514, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-02 17:59+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: Cindy0514, 2020\n"
+"Language-Team: Arabic (https://www.transifex.com/linuxdeepin/teams/3617/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: misc/pam-module/pam_auth.c:222
+#, c-format
+msgid "Verification error"
+msgstr "خطأ في التحقق"
+
+#: misc/pam-module/pam_auth.c:226
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr "التحقق من بصمة الإصبع غير متاح ، الرجاء إدخال كلمة المرور"
+
+#: misc/pam-module/pam_auth.c:246 misc/pam-module/pam_auth.c:254
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "يرجى تنظيف إصبعك والمحاولة مجدداً"
+
+#: misc/pam-module/pam_auth.c:250
+#, c-format
+msgid "Finger not centered"
+msgstr "الإصبع ليس في المركز"
+
+#: misc/pam-module/pam_auth.c:258
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr "البصمة غير واضحة ، يرجى تنظيف إصبعك والمحاولة مجدداً"
+
+#: misc/pam-module/pam_auth.c:262
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr "تحرك الإصبع بسرعة كبيرة. الرجاء عدم رفع إصبعك حتى يطلب منك"
+
+#: misc/pam-module/pam_auth.c:274 misc/pam-module/pam_auth.c:532
+#, c-format
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: misc/pam-module/pam_auth.c:380
+#, c-format
+msgid "Verification successful"
+msgstr "تم التحقق بنجاح"
+
+#: misc/pam-module/pam_auth.c:397
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr ""
+
+#: misc/pam-module/pam_auth.c:401
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "فشل التحقق، %d فرص باقية "
+
+#: misc/pam-module/pam_auth.c:403
+#, c-format
+msgid "Verification failed, 1 chance left"
+msgstr "فشل التحقق ، فرصة واحدة باقية "
+
+#: misc/pam-module/pam_auth.c:529
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "تحقق من بصمة الإصبع أو كلمة المرور"

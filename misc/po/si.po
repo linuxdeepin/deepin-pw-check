@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roshan Karunarathna <rkvisit@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-02 17:59+0800\n"
+"PO-Revision-Date: 2020-06-11 09:00+0000\n"
+"Last-Translator: Roshan Karunarathna <rkvisit@gmail.com>, 2020\n"
+"Language-Team: Sinhala (https://www.transifex.com/linuxdeepin/teams/3617/si/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: si\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: misc/pam-module/pam_auth.c:222
+#, c-format
+msgid "Verification error"
+msgstr "සත්‍යාපන දෝෂයකි"
+
+#: misc/pam-module/pam_auth.c:226
+#, c-format
+msgid "Fingerprint verification unavailable, please input password"
+msgstr "ඇඟිලි සලකුණු සත්‍යාපනය සකස් කර නොමැත, කරුණාකර මුරපදය ඇතුළත් කරන්න"
+
+#: misc/pam-module/pam_auth.c:246 misc/pam-module/pam_auth.c:254
+#, c-format
+msgid "Clean your finger and try again"
+msgstr "ඔබේ ඇඟිල්ල පිරිසිදු කර නැවත උත්සාහ කරන්න"
+
+#: misc/pam-module/pam_auth.c:250
+#, c-format
+msgid "Finger not centered"
+msgstr "ඇඟිල්ල නිවැරදිව මධ්‍යගත කර නොමැත"
+
+#: misc/pam-module/pam_auth.c:258
+#, c-format
+msgid "Unclear fingerprint, please clean your finger and try again"
+msgstr ""
+"අපැහැදිලි ඇඟිලි සලකුණකි, කරුණාකර ඔබේ ඇඟිල්ල පිරිසිදු කර නැවත උත්සාහ කරන්න"
+
+#: misc/pam-module/pam_auth.c:262
+#, c-format
+msgid "Finger moved too fast, please do not lift until prompted"
+msgstr "ඇඟිල්ල වේගයෙන් චලනය විය, කරුණාකර විමසන තුරු ඔසවන්න එපා"
+
+#: misc/pam-module/pam_auth.c:274 misc/pam-module/pam_auth.c:532
+#, c-format
+msgid "Password"
+msgstr "මුර පදය"
+
+#: misc/pam-module/pam_auth.c:380
+#, c-format
+msgid "Verification successful"
+msgstr "සත්‍යාපනය සාර්ථකයි"
+
+#: misc/pam-module/pam_auth.c:397
+#, c-format
+msgid "Fingerprint locked, use password please"
+msgstr ""
+
+#: misc/pam-module/pam_auth.c:401
+#, c-format
+msgid "Verification failed, %d chances left"
+msgstr "සත්‍යාපනය අසාර්ථක විය, අවස්ථා %d ඉතිරිව ඇත"
+
+#: misc/pam-module/pam_auth.c:403
+#, c-format
+msgid "Verification failed, 1 chance left"
+msgstr "සත්‍යාපනය අසාර්ථක විය, අවස්ථා 1 ක් ඉතිරිව ඇත"
+
+#: misc/pam-module/pam_auth.c:529
+#, c-format
+msgid "Verify your fingerprint or password"
+msgstr "ඔබගේ ඇඟිලි සලකුණ හෝ මුරපදය සත්‍යාපනය කරන්න"
