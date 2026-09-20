@@ -42,3 +42,13 @@ License: GPL-3.0-or-later
 Files: go.mod go.sum
 Copyright: None
 License: CC0-1.0
+
+# Unit test code
+Files: tests/*.cpp tests/CMakeLists.txt
+Copyright: 2026 UnionTech Software Technology Co., Ltd.
+License: GPL-3.0-or-later
+
+# Test data configuration files
+Files: tests/testdata/*.conf
+Copyright: None
+License: CC0-1.0
