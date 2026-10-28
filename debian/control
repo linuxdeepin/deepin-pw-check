@@ -5,6 +5,7 @@ Maintainer: Deepin Packages Builder <packages@deepin.com>
 Build-Depends:
  debhelper-compat (= 11),
  libcrack2-dev,
+ libgtest-dev,
  libpam-dev,
  libiniparser-dev,
  golang-go,
