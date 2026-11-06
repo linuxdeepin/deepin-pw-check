@@ -112,6 +112,11 @@ TEST(IsIncludePalindromeTest, ContainsPalindrome) {
     EXPECT_TRUE(is_include_palindrome("ac123454321ac", 4));
 }
 
+TEST(IsIncludePalindromeTest, TrailingPalindromeAfterLongPrefix) {
+    EXPECT_TRUE(is_include_palindrome("abcaa", 1));
+    EXPECT_TRUE(is_include_palindrome("abcdefghijklxyZZyx", 3));
+}
+
 TEST(IsIncludePalindromeTest, NoPalindrome) {
     EXPECT_FALSE(is_include_palindrome("abcdef", 4));
     EXPECT_FALSE(is_include_palindrome("123456", 4));
@@ -535,7 +540,7 @@ TEST(DeepinPwCheckByConfTest, EmptyPassword) {
 
 TEST(DeepinPwCheckByConfTest, DisabledReturnsOk) {
     /* "\x01" is not in VALIDATE_POLICY, so this only returns PW_NO_ERR
-     * through the !options->enabled early return. */
+     * through the !options->enabled branch. */
     EXPECT_EQ(PW_NO_ERR,
         deepin_pw_check_by_conf("user", "a\x01", 1, nullptr, CONF_DISABLED));
 }
