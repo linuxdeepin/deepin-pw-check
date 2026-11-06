@@ -222,7 +222,7 @@ bool is_include_palindrome(const char *pw, int palindrome_min_num) {
         pw_tmp[pw_length - b_p] = '\0';
         if (is_palindrome(pw_tmp, palindrome_min_num)) {
             is_palindrome_flag = true;
-            DEBUG("%s is palindrome", pw_tmp);
+            DEBUG("pw (len=%zu) substring is palindrome", strlen(pw_tmp));
             break;
         } else {
             b_p += 1;
@@ -272,8 +272,8 @@ bool include_chinese(const char *data) {
 
 PW_ERROR_TYPE is_type_valid(const char *pw, char *character_type, int character_num_required) {
 
-    DEBUG("called,pw is %s,character policy is %s,required is %d",
-          pw,
+    DEBUG("called,pw len is %zu,character policy is %s,required is %d",
+          strlen(pw),
           character_type,
           character_num_required);
 
@@ -335,7 +335,7 @@ PW_ERROR_TYPE is_type_valid(const char *pw, char *character_type, int character_
                 if (pw[i] == p[j]) {
                     pass++;
                     ok = 1;
-                    DEBUG("pw %s includes character of %s", pw, p);
+                    DEBUG("pw (len=%zu) includes character of %s", strlen(pw), p);
                     break;
                 }
             }
@@ -408,7 +408,7 @@ END:
 }
 
 bool is_monotone_character(const char *pw, int monotone_num) {
-    DEBUG("character is %s, montone_num is %d", pw, monotone_num);
+    DEBUG("pw len is %zu, montone_num is %d", strlen(pw), monotone_num);
     int length = strlen(pw);
     int monotone_increase_num = 1;
     int monotone_decrease_num = 1;
@@ -426,7 +426,7 @@ bool is_monotone_character(const char *pw, int monotone_num) {
         }
 
         get_adjacent_character(pw[i], &next, &last);
-        DEBUG("character %c , next is %c, last is %c", pw[i], next, last);
+        DEBUG("character index %d, next is %d, last is %d", i, next != 0, last != 0);
         if (next != 0 && (pw[i + 1] == next)) {
             keyboard_monotone_increase_num++;
         } else if (next != 0 && (pw[i + 1] == last)) {
@@ -450,11 +450,11 @@ bool is_monotone_character(const char *pw, int monotone_num) {
 bool is_consecutive_same_character(const char *pw, int consecutive_num) {
     int length = strlen(pw);
     int consecutive_same_num = 1;
-    DEBUG("pw is %s, consecutive_num is %d", pw, consecutive_num);
+    DEBUG("pw len is %zu, consecutive_num is %d", strlen(pw), consecutive_num);
     for (int i = 0; i < length - 1; i++) {
         if (pw[i] == pw[i + 1]) {
             consecutive_same_num++;
-            DEBUG("%c is consecutive %d times", pw[i + 1], consecutive_same_num);
+            DEBUG("character at index %d is consecutive %d times", i + 1, consecutive_same_num);
         } else {
             consecutive_same_num = 1;
         }
