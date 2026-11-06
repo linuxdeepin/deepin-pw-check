@@ -218,15 +218,16 @@ bool is_include_palindrome(const char *pw, int palindrome_min_num) {
     char *pw_tmp = (char *)malloc(pw_length + 1);
     bool is_palindrome_flag = false;
     for (;;) {
-        memcpy(pw_tmp, pw + a_p, pw_length - b_p);
-        pw_tmp[pw_length - b_p] = '\0';
+        const int copy_length = pw_length - a_p - b_p;
+        memcpy(pw_tmp, pw + a_p, copy_length);
+        pw_tmp[copy_length] = '\0';
         if (is_palindrome(pw_tmp, palindrome_min_num)) {
             is_palindrome_flag = true;
             DEBUG("%s is palindrome", pw_tmp);
             break;
         } else {
             b_p += 1;
-            if (pw_length - b_p < palindrome_min_num * 2) {
+            if (copy_length - 1 < palindrome_min_num * 2) {
                 a_p += 1;
                 b_p = 0;
             }
@@ -554,7 +555,7 @@ static PW_ERROR_TYPE deepin_pw_check_by_conf(const char *user, const char *pw, i
         }
 
         if (!options->enabled) {
-            return ret;
+            break;
         }
         DEBUG("check is_length_valid");
         if (PW_NO_ERR != (ret = is_length_valid(pw, options->min_len, options->max_len))) {
