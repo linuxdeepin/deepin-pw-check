@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -123,25 +123,6 @@ int pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
                 continue;
             }
 
-            // pam_unix 会校验此部分
-            // extern int verify_pwd(const char *p, char *hash, unsigned int nullok);
-            // struct spwd *spwd = getspnam(user);
-            // if (spwd == NULL) {
-            //     DEBUG("can not get hash password");
-            //     return PAM_PERM_DENIED;
-            // }
-
-            // int verify_result = verify_pwd(new_token, spwd->sp_pwdp, 1);
-            // if (verify_result == 0) {
-            //     ret = PW_ERR_PW_REPEAT;
-            // }
-
-            // if (ret == PW_ERR_PW_REPEAT) {
-            //     DEBUG("new password is same with old password");
-            //     sprintf(outbuf, "Sorry, passwords not changed\n");
-            //     printf(gettext(outbuf));
-            //     continue;
-            // }
             finally_result = 1;
         }
         if (finally_result) {
