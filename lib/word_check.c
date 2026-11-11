@@ -405,7 +405,7 @@ int word_check(const char* pw,const char* dict_path) {
 
         if (FindPW(pwp, a) != notfound)
         {
-            DEBUG("pw %s is found", pw);
+            DEBUG("pw (len=%zu) is found", strlen(pw));
             ret = 1;
         }
     }
