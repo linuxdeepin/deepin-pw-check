@@ -23,8 +23,7 @@ LIBSRCS_C = $(basename $(shell cd lib; ls *.c))
 TOOL_BINARAY = pwd-conf-update
 
 # ---- GTest unit tests ----
-TEST_NAMES = test_pw_check_core test_md5_crypt test_passwd_compare \
-             test_bigcrypt test_debug
+TEST_NAMES = test_pw_check_core test_bigcrypt test_debug
 TEST_OBJDIR ?= tests/obj
 TEST_BINDIR ?= tests
 TEST_BINS = $(addprefix $(TEST_BINDIR)/,$(TEST_NAMES))
@@ -32,8 +31,7 @@ TEST_BINS = $(addprefix $(TEST_BINDIR)/,$(TEST_NAMES))
 COV_OBJDIR = tests/obj-cov
 COV_BINDIR = tests/bin-cov
 COV_BINS = $(addprefix $(COV_BINDIR)/,$(TEST_NAMES))
-TEST_C_SRCS = lib/deepin_pw_check.c lib/debug.c lib/md5.c lib/md5_crypt.c \
-              lib/passwd_compare.c lib/bigcrypt.c
+TEST_C_SRCS = lib/deepin_pw_check.c lib/debug.c lib/bigcrypt.c
 TEST_CXX_SRCS = $(wildcard tests/test_*.cpp)
 TEST_OBJS = $(patsubst lib/%.c,$(TEST_OBJDIR)/%.o,$(TEST_C_SRCS)) \
             $(patsubst tests/%.cpp,$(TEST_OBJDIR)/%.o,$(TEST_CXX_SRCS))
@@ -129,17 +127,6 @@ $(TEST_BINDIR)/test_pw_check_core: $(TEST_OBJDIR)/test_pw_check_core.o \
                           $(TEST_OBJDIR)/deepin_pw_check.o $(TEST_OBJDIR)/debug.o
 	@mkdir -p $(@D)
 	g++ $^ $(GTEST_LIBS) $(TEST_LDFLAGS) -liniparser -lcrypt -o $@
-
-$(TEST_BINDIR)/test_md5_crypt: $(TEST_OBJDIR)/test_md5_crypt.o \
-                      $(TEST_OBJDIR)/md5.o $(TEST_OBJDIR)/md5_crypt.o
-	@mkdir -p $(@D)
-	g++ $^ $(GTEST_LIBS) $(TEST_LDFLAGS) -lcrypt -o $@
-
-$(TEST_BINDIR)/test_passwd_compare: $(TEST_OBJDIR)/test_passwd_compare.o \
-                           $(TEST_OBJDIR)/passwd_compare.o $(TEST_OBJDIR)/md5.o \
-                           $(TEST_OBJDIR)/md5_crypt.o $(TEST_OBJDIR)/bigcrypt.o
-	@mkdir -p $(@D)
-	g++ $^ $(GTEST_LIBS) $(TEST_LDFLAGS) -lcrypt -o $@
 
 $(TEST_BINDIR)/test_bigcrypt: $(TEST_OBJDIR)/test_bigcrypt.o $(TEST_OBJDIR)/bigcrypt.o
 	@mkdir -p $(@D)

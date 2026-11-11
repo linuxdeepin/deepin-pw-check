@@ -7,8 +7,6 @@ tests/obj/
 tests/obj-cov/
 tests/bin-cov/
 tests/test_pw_check_core
-tests/test_md5_crypt
-tests/test_passwd_compare
 tests/test_bigcrypt
 tests/test_debug
 
