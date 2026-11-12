@@ -1,0 +1,56 @@
+# SPDX-FileCopyrightText: 2026 UnionTech Software Technology Co., Ltd.
+#
+# SPDX-License-Identifier: CC0-1.0
+
+name: Unit Tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-test:
+    name: Build and Run Unit Tests
+    runs-on: ubuntu-22.04
+    container: linuxdeepin/deepin:crimson
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup apt sources
+        run: |
+          set -euxo pipefail
+          echo "deb [trusted=yes] http://mirrors.kernel.org/deepin/beige/ crimson main commercial community" > /etc/apt/sources.list
+          echo "deb-src [trusted=yes] http://mirrors.kernel.org/deepin/beige/ crimson main commercial community" >> /etc/apt/sources.list
+          rm -rf /etc/apt/sources.list.d
+          apt-get update
+
+      - name: Install build dependencies
+        run: |
+          set -euxo pipefail
+          apt-get install -y --no-install-recommends \
+            git build-essential \
+            libcrack2-dev libgtest-dev \
+            libpam-dev libiniparser-dev \
+            golang-go \
+            golang-github-linuxdeepin-go-lib-dev \
+            golang-dbus-dev \
+            golang-github-linuxdeepin-go-dbus-factory-dev \
+            cracklib-runtime \
+            deepin-gettext-tools
+
+      - name: Run unit tests
+        run: |
+          # deepin-pw-check uses a Makefile-based build system with GTest.
+          # `make test` builds and runs both GTest C++ tests and C unit tests.
+          # Note: project has no Go *_test.go files; no separate Go test step needed.
+          make test
