@@ -1,3 +1,11 @@
+deepin-pw-check (6.2.0) unstable; urgency=medium
+
+  * test: add unit tests for deepin-pw-check
+  * fix: prevent out-of-bounds reads and leaks in password checks
+  * fix: remove dead MD5-crypt code path
+
+ -- zhangkun <zhangkun2@uniontech.com>  Wed, 18 Nov 2026 11:15:31 +0800
+
 deepin-pw-check (6.0.12) unstable; urgency=medium
 
   * chore: Sync by
